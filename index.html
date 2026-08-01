@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shreejee Trading Corporation | Chetan Shah | Veterinary & Poultry Medicine Dealers Ahmedabad</title>
-  <meta name="description" content="Shreejee Trading Corporation (Prop. Chetan Shah). Dealers in Pharmaceutical, Veterinary - Poultry Medicines, Vaccines & Disposable Gloves in Khadia, Ahmedabad-380001. Tel: 079-22146549, Mob: 9376168779.">
+  <meta name="description" content="Shreejee Trading Corporation (Prop. Chetan Shah). Authorized dealers in Veterinary Pharmaceuticals, Poultry Medicines, Vaccines & Disposable Gloves in Khadia, Ahmedabad-380001. Tel: 079-22146549, Mob: 9376168779.">
   <meta name="keywords" content="Shreejee Trading Corporation, Chetan Shah, STC Ahmedabad, Veterinary Poultry Medicines, Vaccines, Disposable Gloves, Hiramoti Chambers Glowad Khadia Ahmedabad, crshah2@yahoo.com">
   
   <!-- CSS Stylesheet -->
@@ -37,7 +37,7 @@
   <!-- Navigation Bar -->
   <nav class="navbar">
     <div class="container">
-      <a href="#" class="logo">
+      <a href="#home" class="logo">
         <div class="stc-logo-badge">
           <div class="stc-stripes"></div>
           <span class="stc-logo-text">STC</span>
@@ -50,13 +50,21 @@
 
       <ul class="nav-menu">
         <li><a href="#home" class="nav-link active">Home</a></li>
-        <li><a href="#about" class="nav-link">About Us</a></li>
+        <li><a href="#compliance" class="nav-link">Quality & GMP</a></li>
         <li><a href="#catalog" class="nav-link">Products & Gloves</a></li>
         <li><a href="#calculator" class="nav-link">Dosage Estimator</a></li>
+        <li><a href="#network" class="nav-link">Gujarat Delivery</a></li>
         <li><a href="#contact" class="nav-link">Contact & RFQ</a></li>
       </ul>
 
       <div class="nav-actions">
+        <!-- Dark / Light Mode Theme Toggle Button -->
+        <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Toggle Dark/Light Medical Theme">
+          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+          <span>Dark Mode</span>
+        </button>
+
+        <!-- Quote Basket Button -->
         <button class="quote-trigger" onclick="toggleQuoteDrawer(true)">
           <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
@@ -64,6 +72,7 @@
           RFQ List
           <span class="quote-badge" id="quoteBadgeCount">0</span>
         </button>
+
         <a href="https://wa.me/919376168779?text=Hello%20Mr.%20Chetan%20Shah,%20I%20would%20like%20to%20inquire%20about%20veterinary/poultry%20medicines%20and%20disposable%20gloves." target="_blank" class="btn btn-whatsapp btn-sm">
           <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
           WhatsApp Chetan Shah
@@ -81,20 +90,20 @@
           <div>
             <span class="badge badge-amber">
               <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-              Authorized Dealers • Chetan Shah
+              Authorized Wholesale Dealers • Chetan Shah
             </span>
           </div>
           <h1 class="hero-title">
             Dealers in <span class="text-gradient">Pharmaceutical & Veterinary</span> Supplies
           </h1>
           <p class="hero-subtitle">
-            Supplying genuine <strong>Poultry Medicines, Vaccines, Feed Supplements, and Disposable Gloves</strong> directly to clinics, poultry farms, and stockists across Gujarat.
+            Supplying genuine <strong>Poultry Medicines, Vaccines, Feed Supplements, and Disposable Gloves</strong> directly to clinics, poultry farms, and stockists across Gujarat & PAN India.
           </p>
 
           <div class="hero-ctas">
             <a href="#catalog" class="btn btn-accent btn-lg">
               <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/></svg>
-              View Products & Gloves
+              Explore Products & Gloves
             </a>
             <a href="#contact" class="btn btn-outline btn-lg" style="color: white; border-color: rgba(255,255,255,0.4);">
               <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h32a2 2 0 012 2v2H3V5zm0 6h32v8a2 2 0 01-2 2H5a2 2 0 01-2-2v-8z"/></svg>
@@ -111,7 +120,7 @@
             </div>
             <div class="overlay-text">
               <h4>Cold Chain & Biosecurity Certified</h4>
-              <p>Temperature-controlled vaccines & medical disposable gloves for farm biosecurity.</p>
+              <p>Temperature-controlled vaccines & examination disposable gloves for farm biosecurity.</p>
             </div>
           </div>
         </div>
@@ -119,11 +128,11 @@
     </div>
   </section>
 
-  <!-- Live Statistics Banner -->
+  <!-- Live Statistics Banner with Authentic Business Card Replica -->
   <div class="stats-banner">
     <div class="container">
       
-      <!-- Authentic Business Card Digital Card Component -->
+      <!-- Authentic Business Card Digital Replica Component -->
       <div class="card-replica-banner">
         <div class="card-replica-left">
           <div class="stc-logo-badge" style="width: 56px; height: 56px;">
@@ -142,13 +151,14 @@
         </div>
       </div>
 
+      <!-- Animated Statistics Grid -->
       <div class="stats-card">
         <div class="stat-item">
           <div class="stat-icon">
             <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m3 0h1m-1-4h.01M9 16h.01M9 12h.01M9 8h.01M15 16h.01M15 12h.01M15 8h.01"/></svg>
           </div>
           <div class="stat-info">
-            <h3>500+</h3>
+            <h3 class="stat-number" data-target="500" data-suffix="+">500+</h3>
             <p>Farms & Clinics Served</p>
           </div>
         </div>
@@ -158,7 +168,7 @@
             <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
           </div>
           <div class="stat-info">
-            <h3>1,000+</h3>
+            <h3 class="stat-number" data-target="1000" data-suffix="+">1,000+</h3>
             <p>Medicines & Disposable Gloves</p>
           </div>
         </div>
@@ -168,7 +178,7 @@
             <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
           </div>
           <div class="stat-info">
-            <h3>24 Hr</h3>
+            <h3 class="stat-number" data-target="24" data-suffix=" Hr">24 Hr</h3>
             <p>Fast Gujarat Dispatch</p>
           </div>
         </div>
@@ -178,13 +188,106 @@
             <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           </div>
           <div class="stat-info">
-            <h3>100%</h3>
+            <h3 class="stat-number" data-target="100" data-suffix="%">100%</h3>
             <p>Genuine Guaranteed</p>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Regulatory & Quality Compliance Showcase Section (NEW) -->
+  <section class="section compliance-section" id="compliance">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-primary">Wholesale Quality Benchmarks</span>
+        <h2 class="section-title">WHO-GMP & CDSCO Compliance Standards</h2>
+        <p class="section-desc">As an authorized pharmaceutical & veterinary distributor in Gujarat, we maintain stringent regulatory compliance and cold-chain integrity.</p>
+      </div>
+
+      <div class="badge-grid">
+        <div class="badge-card">
+          <div class="badge-card-icon">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <div>
+            <h4>WHO-GMP Formulations</h4>
+            <p>All medicines and antibiotics are sourced from WHO-GMP certified manufacturing units ensuring zero adulteration.</p>
+          </div>
+        </div>
+
+        <div class="badge-card">
+          <div class="badge-card-icon">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div>
+            <h4>2°C - 8°C Cold-Chain</h4>
+            <p>Live vaccines are stored in temperature-monitored medical refrigerators and dispatched in insulated cold-boxes.</p>
+          </div>
+        </div>
+
+        <div class="badge-card">
+          <div class="badge-card-icon">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          </div>
+          <div>
+            <h4>CDSCO & FDA Authorized</h4>
+            <p>Registered drug license holder operating out of Hiramoti Chambers, Khadia, Ahmedabad complying with Indian drug laws.</p>
+          </div>
+        </div>
+
+        <div class="badge-card">
+          <div class="badge-card-icon">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          </div>
+          <div>
+            <h4>Manufacturer-Direct Stock</h4>
+            <p>100% genuine inventory directly from pharma manufacturers with complete lot traceability and GST tax invoicing.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- B2B Comparison Matrix Table -->
+      <div class="comparison-table-wrapper">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Wholesale Distribution Benchmark</th>
+              <th>Shreejee Trading Corporation (STC)</th>
+              <th>Ordinary Grey Market Distributors</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Cold-Chain Temperature Compliance</strong></td>
+              <td><span class="stc-highlight">Guaranteed 2°C - 8°C Cold-Box Shippers</span></td>
+              <td>Unregulated transport in ambient heat</td>
+            </tr>
+            <tr>
+              <td><strong>Product Lot Traceability & Shelf Life</strong></td>
+              <td><strong>100% Genuine with long expiry dates</strong></td>
+              <td>Mixed lots / short-dated near-expiry stock</td>
+            </tr>
+            <tr>
+              <td><strong>Wholesale Packaging & MOQ Flexibility</strong></td>
+              <td><strong>Custom carton & bulk drum packing available</strong></td>
+              <td>Rigid MOQ / retail markup pricing</td>
+            </tr>
+            <tr>
+              <td><strong>Direct Proprietor Access & Guidance</strong></td>
+              <td><strong>Direct WhatsApp to Chetan Shah (+91 9376168779)</strong></td>
+              <td>Generic call centers or delayed response</td>
+            </tr>
+            <tr>
+              <td><strong>Gujarat & PAN-India Delivery Speed</strong></td>
+              <td><strong>24-Hour Express Dispatch from Ahmedabad Hub</strong></td>
+              <td>3-7 working days transit delay</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
 
   <!-- About Us Section -->
   <section class="section" id="about">
@@ -206,11 +309,11 @@
           <h2 class="section-title" style="text-align: left;">
             Trusted Dealers in Pharmaceutical & Veterinary Products
           </h2>
-          <p style="color: var(--slate-600);">
+          <p style="color: var(--text-body);">
             Managed by <strong>Mr. Chetan Shah</strong>, <strong>Shreejee Trading Corporation (STC)</strong> is a premier trading house located at <strong>15, 2nd Floor, Hiramoti Chambers, Glowad, Khadia, Ahmedabad-380001</strong>.
           </p>
-          <p style="color: var(--slate-600);">
-            We specialize as authorized dealers of <strong>Pharmaceutical Formulations, Veterinary & Poultry Medicines, Cold-Chain Vaccines, and Medical Disposable Gloves</strong> (Latex, Nitrile, and PE Insemination Gloves) for farms, hatcheries, and clinics throughout Gujarat.
+          <p style="color: var(--text-body);">
+            We specialize as authorized dealers of <strong>Pharmaceutical Formulations, Veterinary & Poultry Medicines, Cold-Chain Vaccines, and Medical Disposable Gloves</strong> (Latex, Nitrile, and LDPE Insemination Gloves) for farms, hatcheries, and clinics throughout Gujarat.
           </p>
 
           <div class="about-features">
@@ -245,7 +348,7 @@
       <div class="section-header">
         <span class="badge badge-primary">Our Dealership Product Range</span>
         <h2 class="section-title">Explore Medicines, Vaccines & Disposable Gloves</h2>
-        <p class="section-desc">Search through our inventory of poultry medicines, vaccines, feed supplements, and disposable gloves.</p>
+        <p class="section-desc">Search through our wholesale inventory of poultry medicines, vaccines, feed supplements, and disposable gloves.</p>
       </div>
 
       <div class="catalog-controls">
@@ -272,52 +375,104 @@
     </div>
   </section>
 
-  <!-- Interactive Dosage & Requirement Calculator -->
+  <!-- Interactive Multi-Tab Farm Requirement & Dosage Estimator (NEW & UPGRADED) -->
   <section class="section calc-section" id="calculator">
     <div class="container">
       <div class="calc-card">
         <div class="calc-form">
-          <span class="badge badge-amber">Farm Management Tool</span>
-          <h2 style="color: white; font-size: 2rem;">Farm Requirement Estimator</h2>
-          <p style="color: rgba(255, 255, 255, 0.85);">Calculate estimated tonic or disposable glove requirements for your farm batch.</p>
+          <span class="badge badge-amber">B2B Requirement Estimator</span>
+          <h2 style="color: white; font-size: 2rem;">Farm & Clinic Volume Estimator</h2>
+          <p style="color: rgba(255, 255, 255, 0.85);">Calculate estimated medication volumes, feed supplements, or disposable glove boxes required for your farm or clinic.</p>
+
+          <!-- Tab Navigation -->
+          <div class="calc-tab-nav">
+            <button class="calc-tab-btn active" data-tab="poultry" onclick="switchCalcTab('poultry')">Poultry (Broilers/Layers)</button>
+            <button class="calc-tab-btn" data-tab="livestock" onclick="switchCalcTab('livestock')">Livestock (Cattle/Dairy)</button>
+            <button class="calc-tab-btn" data-tab="gloves" onclick="switchCalcTab('gloves')">Biosecurity Gloves</button>
+          </div>
 
           <form id="calcForm" onsubmit="event.preventDefault();">
-            <div class="form-group">
-              <label class="form-label" for="calcBirds">Flock Size (Number of Birds)</label>
-              <input type="number" id="calcBirds" class="form-input" placeholder="e.g. 5000" value="5000" min="100">
+            <!-- Poultry Tab Controls -->
+            <div id="poultryCalcGroup">
+              <div class="form-group" style="margin-bottom: 1.25rem;">
+                <label class="form-label" for="calcPoultryBirds">Flock Size (Number of Birds)</label>
+                <input type="number" id="calcPoultryBirds" class="form-input" placeholder="e.g. 5000" value="5000" min="100" step="500">
+              </div>
+
+              <div class="form-group" style="margin-bottom: 1.25rem;">
+                <label class="form-label" for="calcPoultryDays">Treatment Duration (Days)</label>
+                <input type="number" id="calcPoultryDays" class="form-input" placeholder="e.g. 5" value="5" min="1">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="calcPoultryType">Poultry Product Requirement</label>
+                <select id="calcPoultryType" class="form-select">
+                  <option value="tonic">HepatoBoost Liver Tonic (Water Soluble)</option>
+                  <option value="calcium">CalciMax Liquid Calcium Supplement</option>
+                  <option value="disinfectant">ViruClean 5th Gen Shed Disinfectant</option>
+                </select>
+              </div>
             </div>
 
-            <div class="form-group">
-              <label class="form-label" for="calcDays">Treatment Duration (Days)</label>
-              <input type="number" id="calcDays" class="form-input" placeholder="e.g. 5" value="5" min="1">
+            <!-- Livestock Tab Controls -->
+            <div id="livestockCalcGroup" style="display: none;">
+              <div class="form-group" style="margin-bottom: 1.25rem;">
+                <label class="form-label" for="calcCattleCount">Herd Size (Number of Dairy Cattle / Buffalo)</label>
+                <input type="number" id="calcCattleCount" class="form-input" placeholder="e.g. 50" value="50" min="5" step="5">
+              </div>
+
+              <div class="form-group" style="margin-bottom: 1.25rem;">
+                <label class="form-label" for="calcCattleDays">Supplement Duration (Days)</label>
+                <input type="number" id="calcCattleDays" class="form-input" placeholder="e.g. 30" value="30" min="5">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="calcCattleType">Livestock Product Category</label>
+                <select id="calcCattleType" class="form-select">
+                  <option value="calcium">CalciMax Forte 20L Drum (High Milk Yield)</option>
+                  <option value="mineral">GutPro Mineral & Prebiotic Blend (Fertility)</option>
+                </select>
+              </div>
             </div>
 
-            <div class="form-group">
-              <label class="form-label" for="calcType">Product Requirement Category</label>
-              <select id="calcType" class="form-select">
-                <option value="tonic">HepatoBoost Liver Tonic / Water Soluble Tonics</option>
-                <option value="calcium">CalciMax Liquid Supplement (Layer Focus)</option>
-                <option value="gloves">Disposable Latex/Nitrile Gloves (Farm Biosecurity)</option>
-                <option value="disinfectant">ViruClean Biosecurity Disinfectant</option>
-              </select>
+            <!-- Disposable Gloves Tab Controls -->
+            <div id="glovesCalcGroup" style="display: none;">
+              <div class="form-group" style="margin-bottom: 1.25rem;">
+                <label class="form-label" for="calcGlovesExams">Daily Examinations / Farm Staff Procedures</label>
+                <input type="number" id="calcGlovesExams" class="form-input" placeholder="e.g. 40" value="40" min="10" step="10">
+              </div>
+
+              <div class="form-group" style="margin-bottom: 1.25rem;">
+                <label class="form-label" for="calcGlovesDays">Monthly Working Days</label>
+                <input type="number" id="calcGlovesDays" class="form-input" placeholder="e.g. 25" value="25" min="5" max="31">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="calcGlovesType">Examination Glove Material</label>
+                <select id="calcGlovesType" class="form-select">
+                  <option value="latex">Medical Grade Powder-Free Natural Latex Gloves</option>
+                  <option value="nitrile">Heavy-Duty Chemical & Vaccine Nitrile Gloves</option>
+                  <option value="insemination">Veterinary 90cm Shoulder-Length AI Gloves</option>
+                </select>
+              </div>
             </div>
           </form>
         </div>
 
         <div class="calc-result-box">
-          <h3 style="color: white; font-size: 1.2rem;">Estimated Order Volume</h3>
+          <h3 style="color: white; font-size: 1.35rem;">Estimated Wholesale Order Volume</h3>
           
           <div class="result-item">
-            <span class="result-label">Total Requirement:</span>
+            <span class="result-label">Total Volume Requirement:</span>
             <span class="result-val" id="resVolume">3.8 Litres</span>
           </div>
 
           <div class="result-item">
-            <span class="result-label">Recommended Wholesale Packaging:</span>
-            <span class="result-val" id="resPacks">1 Can (5L Bulk)</span>
+            <span class="result-label">Recommended Wholesale Packing:</span>
+            <span class="result-val" id="resPacks">1 Can(s) (5L Bulk)</span>
           </div>
 
-          <p style="font-size: 0.82rem; color: rgba(255,255,255,0.65);">*Estimates based on standard recommended veterinary and biosecurity protocols.</p>
+          <p id="resNote" style="font-size: 0.85rem; color: rgba(255,255,255,0.75);">*Recommended for 5,000 poultry birds over 5 consecutive days of drinking water treatment.</p>
 
           <a href="#contact" class="btn btn-accent" style="margin-top: 0.5rem; justify-content: center;">
             Request Bulk Rates from Chetan Shah
@@ -327,8 +482,132 @@
     </div>
   </section>
 
+  <!-- Ahmedabad Hub & Gujarat Delivery Footprint Section (NEW) -->
+  <section class="section delivery-section" id="network">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-primary">Logistics & Cold Chain</span>
+        <h2 class="section-title">24-Hour Gujarat & PAN-India Dispatch</h2>
+        <p class="section-desc">Operating from our registered wholesale hub at Hiramoti Chambers in Khadia, Ahmedabad, we ensure same-day dispatch and temperature-controlled logistics across India.</p>
+      </div>
+
+      <div class="delivery-grid">
+        <div class="city-card">
+          <div class="city-card-header">
+            <h4 class="city-name">Ahmedabad Hub</h4>
+            <span class="city-tag">Central Warehouse</span>
+          </div>
+          <p>Same-day delivery across Ahmedabad city, Khadia, Odhav, Aslali transport hubs, and veterinary retail markets.</p>
+        </div>
+
+        <div class="city-card">
+          <div class="city-card-header">
+            <h4 class="city-name">Anand & Kheda</h4>
+            <span class="city-tag">24 Hr Dispatch</span>
+          </div>
+          <p>Express supply to major poultry farms, breeder hatcheries, and dairy cattle centers in the Gujarat dairy belt.</p>
+        </div>
+
+        <div class="city-card">
+          <div class="city-card-header">
+            <h4 class="city-name">Rajkot & Saurashtra</h4>
+            <span class="city-tag">Daily Freight</span>
+          </div>
+          <p>Temperature-controlled transport lines to Rajkot, Jamnagar, Junagadh, and Bhavnagar veterinary stockists.</p>
+        </div>
+
+        <div class="city-card">
+          <div class="city-card-header">
+            <h4 class="city-name">Surat & Vadodara</h4>
+            <span class="city-tag">Express Route</span>
+          </div>
+          <p>Continuous supply of medical disposable gloves, poultry tonics, and biosecurity disinfectants to South Gujarat.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partner Testimonials & Social Proof Section (NEW) -->
+  <section class="section" id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-primary">Partner Social Proof</span>
+        <h2 class="section-title">Trusted by Leading Poultry Farms & Clinics</h2>
+        <p class="section-desc">See why over 500+ poultry farms, veterinary hospitals, and pharmacy directors across Gujarat trust Chetan Shah for their pharmaceutical supplies.</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div>
+            <div style="color: #f59e0b; margin-bottom: 0.75rem;">★★★★★</div>
+            <p class="testimonial-text">
+              "We have been procuring HepatoBoost liver tonic and powder-free latex gloves from Shreejee Trading Corporation for over 8 years. Mr. Chetan Shah ensures genuine lot quality and 24-hour delivery to our breeder farms in Anand."
+            </p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">RP</div>
+            <div class="author-info">
+              <h5>Dr. Rakesh Patel</h5>
+              <p>Chief Veterinarian, Anand Poultry Care</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div>
+            <div style="color: #f59e0b; margin-bottom: 0.75rem;">★★★★★</div>
+            <p class="testimonial-text">
+              "When we have a Mycoplasma CRD outbreak in our broiler flocks, we need Tilmicosin immediately. STC's response time and cold-chain vaccine packaging from their Ahmedabad office is unmatched in the industry."
+            </p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">VZ</div>
+            <div class="author-info">
+              <h5>Mr. Vikramsinh Zala</h5>
+              <p>Managing Director, Gujarat Broiler Farms</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div>
+            <div style="color: #f59e0b; margin-bottom: 0.75rem;">★★★★★</div>
+            <p class="testimonial-text">
+              "Their nitrile disposable gloves and ViruClean biosecurity disinfectants are top-grade. Transparent dealer pricing and direct communication with Mr. Shah make STC our preferred pharmaceutical dealer."
+            </p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar">HS</div>
+            <div class="author-info">
+              <h5>Mr. Hitesh Shah</h5>
+              <p>Director, Mahavir Veterinary Pharma</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Printable / Download 2026 Wholesale Product Guide Banner (NEW) -->
+      <div class="guide-cta-banner">
+        <div class="guide-cta-content">
+          <h3>Need a Complete B2B Wholesale Product & Price Guide?</h3>
+          <p>Download our 2026 print-ready product range or request customized dealer terms directly from Chetan Shah.</p>
+        </div>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <button class="btn btn-primary btn-lg" onclick="triggerCatalogPrint()">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+            Print 2026 Product Guide
+          </button>
+          <a href="https://wa.me/919376168779?text=Hello%20Mr.%20Chetan%20Shah,%20I%20would%20like%20to%20request%20the%20complete%202026%20Wholesale%20Price%20and%20Product%20Guide." target="_blank" class="btn btn-whatsapp btn-lg">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+            Request Price List on WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Contact & RFQ Form Section -->
-  <section class="section" id="contact" style="background: var(--slate-100);">
+  <section class="section" id="contact" style="background: var(--bg-section-alt);">
     <div class="container">
       <div class="section-header">
         <span class="badge badge-primary">Direct Contact</span>
@@ -382,23 +661,23 @@
           <form id="rfqForm">
             <div class="form-row">
               <div class="form-group">
-                <label class="form-label" style="color: var(--slate-700);" for="rfqName">Your Name / Clinic / Farm</label>
+                <label class="form-label" style="color: var(--text-body);" for="rfqName">Your Name / Clinic / Farm</label>
                 <input type="text" id="rfqName" class="form-input light-input" placeholder="e.g. Patel Veterinary Clinic" required>
               </div>
               <div class="form-group">
-                <label class="form-label" style="color: var(--slate-700);" for="rfqPhone">Mobile Number (WhatsApp)</label>
+                <label class="form-label" style="color: var(--text-body);" for="rfqPhone">Mobile Number (WhatsApp)</label>
                 <input type="tel" id="rfqPhone" class="form-input light-input" placeholder="e.g. 98250XXXXX" required>
               </div>
             </div>
 
             <div class="form-group" style="margin-top: 1rem;">
-              <label class="form-label" style="color: var(--slate-700);" for="rfqLocation">City / District</label>
+              <label class="form-label" style="color: var(--text-body);" for="rfqLocation">City / District</label>
               <input type="text" id="rfqLocation" class="form-input light-input" placeholder="e.g. Ahmedabad, Anand, Rajkot" required>
             </div>
 
             <div class="form-group" style="margin-top: 1rem;">
-              <label class="form-label" style="color: var(--slate-700);" for="rfqMessage">Inquiry Details / Products Required</label>
-              <textarea id="rfqMessage" class="form-input light-input" placeholder="Specify products (e.g., Disposable Latex Gloves x 50 boxes, Poultry Medicines)..." required></textarea>
+              <label class="form-label" style="color: var(--text-body);" for="rfqMessage">Inquiry Details / Products Required</label>
+              <textarea id="rfqMessage" class="form-input light-input" rows="4" placeholder="Specify products (e.g., Disposable Latex Gloves x 50 boxes, Poultry Medicines)..." required></textarea>
             </div>
 
             <button type="submit" class="btn btn-accent btn-lg" style="width: 100%; margin-top: 1.5rem;">
@@ -437,9 +716,10 @@
           <h4>Quick Navigation</h4>
           <ul class="footer-links">
             <li><a href="#home">Home</a></li>
-            <li><a href="#about">About Firm</a></li>
+            <li><a href="#compliance">Quality & CDSCO</a></li>
             <li><a href="#catalog">Products & Gloves</a></li>
             <li><a href="#calculator">Dosage Estimator</a></li>
+            <li><a href="#network">Gujarat Delivery</a></li>
             <li><a href="#contact">Contact & Location</a></li>
           </ul>
         </div>
@@ -457,6 +737,7 @@
 
       <div class="footer-bottom">
         <p>&copy; 2026 Shreejee Trading Corporation. All Rights Reserved.</p>
+        <p style="font-size: 0.8rem; color: var(--slate-500);">Proprietor: Chetan Shah • Hiramoti Chambers, Ahmedabad-380001</p>
       </div>
     </div>
   </footer>
@@ -466,13 +747,13 @@
   <div class="drawer" id="quoteDrawer">
     <div class="drawer-header">
       <h3>Inquiry Quote List</h3>
-      <button style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--slate-600);" onclick="toggleQuoteDrawer(false)">&times;</button>
+      <button style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-muted);" onclick="toggleQuoteDrawer(false)">&times;</button>
     </div>
     <div class="drawer-body" id="drawerQuoteList">
       <!-- Added quote items rendered here -->
     </div>
     <div class="drawer-footer">
-      <button class="btn btn-whatsapp btn-lg" onclick="sendWhatsAppRFQ()">
+      <button class="btn btn-whatsapp btn-lg" style="width: 100%;" onclick="sendWhatsAppRFQ()">
         <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
         Send Quote List to Chetan Shah
       </button>
@@ -483,6 +764,9 @@
   <a href="https://wa.me/919376168779?text=Hello%20Mr.%20Chetan%20Shah,%20I%20want%20to%20inquire%20about%20veterinary/poultry%20medicines%20and%20disposable%20gloves." target="_blank" class="floating-whatsapp" title="Direct WhatsApp Inquiry to Chetan Shah">
     <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
   </a>
+
+  <!-- Technical Quick View Modal Container (NEW) -->
+  <div id="quickViewModalContainer"></div>
 
   <!-- JavaScript File -->
   <script src="app.js"></script>
