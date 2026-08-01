@@ -215,7 +215,7 @@ const PRODUCTS = [
 ];
 
 // Application State
-let quoteBasket = [];
+let quoteBasket = JSON.parse(localStorage.getItem('stc_quote_basket') || '[]');
 let currentCalcTab = 'poultry';
 
 // DOM Loaded Initialization
@@ -440,7 +440,7 @@ document.addEventListener('keydown', (e) => {
 // Event Listeners for Filters, Search & Forms
 function setupEventListeners() {
   const searchInput = document.getElementById('searchInput');
-  const filterBtns = document.querySelectorAll('.filter-btn:not(.partner-filter-btn)');
+  const catalogFilterBtns = document.querySelectorAll('.catalog-filter-btn');
   const partnerSearchInput = document.getElementById('partnerSearchInput');
   const partnerFilterBtns = document.querySelectorAll('.partner-filter-btn');
 
@@ -450,9 +450,9 @@ function setupEventListeners() {
     });
   }
 
-  filterBtns.forEach(btn => {
+  catalogFilterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
+      catalogFilterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       filterProducts();
     });
@@ -486,8 +486,10 @@ function setupEventListeners() {
 }
 
 function filterProducts() {
-  const query = document.getElementById('searchInput')?.value.toLowerCase() || '';
-  const activeCategory = document.querySelector('.filter-btn.active')?.dataset.filter || 'all';
+  const searchInput = document.getElementById('searchInput');
+  if (!document.getElementById('productsContainer')) return;
+  const query = searchInput?.value.toLowerCase() || '';
+  const activeCategory = document.querySelector('.catalog-filter-btn.active')?.dataset.filter || 'all';
 
   const filtered = PRODUCTS.filter(prod => {
     const matchesSearch = prod.title.toLowerCase().includes(query) || 
@@ -523,6 +525,7 @@ function removeFromQuote(productId) {
 }
 
 function updateQuoteUI() {
+  localStorage.setItem('stc_quote_basket', JSON.stringify(quoteBasket));
   const badgeCount = document.getElementById('quoteBadgeCount');
   const drawerList = document.getElementById('drawerQuoteList');
   const totalCount = quoteBasket.reduce((sum, item) => sum + item.quantity, 0);
@@ -535,7 +538,7 @@ function updateQuoteUI() {
         <div style="text-align: center; padding: 3.5rem 1rem; color: var(--text-body);">
           <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-bottom: 0.75rem; color: var(--slate-400);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
           <p style="font-weight: 600; color: var(--text-heading);">Your wholesale inquiry list is empty</p>
-          <p style="font-size: 0.88rem; margin-top: 0.35rem;">Browse products or gloves and click "Add to RFQ" to build a consolidated inquiry for Chetan Shah.</p>
+          <p style="font-size: 0.88rem; margin-top: 0.35rem;">Browse products or gloves and click "Add to RFQ" to build a consolidated wholesale inquiry.</p>
         </div>
       `;
     } else {
@@ -570,7 +573,7 @@ function toggleQuoteDrawer(open) {
   }
 }
 
-// WhatsApp RFQ Generation to Mr. Chetan Shah
+// WhatsApp RFQ Generation
 function sendWhatsAppRFQ() {
   if (quoteBasket.length === 0) {
     showToast('Please add products to your inquiry quote first.');
@@ -578,10 +581,9 @@ function sendWhatsAppRFQ() {
   }
 
   let text = `*WHOLESALE RFQ - SHREEJEE TRADING CORPORATION*\n`;
-  text += `Attn: Mr. Chetan Shah (+91 9376168779)\n`;
-  text += `Registered Office: Hiramoti Chambers, Khadia, Ahmedabad\n`;
+  text += `Hiramoti Chambers, Khadia, Ahmedabad | Mob: +91 9376168779\n`;
   text += `-------------------------------------------\n`;
-  text += `Hello Mr. Shah, I would like to request wholesale dealer pricing for:\n\n`;
+  text += `Hello, I would like to request wholesale dealer pricing for:\n\n`;
 
   quoteBasket.forEach((item, idx) => {
     text += `${idx + 1}. *${item.title}*\n`;
@@ -591,9 +593,31 @@ function sendWhatsAppRFQ() {
 
   text += `Please share bulk dealer rates, GST invoice details, and transport dispatch schedule.\nThank you!`;
 
-  const phone = '919376168779'; // Proprietor Chetan Shah
+  const phone = '919376168779';
   const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
   window.open(url, '_blank');
+}
+
+// Indian B2B Payment Portal Tab Switcher (PayTM, GPay, PhonePe, Bank NEFT/RTGS)
+function switchPaymentTab(tabName) {
+  const tabs = document.querySelectorAll('.payment-tab-btn');
+  const panels = document.querySelectorAll('.payment-panel');
+
+  tabs.forEach(tab => {
+    if (tab.dataset.tab === tabName) {
+      tab.classList.add('active');
+    } else {
+      tab.classList.remove('active');
+    }
+  });
+
+  panels.forEach(panel => {
+    if (panel.id === `payment-${tabName}`) {
+      panel.style.display = 'block';
+    } else {
+      panel.style.display = 'none';
+    }
+  });
 }
 
 // Multi-Tab Farm Requirement & Dosage Estimator

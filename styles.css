@@ -943,7 +943,7 @@ a {
   gap: 0.75rem;
 }
 
-.filter-btn {
+.filter-btn, .catalog-filter-btn, .partner-filter-btn {
   padding: 0.6rem 1.4rem;
   border-radius: var(--radius-full);
   background: var(--card-bg);
@@ -958,12 +958,12 @@ a {
   flex-shrink: 0;
 }
 
-.filter-btn:hover {
+.filter-btn:hover, .catalog-filter-btn:hover, .partner-filter-btn:hover {
   border-color: var(--stc-red);
   color: var(--stc-red);
 }
 
-.filter-btn.active {
+.filter-btn.active, .catalog-filter-btn.active, .partner-filter-btn.active {
   background: var(--stc-red);
   color: white;
   border-color: var(--stc-red);
@@ -2205,6 +2205,104 @@ a {
   gap: 1rem;
   flex-wrap: wrap;
   flex-shrink: 0;
+}
+
+/* Indian B2B Wholesale Payment Portal Styles */
+.payment-section {
+  background: var(--bg-page);
+  padding: 4rem 0;
+}
+
+.payment-card {
+  background: var(--glass-card-bg);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid var(--glass-card-border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  box-shadow: var(--glass-card-shadow);
+}
+
+.payment-tabs {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.payment-tab-btn {
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--radius-full);
+  background: var(--bg-section-alt);
+  border: 1px solid var(--border-color);
+  color: var(--text-heading);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--spring);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.payment-tab-btn.active {
+  background: var(--stc-red);
+  color: #ffffff;
+  border-color: var(--stc-red);
+  box-shadow: 0 4px 15px rgba(217, 4, 41, 0.25);
+}
+
+.upi-app-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--text-heading);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+.upi-badge-gpay { border-left: 4px solid #4285F4; }
+.upi-badge-paytm { border-left: 4px solid #00B9F1; }
+.upi-badge-phonepe { border-left: 4px solid #5F259F; }
+.upi-badge-bhim { border-left: 4px solid #FF6600; }
+
+.bank-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.bank-detail-item {
+  background: var(--card-bg);
+  padding: 1.15rem 1.35rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.bank-detail-item label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.bank-detail-item span {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  font-family: var(--font-heading);
 }
 
 /* Back to Top Button */
