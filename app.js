@@ -1,5 +1,9 @@
 /* ==========================================================================
    Shreejee Trading Corporation - Application Logic
+   Updated with Authentic Business Card Details:
+   Proprietor: Chetan Shah
+   Office Phone: (079) 22146549 | Mobile: +91 9376168779
+   Email: crshah2@yahoo.com
    ========================================================================== */
 
 // Product Dataset
@@ -30,6 +34,30 @@ const PRODUCTS = [
   },
   {
     id: 'prod-3',
+    title: 'Medical Grade Disposable Powder-Free Latex Gloves',
+    composition: '100% Pure Natural Rubber Latex - Examination Grade',
+    category: 'gloves',
+    categoryName: 'Disposable Gloves & Safety',
+    badge: 'Essential Stock',
+    packing: 'Box of 100 Gloves / Carton of 10 Boxes',
+    target: 'Veterinary Clinics, Poultry Farms & Labs',
+    dosage: 'Single-use hygienic protection',
+    description: 'Textured powder-free latex gloves offering maximum tactile sensitivity, tear resistance, and barrier protection for veterinary exams and farm maintenance.'
+  },
+  {
+    id: 'prod-4',
+    title: 'Heavy-Duty Nitrile Disposable Gloves',
+    composition: 'Synthetic Nitrile Rubber (Chemical Resistant)',
+    category: 'gloves',
+    categoryName: 'Disposable Gloves & Safety',
+    badge: 'Chemical Safe',
+    packing: 'Box of 100 Gloves / 1000 Gloves Bulk',
+    target: 'Poultry Hatcheries & Vaccine Handlers',
+    dosage: 'Single-use chemical & puncture resistant',
+    description: 'Puncture-resistant nitrile gloves ideal for handling biosecurity disinfectants, harsh chemicals, and vaccine administration.'
+  },
+  {
+    id: 'prod-5',
     title: 'CalciMax Forte Liquid',
     composition: 'Calcium, Phosphorus, Vitamin D3 & Vitamin B12',
     category: 'supplements',
@@ -41,7 +69,7 @@ const PRODUCTS = [
     description: 'High-absorption liquid calcium supplement for strong eggshell quality, preventing thin-shelled eggs and leg weakness in poultry.'
   },
   {
-    id: 'prod-4',
+    id: 'prod-6',
     title: 'PoultryVite-C & Electrolyte',
     composition: 'Vitamin C 99%, Sodium Chloride, Potassium Citrate',
     category: 'supplements',
@@ -53,7 +81,7 @@ const PRODUCTS = [
     description: 'Anti-stress electrolyte formulation to combat high temperature heat stress, reduce summer mortality, and maintain electrolyte balance.'
   },
   {
-    id: 'prod-5',
+    id: 'prod-7',
     title: 'ViruClean 5th Gen Disinfectant',
     composition: 'Didecyl Dimethyl Ammonium Chloride & Glutaraldehyde',
     category: 'vaccines',
@@ -65,7 +93,7 @@ const PRODUCTS = [
     description: 'Hospital-grade broad-spectrum biosecurity disinfectant effective against Newcastle Disease (Ranikhet), Gumboro, Avian Flu, and bacteria.'
   },
   {
-    id: 'prod-6',
+    id: 'prod-8',
     title: 'ImmunoVax ND+IB Vaccine',
     composition: 'Live Attenuated Newcastle Disease & Infectious Bronchitis',
     category: 'vaccines',
@@ -77,7 +105,19 @@ const PRODUCTS = [
     description: 'High-titer combined vaccine for early protection against Ranikhet disease and Infectious Bronchitis in young chicks.'
   },
   {
-    id: 'prod-7',
+    id: 'prod-9',
+    title: 'Veterinary Long-Shoulder Insemination Gloves',
+    composition: 'Low Density Polyethylene (LDPE) 90cm Shoulder Length',
+    category: 'gloves',
+    categoryName: 'Disposable Gloves & Safety',
+    badge: 'Veterinary Specialty',
+    packing: 'Pack of 100 Gloves',
+    target: 'Artificial Insemination & Cattle Doctors',
+    dosage: 'Single-use extra-length protection',
+    description: 'Smooth 90cm shoulder-length disposable gloves designed specifically for artificial insemination (AI), rectal palpation, and veterinary exams.'
+  },
+  {
+    id: 'prod-10',
     title: 'Tilmicosin 25% Oral Solution',
     composition: 'Tilmicosin Phosphate 250mg/ml',
     category: 'poultry',
@@ -89,7 +129,7 @@ const PRODUCTS = [
     description: 'Advanced macrolide antibiotic specifically formulated for rapid relief from severe Mycoplasma gallisepticum CRD outbreaks.'
   },
   {
-    id: 'prod-8',
+    id: 'prod-11',
     title: 'GutPro Multi-Strain Probiotic',
     composition: 'Lactobacillus, Bacillus subtilis, Saccharomyces boulardii',
     category: 'supplements',
@@ -101,19 +141,7 @@ const PRODUCTS = [
     description: 'High-CFU direct-fed microbials to optimize intestinal microflora, boost immunity, and improve weight gain naturally.'
   },
   {
-    id: 'prod-9',
-    title: 'Veterinary Formaldehyde & Reagents',
-    composition: 'Formalin 37-40% Pure Grade',
-    category: 'reagents',
-    categoryName: 'Veterinary Reagents & Supplies',
-    badge: 'Fumigation Grade',
-    packing: '35 kg Carboy / 200 kg Drum',
-    target: 'Hatchery & Farm Shed Fumigation',
-    dosage: 'As per hatchery fumigation protocol',
-    description: 'Pure industrial formalin for hatchery disinfection, egg fumigation, and laboratory specimen preservation.'
-  },
-  {
-    id: 'prod-10',
+    id: 'prod-12',
     title: 'ToxBind Triple Action Mycotoxin Binder',
     composition: 'HSCAS, Organic Acids, Activated Charcoal & MOS',
     category: 'supplements',
@@ -176,7 +204,7 @@ function renderProducts(productsList) {
             <span class="spec-val">${prod.target}</span>
           </li>
           <li class="product-spec-item">
-            <span class="spec-label">Recommended Dosage:</span>
+            <span class="spec-label">Recommended Usage:</span>
             <span class="spec-val">${prod.dosage}</span>
           </li>
         </ul>
@@ -201,7 +229,7 @@ function setupEventListeners() {
   const filterBtns = document.querySelectorAll('.filter-btn');
 
   if (searchInput) {
-    searchInput.addEventListener('input', (e) => {
+    searchInput.addEventListener('input', () => {
       filterProducts();
     });
   }
@@ -255,7 +283,7 @@ function addToQuote(productId) {
   }
 
   updateQuoteUI();
-  showToast(`Added "${product.title}" to Wholesale Inquiry Quote.`);
+  showToast(`Added "${product.title}" to Wholesale RFQ List.`);
 }
 
 function removeFromQuote(productId) {
@@ -285,7 +313,7 @@ function updateQuoteUI() {
           <div>
             <div class="drawer-item-title">${item.title}</div>
             <div class="drawer-item-sub">Packing: ${item.packing}</div>
-            <div style="font-size: 0.8rem; color: var(--primary-700); font-weight: 600;">Qty: ${item.quantity} units</div>
+            <div style="font-size: 0.8rem; color: var(--stc-red); font-weight: 600;">Qty: ${item.quantity} units</div>
           </div>
           <button style="background: none; border: none; color: #ef4444; cursor: pointer; padding: 0.4rem;" onclick="removeFromQuote('${item.id}')">
             <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
@@ -310,16 +338,17 @@ function toggleQuoteDrawer(open) {
   }
 }
 
-// WhatsApp RFQ Generation
+// WhatsApp RFQ Generation to Mr. Chetan Shah
 function sendWhatsAppRFQ() {
   if (quoteBasket.length === 0) {
     showToast('Please add products to your inquiry quote first.');
     return;
   }
 
-  let text = `*WHLESALE RFQ - SHREEJEE TRADING CORPORATION*\n`;
+  let text = `*WHOLESALE RFQ - SHREEJEE TRADING CORPORATION*\n`;
+  text += `Attn: Mr. Chetan Shah\n`;
   text += `-------------------------------------------\n`;
-  text += `Hello, I would like to request wholesale pricing for:\n\n`;
+  text += `Hello, I would like to request wholesale rates for:\n\n`;
 
   quoteBasket.forEach((item, idx) => {
     text += `${idx + 1}. *${item.title}*\n`;
@@ -327,9 +356,9 @@ function sendWhatsAppRFQ() {
     text += `   - Packaging: ${item.packing}\n\n`;
   });
 
-  text += `Please share bulk rates and delivery timeline to my farm/clinic.\nThank you!`;
+  text += `Please share wholesale pricing and dispatch details.\nThank you!`;
 
-  const phone = '919825000000'; // Representative business number
+  const phone = '919376168779'; // Business Mobile from card
   const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
   window.open(url, '_blank');
 }
@@ -345,15 +374,16 @@ function calculateFarmRequirement() {
 
   if (birds > 0 && days > 0) {
     if (type === 'tonic') {
-      // ~ 15ml per 100 birds per day
       estVolumeLiters = ((birds / 100) * 15 * days) / 1000;
-      estPacks = Math.ceil(estVolumeLiters / 5); // 5L cans
+      estPacks = Math.ceil(estVolumeLiters / 5);
     } else if (type === 'calcium') {
-      // ~ 20ml per 100 birds per day
       estVolumeLiters = ((birds / 100) * 20 * days) / 1000;
       estPacks = Math.ceil(estVolumeLiters / 5);
+    } else if (type === 'gloves') {
+      // 1 box of gloves per 2000 birds for farm maintenance
+      estPacks = Math.ceil(birds / 2000);
+      estVolumeLiters = estPacks * 100; // gloves count
     } else if (type === 'disinfectant') {
-      // ~ 5L per 10,000 sq ft shed
       estVolumeLiters = Math.max(1, Math.ceil((birds / 2000) * 2));
       estPacks = Math.ceil(estVolumeLiters / 5);
     }
@@ -362,8 +392,12 @@ function calculateFarmRequirement() {
   const resVol = document.getElementById('resVolume');
   const resPacks = document.getElementById('resPacks');
 
-  if (resVol) resVol.textContent = `${estVolumeLiters.toFixed(1)} Litres`;
-  if (resPacks) resPacks.textContent = `${estPacks} Cans (5L Bulk)`;
+  if (resVol) {
+    resVol.textContent = type === 'gloves' ? `${estVolumeLiters} Pairs` : `${estVolumeLiters.toFixed(1)} Litres`;
+  }
+  if (resPacks) {
+    resPacks.textContent = type === 'gloves' ? `${estPacks} Box(es) (100 Gloves/Box)` : `${estPacks} Can(s) (5L Bulk)`;
+  }
 }
 
 // Handle Direct RFQ Form Submission
@@ -376,12 +410,13 @@ function handleRFQSubmit(e) {
   const message = document.getElementById('rfqMessage').value;
 
   let text = `*NEW WEBSITE INQUIRY - SHREEJEE TRADING CORPORATION*\n`;
-  text += `Name: ${name}\nPhone: ${phone}\nLocation: ${location}\nDetails: ${message}`;
+  text += `Attn: Mr. Chetan Shah\n\n`;
+  text += `Name/Firm: ${name}\nPhone: ${phone}\nLocation: ${location}\nInquiry Details: ${message}`;
 
-  const url = `https://wa.me/919825000000?text=${encodeURIComponent(text)}`;
+  const url = `https://wa.me/919376168779?text=${encodeURIComponent(text)}`;
   window.open(url, '_blank');
 
-  showToast('Inquiry sent via WhatsApp! Our team will respond shortly.');
+  showToast('Inquiry sent to Mr. Chetan Shah via WhatsApp!');
   e.target.reset();
 }
 
@@ -398,7 +433,7 @@ function showToast(msg) {
   const toast = document.createElement('div');
   toast.className = 'toast';
   toast.innerHTML = `
-    <svg width="20" height="20" fill="none" stroke="#10b981" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+    <svg width="20" height="20" fill="none" stroke="#d90429" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
     <span>${msg}</span>
   `;
   container.appendChild(toast);
@@ -413,7 +448,7 @@ function openProductModal(productId) {
   const prod = PRODUCTS.find(p => p.id === productId);
   if (!prod) return;
 
-  alert(`Product Specification Sheet:\n\nTitle: ${prod.title}\nActive Composition: ${prod.composition}\nCategory: ${prod.categoryName}\nPackaging: ${prod.packing}\nTarget Animal: ${prod.target}\nRecommended Dosage: ${prod.dosage}\n\nDescription: ${prod.description}`);
+  alert(`Product Details - Shreejee Trading Corporation:\n\nTitle: ${prod.title}\nComposition: ${prod.composition}\nCategory: ${prod.categoryName}\nPackaging: ${prod.packing}\nTarget: ${prod.target}\nUsage: ${prod.dosage}\n\nDescription: ${prod.description}`);
 }
 
 // Scroll Effects
