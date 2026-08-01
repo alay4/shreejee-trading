@@ -1058,3 +1058,51 @@ function inquireBrandWhatsApp(brandName) {
   const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
   window.open(url, '_blank');
 }
+
+/* ===== PREMIUM VISUAL ENHANCEMENTS ===== */
+
+// Scroll-Reveal Animation via IntersectionObserver
+(function initScrollReveal() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.animate-reveal').forEach(el => observer.observe(el));
+
+  // Also observe all section headers for fade-in
+  document.querySelectorAll('.section-header').forEach(el => {
+    el.classList.add('animate-reveal');
+    observer.observe(el);
+  });
+})();
+
+// Mouse Spotlight Cursor-Tracking Glow on Product & Partner Cards
+(function initSpotlightCards() {
+  const cards = document.querySelectorAll('.product-card, .partner-card, .badge-card');
+  cards.forEach(card => {
+    card.classList.add('spotlight-card');
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+      card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+    });
+  });
+})();
+
+// Back-to-Top Button Visibility
+(function initBackToTop() {
+  const btn = document.getElementById('backToTop');
+  if (!btn) return;
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 600) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  }, { passive: true });
+})();
