@@ -743,12 +743,14 @@ a {
   background: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  overflow: hidden;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   box-shadow: var(--card-shadow);
 }
 
 .comparison-table {
   width: 100%;
+  min-width: 650px;
   border-collapse: collapse;
   text-align: left;
 }
@@ -923,6 +925,8 @@ a {
   font-weight: 600;
   cursor: pointer;
   transition: var(--transition);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .filter-btn:hover {
@@ -1248,6 +1252,8 @@ a {
   font-weight: 600;
   cursor: pointer;
   transition: var(--transition);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .calc-tab-btn:hover {
@@ -1743,6 +1749,8 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 /* Continuous Animated Partner Brand Marquee */
@@ -1909,6 +1917,7 @@ a {
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
+  flex-wrap: wrap;
   padding-top: 1.15rem;
   border-top: 1px solid var(--border-color);
 }
@@ -1921,6 +1930,8 @@ a {
   align-items: center;
   gap: 0.3rem;
   transition: var(--transition);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .partner-web-link:hover {
@@ -1941,6 +1952,8 @@ a {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .partner-btn-inquire:hover {
@@ -1988,6 +2001,16 @@ a {
   .footer-grid {
     grid-template-columns: 1fr 1fr;
   }
+  .card-replica-banner, .guide-cta-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .card-replica-contact {
+    text-align: left;
+  }
+  .products-grid, .partner-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
 }
 
 @media (max-width: 768px) {
@@ -2002,21 +2025,38 @@ a {
     height: 42px;
     font-size: 1.05rem;
   }
+  .filter-pills, .calc-tabs {
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
+    flex-wrap: nowrap;
+  }
+  .nav-wa-full {
+    display: none;
+  }
+  .nav-wa-short {
+    display: inline !important;
+  }
 }
 
 @media (max-width: 640px) {
   .hero-title {
-    font-size: 2.25rem;
+    font-size: 2.15rem;
   }
-  .stats-card, .form-row, .footer-grid, .badge-grid, .delivery-grid {
+  .stats-card, .form-row, .footer-grid, .badge-grid, .delivery-grid, .products-grid, .partner-grid {
     grid-template-columns: 1fr;
   }
-  .card-replica-banner, .guide-cta-banner {
+  .hero-buttons {
     flex-direction: column;
-    align-items: flex-start;
+    width: 100%;
+  }
+  .hero-buttons .btn {
+    width: 100%;
+    justify-content: center;
   }
   .calc-card {
-    padding: 1.75rem;
+    padding: 1.5rem;
   }
 }
 
