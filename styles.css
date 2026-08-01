@@ -1983,11 +1983,39 @@ a {
 
 /* Responsive Breakpoints */
 @media (max-width: 1200px) {
-  .nav-menu {
-    display: none;
-  }
   .navbar .container {
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 0.65rem;
+    padding: 0.65rem 1rem;
+  }
+  .nav-menu {
+    display: flex !important;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 0.5rem;
+    padding: 0.5rem 0 0.35rem;
+    margin-top: 0.3rem;
+    border-top: 1px solid var(--border-color);
+    justify-content: flex-start;
+  }
+  .nav-menu li {
+    flex-shrink: 0;
+  }
+  .nav-menu a {
+    padding: 0.4rem 0.85rem;
+    font-size: 0.84rem;
+    white-space: nowrap;
+    border-radius: var(--radius-full);
+    background: var(--bg-section-alt);
+    display: block;
+  }
+  .nav-menu a.active {
+    background: var(--stc-red);
+    color: #ffffff;
+  }
+  .nav-menu a.active::after {
+    display: none;
   }
 }
 
@@ -2014,23 +2042,50 @@ a {
 }
 
 @media (max-width: 768px) {
+  .top-bar .container {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 0.35rem;
+  }
+  .top-bar-info {
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    gap: 0.4rem;
+  }
+  .top-bar-item {
+    font-size: 0.74rem;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+  }
+  .top-bar-desktop-only {
+    display: none;
+  }
+  .logo {
+    justify-content: center;
+    width: 100%;
+  }
   .logo-text h2 {
-    font-size: 1.05rem;
+    font-size: 0.96rem;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.25;
   }
   .logo-text p {
     display: none;
   }
   .stc-logo-badge {
-    min-width: 54px !important;
-    height: 42px;
+    min-width: 52px !important;
+    height: 40px;
     font-size: 1.05rem;
   }
-  .filter-pills, .calc-tabs {
-    justify-content: flex-start;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 0.5rem;
-    flex-wrap: nowrap;
+  .nav-actions {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
   }
   .nav-wa-full {
     display: none;
@@ -2038,11 +2093,20 @@ a {
   .nav-wa-short {
     display: inline !important;
   }
+  .filter-pills, .calc-tabs {
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
+    flex-wrap: nowrap;
+    width: 100%;
+  }
 }
 
 @media (max-width: 640px) {
   .hero-title {
-    font-size: 2.15rem;
+    font-size: 2.1rem;
+    line-height: 1.25;
   }
   .stats-card, .form-row, .footer-grid, .badge-grid, .delivery-grid, .products-grid, .partner-grid {
     grid-template-columns: 1fr;
@@ -2055,19 +2119,31 @@ a {
     width: 100%;
     justify-content: center;
   }
-  .calc-card {
-    padding: 1.5rem;
+  .calc-card, .card-replica-banner, .guide-cta-banner {
+    padding: 1.35rem;
+    gap: 1.25rem;
   }
 }
 
 @media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
   .logo-text h2 {
-    font-size: 0.95rem;
+    font-size: 0.88rem;
   }
   .stc-logo-badge {
-    min-width: 50px !important;
-    height: 40px;
-    font-size: 1rem;
-    padding: 0 0.65rem;
+    min-width: 48px !important;
+    height: 38px;
+    font-size: 0.98rem;
+    padding: 0 0.55rem;
+  }
+  .card-replica-left {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .card-replica-details h3 {
+    font-size: 1.15rem;
   }
 }
