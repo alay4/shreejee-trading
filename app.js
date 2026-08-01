@@ -222,6 +222,8 @@ let currentCalcTab = 'poultry';
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   renderProducts(PRODUCTS);
+  renderPartnerMarquee(PARTNER_COMPANIES);
+  renderPartners(PARTNER_COMPANIES);
   setupEventListeners();
   setupScrollEffects();
   setupStatsAnimation();
@@ -438,7 +440,9 @@ document.addEventListener('keydown', (e) => {
 // Event Listeners for Filters, Search & Forms
 function setupEventListeners() {
   const searchInput = document.getElementById('searchInput');
-  const filterBtns = document.querySelectorAll('.filter-btn');
+  const filterBtns = document.querySelectorAll('.filter-btn:not(.partner-filter-btn)');
+  const partnerSearchInput = document.getElementById('partnerSearchInput');
+  const partnerFilterBtns = document.querySelectorAll('.partner-filter-btn');
 
   if (searchInput) {
     searchInput.addEventListener('input', () => {
@@ -451,6 +455,20 @@ function setupEventListeners() {
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       filterProducts();
+    });
+  });
+
+  if (partnerSearchInput) {
+    partnerSearchInput.addEventListener('input', () => {
+      filterPartners();
+    });
+  }
+
+  partnerFilterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      partnerFilterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      filterPartners();
     });
   });
 
@@ -774,4 +792,269 @@ function triggerCatalogPrint() {
   setTimeout(() => {
     window.print();
   }, 600);
+}
+
+// 21 Industry Partners & Brand Portfolio Dataset
+const PARTNER_COMPANIES = [
+  {
+    id: 1,
+    name: "Virbac Animal Health India Private Limited",
+    website: "https://in.virbac.com/home",
+    category: "pharma",
+    categoryLabel: "Pharma & Antibiotics",
+    description: "Global leader in veterinary dermatology, livestock therapeutics, antibiotics, and nutritional supplements."
+  },
+  {
+    id: 2,
+    name: "Ayurvet Limited",
+    website: "https://www.ayurvet.com/",
+    category: "ayurvedic",
+    categoryLabel: "Natural & Ayurvedic",
+    description: "Pioneering scientifically validated herbal and ayurvedic healthcare solutions for livestock and poultry."
+  },
+  {
+    id: 3,
+    name: "Indovax Private Limited",
+    website: "https://indovax.com/",
+    category: "vaccines",
+    categoryLabel: "Vaccines & Biologics",
+    description: "Premier Indian manufacturer of poultry and veterinary biologicals, SPF egg vaccines, and herd immunizations."
+  },
+  {
+    id: 4,
+    name: "Provimi Animal Nutrition India Limited",
+    website: "https://www.provimi.in/",
+    category: "nutrition",
+    categoryLabel: "Nutrition & Feed",
+    description: "World-class animal nutrition premixes, concentrates, and specialized feed additives for high yield."
+  },
+  {
+    id: 5,
+    name: "Simfa Labs Pvt Ltd",
+    website: "https://vetlineindia.com/",
+    category: "pharma",
+    categoryLabel: "Pharma & Diagnostics",
+    description: "Specialized veterinary pharmaceutical formulations, injectable antimicrobials, and diagnostic care."
+  },
+  {
+    id: 6,
+    name: "Varsha Multi Tech",
+    website: "https://varshagroup.com/",
+    category: "pharma",
+    categoryLabel: "Pharma & Biosecurity",
+    description: "Comprehensive poultry healthcare, farm sanitation, acidifiers, and bio-secure disinfectants."
+  },
+  {
+    id: 7,
+    name: "Varsha Lab",
+    website: "https://varshagroup.com/",
+    category: "diagnostics",
+    categoryLabel: "Diagnostics & Labs",
+    description: "Advanced poultry disease diagnostic reagents, ELISA kits, serology reagents, and rapid farm PCR testing."
+  },
+  {
+    id: 8,
+    name: "Vetoquinol India Animal Health",
+    website: "https://www.vetoquinol.in/",
+    category: "pharma",
+    categoryLabel: "Pharma & Antibiotics",
+    description: "International veterinary pharmaceutical specialist in anti-infectives, mastitis management, and pain relief."
+  },
+  {
+    id: 9,
+    name: "Elanco India (Bayer Animal Health)",
+    website: "https://www.elanco.com/",
+    category: "pharma",
+    categoryLabel: "Pharma & Parasiticides",
+    description: "Global animal healthcare innovator in ecto-endoparasiticides, poultry therapeutics, and herd health."
+  },
+  {
+    id: 10,
+    name: "Micro Labs Ltd (Veterinary Division)",
+    website: "https://www.microlabsltd.com/",
+    category: "pharma",
+    categoryLabel: "Pharma & Antibiotics",
+    description: "WHO-GMP certified pharmaceutical giant offering dedicated veterinary antimicrobials and anti-inflammatory care."
+  },
+  {
+    id: 11,
+    name: "Venky’s (India) Limited",
+    website: "https://venkys.com/",
+    category: "nutrition",
+    categoryLabel: "Nutrition & Poultry",
+    description: "Asia's largest poultry breeder, hatchery equipment, feed supplements, and poultry healthcare enterprise."
+  },
+  {
+    id: 12,
+    name: "Ventri Biologicals",
+    website: "https://venkys.com/",
+    category: "vaccines",
+    categoryLabel: "Vaccines & Biologics",
+    description: "Specific Pathogen Free (SPF) vaccines and viral biologicals protecting commercial poultry and livestock."
+  },
+  {
+    id: 13,
+    name: "Vetina Healthcare LLP",
+    website: "https://vetina.com/",
+    category: "pharma",
+    categoryLabel: "Pharma & Nutraceuticals",
+    description: "Companion animal and livestock healthcare therapeutics, skin formulations, and dietary nutraceuticals."
+  },
+  {
+    id: 14,
+    name: "Intron Life Sciences Private Limited",
+    website: "https://www.intronlifesciences.com/",
+    category: "nutrition",
+    categoryLabel: "Nutrition & Biotechnology",
+    description: "Probiotics, prebiotics, and advanced biotechnology feed additives for poultry and aquaculture health."
+  },
+  {
+    id: 15,
+    name: "Polchem (Ceva Polchem)",
+    website: "https://www.cevapolchem.in/",
+    category: "pharma",
+    categoryLabel: "Pharma & Biosecurity",
+    description: "Ceva Polchem poultry therapeutics, hatchery sanitizers, water treatment, and respiratory tonics."
+  },
+  {
+    id: 16,
+    name: "Cadila Pharmaceuticals (Veterinary)",
+    website: "https://www.cadilapharma.com/",
+    category: "pharma",
+    categoryLabel: "Pharma & Antibiotics",
+    description: "One of India's largest privately held pharma giants with robust veterinary formulations and injectables."
+  },
+  {
+    id: 17,
+    name: "nuvoCare Biocorp",
+    website: "http://www.nuvocarebiocorp.com/",
+    category: "nutrition",
+    categoryLabel: "Nutrition & Feed",
+    description: "Bio-innovative feed supplements, liver tonics, electrolyte boosters, and toxin binders for poultry."
+  },
+  {
+    id: 18,
+    name: "Lemmens Shardlow",
+    website: "https://www.lemmensshardlow.com/",
+    category: "nutrition",
+    categoryLabel: "Poultry Automation & Care",
+    description: "Specialized poultry farm automation, commercial incubation, climate control, and biosecurity solutions."
+  },
+  {
+    id: 19,
+    name: "Natural Remedies",
+    website: "https://www.naturalremedy.com/",
+    category: "ayurvedic",
+    categoryLabel: "Natural & Ayurvedic",
+    description: "India's #1 scientifically validated herbal and botanical veterinary medicine brand for livestock productivity."
+  },
+  {
+    id: 20,
+    name: "Zydus Animal Health",
+    website: "https://www.zyduslife.com/",
+    category: "pharma",
+    categoryLabel: "Pharma & Antibiotics",
+    description: "Zydus Animal Health division offering comprehensive cattle, poultry, and equine therapeutics."
+  },
+  {
+    id: 21,
+    name: "Zuri Life Science",
+    website: "https://zurilifesciences.com/",
+    category: "pharma",
+    categoryLabel: "Pharma & Supplements",
+    description: "Emerging veterinary pharmaceutical formulation and high-efficacy nutritional supplement brand."
+  }
+];
+
+// Render Continuous Partner Marquee Ticker
+function renderPartnerMarquee(partnersList) {
+  const track1 = document.getElementById('marqueeTrack1');
+  const track2 = document.getElementById('marqueeTrack2');
+  if (!track1 || !track2) return;
+
+  const pillsHtml = partnersList.map(p => `
+    <span class="marquee-pill">
+      <span class="marquee-pill-dot"></span>
+      ${p.name}
+    </span>
+  `).join('');
+
+  track1.innerHTML = pillsHtml;
+  track2.innerHTML = pillsHtml; // Duplicate for seamless infinite loop
+}
+
+// Render Partner Companies Grid
+function renderPartners(partnersList) {
+  const container = document.getElementById('partnersGridContainer');
+  const counterEl = document.getElementById('partnersCountBadge');
+  if (!container) return;
+
+  if (counterEl) {
+    counterEl.textContent = `${partnersList.length} Partner Brands`;
+  }
+
+  if (partnersList.length === 0) {
+    container.innerHTML = `
+      <div style="grid-column: 1/-1; text-align: center; padding: 4rem 1rem; background: var(--card-bg); border-radius: var(--radius-lg); border: 1px solid var(--border-color);">
+        <h3 style="color: var(--text-heading); font-size: 1.25rem; margin-bottom: 0.4rem;">No partner companies matched your filter</h3>
+        <p style="color: var(--text-body); font-size: 0.9rem;">Try searching for a different brand name or reset category filters.</p>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = partnersList.map(p => `
+    <div class="partner-card" data-category="${p.category}">
+      <div>
+        <div class="partner-card-header">
+          <span class="partner-index-badge">#${p.id}</span>
+          <span class="partner-category-pill">${p.categoryLabel}</span>
+        </div>
+        <div class="partner-card-body" style="margin-top: 1rem;">
+          <h3>${p.name}</h3>
+          <p>${p.description}</p>
+        </div>
+      </div>
+      <div class="partner-card-footer">
+        <a href="${p.website !== '#' ? p.website : 'https://www.google.com/search?q=' + encodeURIComponent(p.name)}" target="_blank" rel="noopener noreferrer" class="partner-web-link">
+          Official Site
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </a>
+        <button class="partner-btn-inquire" onclick="inquireBrandWhatsApp('${p.name}')">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+          Inquire Stock
+        </button>
+      </div>
+    </div>
+  `).join('');
+}
+
+// Filter Partners by Search Query and Category Pill
+function filterPartners() {
+  const query = document.getElementById('partnerSearchInput')?.value.toLowerCase() || '';
+  const activeCategory = document.querySelector('.partner-filter-btn.active')?.dataset.filter || 'all';
+
+  const filtered = PARTNER_COMPANIES.filter(p => {
+    const matchesSearch = p.name.toLowerCase().includes(query) || 
+                          p.description.toLowerCase().includes(query) ||
+                          p.categoryLabel.toLowerCase().includes(query);
+    const matchesCat = activeCategory === 'all' || p.category === activeCategory;
+    return matchesSearch && matchesCat;
+  });
+
+  renderPartners(filtered);
+}
+
+// Route Brand Inquiry via WhatsApp to Chetan Shah
+function inquireBrandWhatsApp(brandName) {
+  let text = `*PARTNER BRAND WHOLESALE INQUIRY*\n`;
+  text += `Attn: Mr. Chetan Shah (+91 9376168779)\n`;
+  text += `Shreejee Trading Corporation (Hiramoti Chambers, Ahmedabad)\n`;
+  text += `-------------------------------------------\n`;
+  text += `Hello Mr. Shah, I am interested in wholesale dealership / bulk availability for products from *${brandName}*.\n\n`;
+  text += `Please share current stock list, dealer pricing, and dispatch terms. Thank you!`;
+
+  const phone = '919376168779';
+  const url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+  window.open(url, '_blank');
 }

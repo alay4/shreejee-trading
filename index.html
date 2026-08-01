@@ -52,6 +52,7 @@
         <li><a href="#home" class="nav-link active">Home</a></li>
         <li><a href="#compliance" class="nav-link">Quality & GMP</a></li>
         <li><a href="#catalog" class="nav-link">Products & Gloves</a></li>
+        <li><a href="#partners" class="nav-link">Partner Brands (21)</a></li>
         <li><a href="#calculator" class="nav-link">Dosage Estimator</a></li>
         <li><a href="#network" class="nav-link">Gujarat Delivery</a></li>
         <li><a href="#contact" class="nav-link">Contact & RFQ</a></li>
@@ -193,6 +194,15 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- 21 Partner Brands Scrolling Marquee Bar -->
+  <div class="brand-marquee-section">
+    <div class="brand-marquee-title">Trusted Partner Portfolio & Leading Brands Over 2 Decades</div>
+    <div class="marquee-container">
+      <div class="marquee-track" id="marqueeTrack1"></div>
+      <div class="marquee-track" id="marqueeTrack2"></div>
     </div>
   </div>
 
@@ -338,6 +348,47 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 21 Partner Companies & Leading Brands Showcase Section (NEW) -->
+  <section class="section partners-section" id="partners">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-primary">Collaborative Industry Network</span>
+        <h2 class="section-title">21 Trusted Partner Companies & Brands</h2>
+        <p class="section-desc">
+          Shreejee Trading Corporation has built enduring partnerships over two decades with India's and the world's most reputable animal healthcare, poultry nutrition, and veterinary pharmaceutical pioneers.
+        </p>
+      </div>
+
+      <div class="catalog-controls" style="margin-top: 1.75rem;">
+        <div class="search-box">
+          <svg class="search-icon" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+          <input type="text" id="partnerSearchInput" placeholder="Search partner company (e.g., Virbac, Venky's, Elanco, Ayurvet)...">
+        </div>
+
+        <div class="filter-pills">
+          <button class="filter-btn partner-filter-btn active" data-filter="all">All (21)</button>
+          <button class="filter-btn partner-filter-btn" data-filter="pharma">Pharma & Antibiotics</button>
+          <button class="filter-btn partner-filter-btn" data-filter="vaccines">Vaccines & Biologics</button>
+          <button class="filter-btn partner-filter-btn" data-filter="nutrition">Nutrition & Feed</button>
+          <button class="filter-btn partner-filter-btn" data-filter="ayurvedic">Natural & Ayurvedic</button>
+          <button class="filter-btn partner-filter-btn" data-filter="diagnostics">Diagnostics & Labs</button>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1.25rem;">
+        <span id="partnersCountBadge" class="badge badge-primary" style="font-size: 0.8rem;">21 Partner Brands</span>
+        <span style="font-size: 0.85rem; color: var(--text-muted);">Showing authorized distribution & agency partners</span>
+      </div>
+
+      <!-- Partner Cards Grid -->
+      <div class="partner-grid" id="partnersGridContainer">
+        <!-- Rendered dynamically by app.js -->
       </div>
     </div>
   </section>
