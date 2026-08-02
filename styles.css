@@ -380,23 +380,24 @@ a {
 }
 
 .logo-title-top {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #0284C7;
-  letter-spacing: 0.1em;
-  margin-bottom: -0.2rem;
+  font-size: 1.38rem;
+  font-weight: 800;
+  color: var(--text-heading);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.05rem;
   text-transform: uppercase;
-  line-height: 1.1;
+  line-height: 1.05;
   font-family: var(--font-heading);
 }
 
 .logo-title-sub {
-  font-size: 1.35rem;
-  font-weight: 800;
-  color: #1E40AF;
-  letter-spacing: 0.01em;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--stc-red);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
   margin: 0;
-  line-height: 1.15;
+  line-height: 1.1;
   font-family: var(--font-heading);
 }
 
@@ -2461,6 +2462,12 @@ a {
   .logo {
     justify-content: center;
     width: 100%;
+  }
+  .logo-title-top {
+    font-size: 1.18rem;
+  }
+  .logo-title-sub {
+    font-size: 0.74rem;
   }
   .logo-text h2 {
     font-size: 0.96rem;
