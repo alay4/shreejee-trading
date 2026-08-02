@@ -282,7 +282,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .logo {
@@ -422,17 +422,20 @@ a {
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 1.75rem;
+  gap: 1.15rem;
   list-style: none;
+  flex-wrap: nowrap;
 }
 
 .nav-link {
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: 0.94rem;
+  font-weight: 600;
   color: var(--text-body);
   transition: var(--transition);
   position: relative;
   padding: 0.4rem 0;
+  white-space: nowrap;
+  display: inline-block;
 }
 
 .nav-link:hover,
@@ -2378,7 +2381,7 @@ a {
 }
 
 /* Responsive Breakpoints */
-@media (max-width: 1200px) {
+@media (max-width: 1280px) {
   .navbar .container {
     flex-direction: column;
     gap: 0.65rem;
