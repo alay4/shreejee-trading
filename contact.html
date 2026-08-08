@@ -5,8 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us & B2B Payments (PayTM, GPay, PhonePe) | Shreejee Trading Corporation</title>
   <meta name="description" content="Contact Shreejee Trading Corporation in Ahmedabad. Online B2B wholesale payments via PayTM, Google Pay, PhonePe, UPI & Bank NEFT/RTGS transfer.">
-  <link rel="icon" type="image/jpeg" href="assets/stc_logo.jpg?v=20260801d">
-  <link rel="stylesheet" href="styles.css?v=20260801e">
+  <link rel="icon" type="image/jpeg" href="assets/stc_logo.jpg?v=20260808">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20260808">
 </head>
 <body>
 
@@ -34,13 +37,18 @@
   <nav class="navbar">
     <div class="container">
       <a href="index.html" class="logo">
-        <img src="assets/stc_logo.jpg?v=20260801d" alt="Shreejee Trading Corporation Logo" class="stc-logo-img" width="48" height="48" style="width: 48px !important; height: 48px !important; max-width: 48px !important; max-height: 48px !important; border-radius: 12px; object-fit: contain; flex-shrink: 0 !important; display: block;">
+        <img src="assets/stc_logo.jpg?v=20260808" alt="Shreejee Trading Corporation Logo" class="stc-logo-img" width="48" height="48">
         <div class="logo-text">
           <span class="logo-title-top">SHREEJEE TRADING</span>
           <span class="logo-title-sub">Corporation</span>
         </div>
       </a>
 
+            <button class="mobile-menu-btn" aria-label="Toggle navigation menu" onclick="document.querySelector('.nav-menu').classList.toggle('active')">
+        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
       <ul class="nav-menu">
         <li><a href="index.html" class="nav-link">Home</a></li>
         <li><a href="products.html" class="nav-link">Products</a></li>
@@ -211,6 +219,25 @@
               </div>
             </div>
           </div>
+
+          <!-- Business Card Replica -->
+          <div class="business-card-replica mt-4 animate-reveal delay-1">
+            <div class="bc-logo">
+              <img src="assets/stc_logo.jpg" alt="STC Logo">
+            </div>
+            <div class="bc-details">
+              <h4>Chetan R. Shah</h4>
+              <p class="bc-role">Proprietor / Managing Director</p>
+              <div class="bc-divider"></div>
+              <p><strong>Shreejee Trading Corporation</strong></p>
+              <p>15, 2nd Floor, Hiramoti Chambers, Glowad, Khadia, Ahmedabad - 380001</p>
+              <p>M: +91 93761 68779 | E: crshah2@yahoo.com</p>
+            </div>
+            <a href="#" class="bc-download-btn" download="Chetan-Shah-STC.vcf">
+              <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              Save vCard
+            </a>
+          </div>
         </div>
 
         <div class="rfq-form-card">
@@ -244,6 +271,15 @@
           </form>
         </div>
       </div>
+
+      <!-- Google Maps Embed -->
+      <div class="map-container mt-5 animate-reveal delay-2" style="margin-top: 4rem;">
+        <div class="section-header text-center mx-auto max-w-600 mb-4">
+          <span class="badge badge-primary mx-auto">Physical Location</span>
+          <h2 class="section-title">Visit Our Registered Office</h2>
+        </div>
+        <iframe src="https://maps.google.com/maps?q=23%C2%B001'25.5%22N%2072%C2%B035'42.5%22E&t=&z=17&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
     </div>
   </section>
 
@@ -269,7 +305,7 @@
       <div class="footer-grid">
         <div>
           <div class="footer-logo-wrap">
-            <img src="assets/stc_logo.jpg?v=20260801d" alt="STC Company Logo" class="stc-logo-img" width="42" height="42" style="width: 42px !important; height: 42px !important; max-width: 42px !important; max-height: 42px !important; border-radius: 10px; object-fit: contain; flex-shrink: 0 !important; display: block;">
+            <img src="assets/stc_logo.jpg?v=20260808" alt="STC Company Logo" class="stc-logo-img stc-logo-img--footer" width="42" height="42">
             <div>
               <div style="color: #FFFFFF; font-size: 1.35rem; font-weight: 800; letter-spacing: -0.01em; text-transform: uppercase; line-height: 1.05;">SHREEJEE TRADING</div>
               <div style="color: #ffccd5; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; line-height: 1.1; margin-top: 0.15rem;">Corporation</div>

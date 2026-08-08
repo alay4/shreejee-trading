@@ -5,8 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quality Standards & Gujarat Delivery Network | Shreejee Trading Corporation</title>
   <meta name="description" content="WHO-GMP compliance, 2°C-8°C cold-chain logistics, and 24-hour express dispatch across Gujarat districts by Shreejee Trading Corporation.">
-  <link rel="icon" type="image/jpeg" href="assets/stc_logo.jpg?v=20260801d">
-  <link rel="stylesheet" href="styles.css?v=20260801e">
+  <link rel="icon" type="image/jpeg" href="assets/stc_logo.jpg?v=20260808">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20260808">
 </head>
 <body>
 
@@ -34,13 +37,18 @@
   <nav class="navbar">
     <div class="container">
       <a href="index.html" class="logo">
-        <img src="assets/stc_logo.jpg?v=20260801d" alt="Shreejee Trading Corporation Logo" class="stc-logo-img" width="48" height="48" style="width: 48px !important; height: 48px !important; max-width: 48px !important; max-height: 48px !important; border-radius: 12px; object-fit: contain; flex-shrink: 0 !important; display: block;">
+        <img src="assets/stc_logo.jpg?v=20260808" alt="Shreejee Trading Corporation Logo" class="stc-logo-img" width="48" height="48">
         <div class="logo-text">
           <span class="logo-title-top">SHREEJEE TRADING</span>
           <span class="logo-title-sub">Corporation</span>
         </div>
       </a>
 
+            <button class="mobile-menu-btn" aria-label="Toggle navigation menu" onclick="document.querySelector('.nav-menu').classList.toggle('active')">
+        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
       <ul class="nav-menu">
         <li><a href="index.html" class="nav-link">Home</a></li>
         <li><a href="products.html" class="nav-link">Products</a></li>
@@ -184,25 +192,30 @@
         <p class="section-desc">Daily scheduled dispatch routes serving poultry belts, dairy cooperatives, and veterinary clinics across key districts.</p>
       </div>
 
-      <div class="delivery-grid">
-        <div class="delivery-card">
-          <h4>Anand & Kheda Poultry Belt</h4>
-          <p>Daily express morning dispatch for broiler farms, commercial layers, and hatcheries in Anand, Nadiad & Borsad.</p>
+      <div class="network-layout">
+        <div class="network-map animate-reveal">
+          <img src="assets/gujarat-map.jpg" alt="Gujarat Logistics Distribution Network Map" loading="lazy">
         </div>
+        <div class="delivery-grid">
+          <div class="delivery-card animate-reveal delay-1">
+            <h4>Anand & Kheda Poultry Belt</h4>
+            <p>Daily express morning dispatch for broiler farms, commercial layers, and hatcheries in Anand, Nadiad & Borsad.</p>
+          </div>
 
-        <div class="delivery-card">
-          <h4>Saurashtra (Rajkot, Junagadh, Amreli)</h4>
-          <p>Overnight cold-box express courier coverage for livestock clinics, cattle feeds, and poultry stockists.</p>
-        </div>
+          <div class="delivery-card animate-reveal delay-2">
+            <h4>Saurashtra (Rajkot, Junagadh, Amreli)</h4>
+            <p>Overnight cold-box express courier coverage for livestock clinics, cattle feeds, and poultry stockists.</p>
+          </div>
 
-        <div class="delivery-card">
-          <h4>South Gujarat (Surat, Navsari, Valsad)</h4>
-          <p>Same-day and 24-hour delivery for veterinary surgical gloves, vaccines, and high-potency antibiotics.</p>
-        </div>
+          <div class="delivery-card animate-reveal delay-3">
+            <h4>South Gujarat (Surat, Navsari, Valsad)</h4>
+            <p>Same-day and 24-hour delivery for veterinary surgical gloves, vaccines, and high-potency antibiotics.</p>
+          </div>
 
-        <div class="delivery-card">
-          <h4>North Gujarat (Mehsana, Sabarkantha, Banaskantha)</h4>
-          <p>Regular daily supply routes for dairy farming cooperatives, veterinary hospitals, and poultry feed plants.</p>
+          <div class="delivery-card animate-reveal delay-4">
+            <h4>North Gujarat (Mehsana, Sabarkantha, Banaskantha)</h4>
+            <p>Regular daily supply routes for dairy farming cooperatives, veterinary hospitals, and poultry feed plants.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -230,7 +243,7 @@
       <div class="footer-grid">
         <div>
           <div class="footer-logo-wrap">
-            <img src="assets/stc_logo.jpg?v=20260801d" alt="STC Company Logo" class="stc-logo-img" width="42" height="42" style="width: 42px !important; height: 42px !important; max-width: 42px !important; max-height: 42px !important; border-radius: 10px; object-fit: contain; flex-shrink: 0 !important; display: block;">
+            <img src="assets/stc_logo.jpg?v=20260808" alt="STC Company Logo" class="stc-logo-img stc-logo-img--footer" width="42" height="42">
             <div>
               <div style="color: #FFFFFF; font-size: 1.35rem; font-weight: 800; letter-spacing: -0.01em; text-transform: uppercase; line-height: 1.05;">SHREEJEE TRADING</div>
               <div style="color: #ffccd5; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; line-height: 1.1; margin-top: 0.15rem;">Corporation</div>

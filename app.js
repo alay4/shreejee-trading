@@ -8,215 +8,160 @@
 
 // Rich B2B Wholesale Product Dataset
 const PRODUCTS = [
+  // VIRBAC
   {
-    id: 'prod-1',
-    title: 'HepatoBoost Liver Tonic & Metabolism Enhancer',
-    composition: 'Tricholine Citrate, Inositol, Biotin, DL-Methionine & Herbal Silymarin Extract',
-    category: 'poultry',
-    categoryName: 'Poultry Medicine & Tonics',
-    badge: 'Bestseller',
-    packing: '1 Litre Bottle / 5 Litre Bulk Can',
-    moq: '4 x 5L Bulk Cans (1 Carton)',
-    storage: 'Store in cool, dark place below 25°C. Protect from direct sunlight.',
-    target: 'Broiler, Breeder & Commercial Layer Flocks',
-    dosage: '15-20ml per 100 birds daily in drinking water for 5-7 days',
-    indications: 'Fatty Liver Kidney Syndrome (FLKS), Mycotoxicosis, low FCR, post-antibiotic liver recovery.',
-    speciesTags: ['Broiler Poultry', 'Layer Birds', 'Breeder Flocks'],
-    description: 'Premier liver tonic formulation engineered to regenerate hepatic tissue, enhance digestive enzyme synthesis, and accelerate feed conversion ratio (FCR) during stress.',
-    technicalSpecs: 'Administer via overhead drinking water tanks. Compatible with standard multivitamin formulations. Do not mix with acidifiers.'
+    id: 'prod-virbac-1', brand: 'Virbac', title: 'Ostovet Liquid', composition: 'Calcium, Phosphorus, Vitamin D3, Vitamin B12', category: 'supplements', categoryName: 'Feed Supplements & Minerals', badge: 'High Yield', packing: '1L / 5L / 20L', moq: '20L Drum', storage: 'Store in cool, dark place', target: 'Cattle, Poultry', dosage: 'Cattle: 100ml/day | Poultry: 20-50ml/100 birds', indications: 'Enhances milk production, prevents egg shell defects.', speciesTags: ['Dairy Cattle', 'Layer Birds'], description: 'Premium liquid calcium supplement enriched with essential vitamins for optimal bone health and high lactation yield.', technicalSpecs: 'High bioavailability chelated minerals.'
   },
   {
-    id: 'prod-2',
-    title: 'AmoxiVet 50% Water Soluble High-Potency Powder',
-    composition: 'Amoxicillin Trihydrate IP 50% w/w + Clavulanic Acid Stabilizer',
-    category: 'poultry',
-    categoryName: 'Poultry Medicine & Tonics',
-    badge: 'High Potency',
-    packing: '100g Sachet / 500g Bulk Jar',
-    moq: '20 x 500g Jars',
-    storage: 'Store below 25°C in airtight container. Moisture sensitive.',
-    target: 'Poultry Flocks & Livestock Cattle',
-    dosage: '10-20mg per kg body weight in drinking water for 3-5 days',
-    indications: 'Chronic Respiratory Disease (CRD), Fowl Cholera, Colibacillosis (E. coli), Necrotic Enteritis.',
-    speciesTags: ['Poultry Flocks', 'Cattle & Calves', 'Swine'],
-    description: 'Ultra-pure, highly soluble broad-spectrum semi-synthetic penicillin antibiotic offering rapid systemic absorption for acute bacterial outbreaks.',
-    technicalSpecs: 'Solubility: 100% water soluble within 60 seconds. Prepare fresh medicated water daily.'
+    id: 'prod-virbac-2', brand: 'Virbac', title: 'Vimeral Liquid', composition: 'Vitamin A, D3, E, B12', category: 'supplements', categoryName: 'Feed Supplements & Minerals', badge: 'Stress Relief', packing: '120ml / 500ml / 1L', moq: '10 x 1L Bottles', storage: 'Store below 25°C', target: 'Livestock, Poultry', dosage: 'Poultry: 5ml/100 birds | Cattle: 10ml/day', indications: 'Removes stress, improves growth and hatchability.', speciesTags: ['Broiler Poultry', 'Dairy Cattle'], description: 'Highly concentrated anti-stress liquid vitamin supplement for maintaining optimum health and productivity.', technicalSpecs: 'Stable aqueous formulation for easy mixing in water.'
   },
   {
-    id: 'prod-3',
-    title: 'Medical Grade Disposable Powder-Free Latex Gloves',
-    composition: '100% Pure Natural Rubber Latex - Examination Grade (AQL 1.5)',
-    category: 'gloves',
-    categoryName: 'Disposable Gloves & Safety',
-    badge: 'Essential Stock',
-    packing: 'Box of 100 Gloves / Master Carton of 10 Boxes (1000 Pcs)',
-    moq: '1 Master Carton (10 Boxes / 1000 Gloves)',
-    storage: 'Store in cool, dry warehouse below 30°C away from ozone and UV light.',
-    target: 'Veterinary Surgeons, Poultry Farm Workers & Diagnostic Labs',
-    dosage: 'Single-use hygienic barrier protection',
-    indications: 'Farm biosecurity protocols, vaccine administration, post-mortem inspection, clinical surgery.',
-    speciesTags: ['Veterinary Clinic', 'Farm Biosecurity', 'Laboratory'],
-    description: 'Textured, micro-roughened powder-free natural rubber latex gloves offering maximum tactile sensitivity, high tensile tear resistance, and reliable pathogen barrier protection.',
-    technicalSpecs: 'Thickness: 5.5 mil palm, 6.0 mil finger textured. Ambidextrous with beaded cuff for easy donning.'
+    id: 'prod-virbac-3', brand: 'Virbac', title: 'Brotone Liver Tonic', composition: 'Liver extract, Yeast extract, Nicotinic Acid', category: 'supplements', categoryName: 'Feed Supplements & Minerals', badge: 'Liver Care', packing: '500ml / 1L / 5L', moq: '10 x 1L Bottles', storage: 'Store in cool dry place', target: 'Poultry, Swine, Cattle', dosage: 'Poultry: 10-20ml/100 birds', indications: 'Hepatic dysfunction, anorexia, convalescence.', speciesTags: ['Broiler Flocks', 'Cattle', 'Swine'], description: 'Trusted liver tonic and appetite stimulant for restoring hepatic functions and improving FCR.', technicalSpecs: 'Contains vital B-complex factors.'
   },
   {
-    id: 'prod-4',
-    title: 'Heavy-Duty Nitrile Chemical & Vaccine Gloves',
-    composition: '100% Synthetic Nitrile Butadiene Rubber (Latex-Free & Chem Safe)',
-    category: 'gloves',
-    categoryName: 'Disposable Gloves & Safety',
-    badge: 'Chemical Safe',
-    packing: 'Box of 100 Gloves / Carton of 10 Boxes (Blue/Black Options)',
-    moq: '1 Master Carton (10 Boxes)',
-    storage: 'Store in dry area away from organic solvents and direct sunlight.',
-    target: 'Hatchery Managers, Biosecurity Spray Teams & Poultry Veterinarians',
-    dosage: 'Single-use chemical & puncture resistant protection',
-    indications: 'Handling formaldehyde sanitizers, caustic disinfectants, oil-emulsion poultry vaccines, and sharp tools.',
-    speciesTags: ['Poultry Hatchery', 'Biosecurity Spray', 'Veterinary Exams'],
-    description: 'Puncture-resistant synthetic nitrile gloves engineered with superior resistance against farm disinfectants, organic acids, and accidental needle pricks during flock vaccination.',
-    technicalSpecs: 'Thickness: 6.0 mil heavy-duty nitrile. 3x puncture resistance of standard natural latex.'
+    id: 'prod-virbac-4', brand: 'Virbac', title: 'Lixen Powder', composition: 'Cephalexin IP 7.5% w/w', category: 'poultry', categoryName: 'Poultry Medicine & Antibiotics', badge: 'Broad Spectrum', packing: '20g / 100g Sachet', moq: '50 x 100g', storage: 'Store below 30°C', target: 'Poultry', dosage: '1g / Liter of drinking water for 3-5 days', indications: 'CRD, Colisepticemia, Coryza, Fowl Cholera.', speciesTags: ['Poultry Flocks'], description: 'First generation cephalosporin antibiotic for potent action against gram-positive and gram-negative pathogens.', technicalSpecs: 'Water soluble powder.'
   },
   {
-    id: 'prod-5',
-    title: 'CalciMax Forte Chelated Liquid Supplement',
-    composition: 'Micro-chelated Calcium, Phosphorus, Vitamin D3, B12, and Magnesium',
-    category: 'supplements',
-    categoryName: 'Feed Supplements & Minerals',
-    badge: 'Essential Growth',
-    packing: '1L Bottle / 5L Bulk Can / 20L Commercial Drum',
-    moq: '2 x 20L Drums or 10 x 5L Cans',
-    storage: 'Store in ambient temperature. Shake well before administration.',
-    target: 'Commercial Layer Birds, Breeders & Dairy Cattle',
-    dosage: 'Poultry: 20-30ml per 100 layers daily | Cattle: 100ml per dairy animal daily',
-    indications: 'Thin or soft-shelled eggs, cage layer fatigue, rickets, hypocalcemia (milk fever in cattle).',
-    speciesTags: ['Commercial Layers', 'Dairy Cattle', 'Breeder Birds'],
-    description: 'High-bioavailability chelated liquid calcium and phosphorus formulation that strengthens eggshell density, prevents leg paralysis, and boosts milk yield in dairy livestock.',
-    technicalSpecs: 'Ca:P ratio optimized at 2:1 with rapid-absorption organic chelating ligands.'
+    id: 'prod-virbac-5', brand: 'Virbac', title: 'Toxiroak Gold', composition: 'HSCAS, MOS, Organic Acids, Copper Sulfate', category: 'supplements', categoryName: 'Feed Supplements & Minerals', badge: 'Toxin Binder', packing: '25kg Bag', moq: '10 x 25kg (250kg)', storage: 'Dry warehouse', target: 'Poultry Feed', dosage: '1-2kg per Ton of feed', indications: 'Mycotoxicosis, Aflatoxin contamination.', speciesTags: ['Feed Manufacturers', 'Commercial Poultry'], description: 'Broad-spectrum mycotoxin binder that adsorbs multiple toxins and prevents immunosuppression.', technicalSpecs: 'Irreversible binding capacity.'
+  },
+  // AYURVET
+  {
+    id: 'prod-ayurvet-1', brand: 'Ayurvet', title: 'Ruchamax Powder', composition: 'Herbal digestive stimulants', category: 'supplements', categoryName: 'Natural & Ayurvedic', badge: 'Appetite Pro', packing: '15g sachet / 1kg Pouch', moq: '20 x 1kg', storage: 'Keep in dry place', target: 'Cattle, Sheep, Goat', dosage: 'Cattle: 15g twice daily', indications: 'Anorexia, Indigestion, Dyspepsia.', speciesTags: ['Dairy Cattle', 'Small Ruminants'], description: 'Polyherbal stomachic and digestive tonic that restores rumen microflora and appetite naturally.', technicalSpecs: 'Zero withdrawal period.'
   },
   {
-    id: 'prod-6',
-    title: 'PoultryVite-C & Electrolyte Anti-Stress Formula',
-    composition: 'Ascorbic Acid (Vitamin C) 99%, Sodium Chloride, Potassium Citrate & Dextrose',
-    category: 'supplements',
-    categoryName: 'Feed Supplements & Minerals',
-    badge: 'Heat Stress Care',
-    packing: '1 kg Moisture-Proof Foil Pouch / 5 kg Bucket',
-    moq: '10 x 1 kg Pouches',
-    storage: 'Store in airtight condition below 25°C. Hygroscopic material.',
-    target: 'Broilers, Commercial Layers & Chick Arrivals',
-    dosage: '1g per 2 Litres drinking water during high summer temperatures',
-    indications: 'Summer heat stress, dehydration, vaccination stress, transport mortality reduction.',
-    speciesTags: ['Broiler Flocks', 'Layer Birds', 'Day-Old Chicks'],
-    description: 'High-potency vitamin C and balanced electrolyte formulation to maintain cellular osmotic balance, lower core body temperature, and prevent summer heat stress mortality.',
-    technicalSpecs: 'Enriched with instant-energy dextrose monohydrate to revive exhausted birds within 2 hours.'
+    id: 'prod-ayurvet-2', brand: 'Ayurvet', title: 'Payapro Tablets', composition: 'Leptadenia reticulata, Asparagus racemosus', category: 'supplements', categoryName: 'Natural & Ayurvedic', badge: 'Galactagogue', packing: 'Strip of 10 Tablets / Box of 100', moq: '10 Boxes', storage: 'Room temperature', target: 'Dairy Cattle', dosage: '3-4 tablets twice daily', indications: 'Hypogalactia, irregular lactation drops.', speciesTags: ['Dairy Cattle'], description: 'Herbal galactagogue that naturally stimulates milk let-down and increases overall milk yield.', technicalSpecs: '100% herbal active ingredients.'
   },
   {
-    id: 'prod-7',
-    title: 'ViruClean 5th Gen Synergistic Disinfectant',
-    composition: 'Didecyl Dimethyl Ammonium Chloride 10% + Glutaraldehyde 15%',
-    category: 'vaccines',
-    categoryName: 'Vaccines & Biosecurity',
-    badge: 'Biosecurity Shield',
-    packing: '1 Litre / 5 Litre High-Density Polyethylene Canister',
-    moq: '4 x 5L Canisters',
-    storage: 'Store in ventilated warehouse. Highly concentrated compound.',
-    target: 'Poultry Farm Sheds, Incubators, Hatchers & Vehicle Footbaths',
-    dosage: '4-5ml per Litre water for aerial fogging and surface sanitization',
-    indications: 'Newcastle Disease Virus, Gumboro (IBD), Avian Influenza, Salmonella, E. coli biofilm eradication.',
-    speciesTags: ['Shed Sanitation', 'Hatchery Hygiene', 'Vehicle Disinfection'],
-    description: 'Hospital-grade broad-spectrum biosecurity disinfectant that penetrates organic matter and destroys enveloped/non-enveloped viruses, fungi, and bacterial spores.',
-    technicalSpecs: 'Non-corrosive at recommended dilution. Active even in the presence of hard water and 400ppm organic soil.'
+    id: 'prod-ayurvet-3', brand: 'Ayurvet', title: 'Exapar Liquid', composition: 'Plumbago zeylanica, Aloe barbadensis', category: 'supplements', categoryName: 'Natural & Ayurvedic', badge: 'Uterine Cleanser', packing: '500ml / 1L', moq: '10 x 1L', storage: 'Cool dry place', target: 'Cattle, Buffalo', dosage: '100ml twice on first day, then 50ml daily', indications: 'Retained placenta, delayed involution of uterus.', speciesTags: ['Dairy Cattle'], description: 'Potent uterine ecbolic and cleanser to prevent post-partum complications and infections.', technicalSpecs: 'Ensures timely involution.'
   },
   {
-    id: 'prod-8',
-    title: 'ImmunoVax ND+IB Combined Live Vaccine',
-    composition: 'Live Attenuated Newcastle Disease (LaSota) & Infectious Bronchitis (H120)',
-    category: 'vaccines',
-    categoryName: 'Vaccines & Biosecurity',
-    badge: 'Cold Chain Required',
-    packing: '1000 Doses / 2000 Doses Freeze-Dried Glass Vial',
-    moq: '50 Vials (With Thermocol Cold-Box Packaging)',
-    storage: 'CRITICAL COLD CHAIN: Must be stored at 2°C to 8°C continuously.',
-    target: 'Day-old Chicks & Growing Layer/Broiler Flocks',
-    dosage: '1 drop per bird intraocular/intranasal or via chlorine-free drinking water',
-    indications: 'Active immunization against Ranikhet (Newcastle Disease) and Avian Infectious Bronchitis respiratory distress.',
-    speciesTags: ['Day-Old Chicks', 'Broiler Flocks', 'Layer Pullets'],
-    description: 'High-titer freeze-dried live vaccine providing rapid mucosal immunity and robust circulating antibody titers against virulent field strains of ND and IB.',
-    technicalSpecs: 'Shipped exclusively with ice-packs in temperature-verified styrofoam containers from Ahmedabad hub.'
+    id: 'prod-ayurvet-4', brand: 'Ayurvet', title: 'Restobal Liquid', composition: 'Withania somnifera, Ocimum sanctum', category: 'supplements', categoryName: 'Natural & Ayurvedic', badge: 'Adaptogen', packing: '1L / 5L', moq: '5 x 5L', storage: 'Store below 25°C', target: 'Poultry', dosage: '10-20ml / 100 birds in water', indications: 'Heat stress, vaccination stress, handling stress.', speciesTags: ['Broiler Poultry', 'Layer Birds'], description: 'Herbal anti-stress, adaptogenic and immunomodulatory tonic for flock stability during environmental stress.', technicalSpecs: 'Reduces serum cortisol levels naturally.'
+  },
+  // VETOQUINOL
+  {
+    id: 'prod-veto-1', brand: 'Vetoquinol', title: 'Meriquin 10% Oral Solution', composition: 'Enrofloxacin 100mg/ml', category: 'poultry', categoryName: 'Poultry Medicine & Antibiotics', badge: 'Fast Acting', packing: '1L / 5L Can', moq: '10 x 1L', storage: 'Protect from light', target: 'Poultry', dosage: '10mg/kg body weight for 3-5 days', indications: 'CRD, Colibacillosis, Fowl Cholera, Coryza.', speciesTags: ['Broiler Flocks', 'Layer Birds'], description: 'Broad-spectrum fluoroquinolone antibiotic for rapid control of severe systemic and respiratory infections.', technicalSpecs: 'High tissue concentration within 2 hours.'
   },
   {
-    id: 'prod-9',
-    title: 'Veterinary Long-Shoulder Artificial Insemination Gloves',
-    composition: 'Low Density Polyethylene (LDPE) 90cm Full Shoulder Length',
-    category: 'gloves',
-    categoryName: 'Disposable Gloves & Safety',
-    badge: 'Veterinary Specialty',
-    packing: 'Pack of 100 Gloves / Master Carton of 20 Packs (2000 Pcs)',
-    moq: '5 Packs (500 Gloves)',
-    storage: 'Store in dry place below 35°C away from sharp instruments.',
-    target: 'Cattle Veterinary Doctors, AI Technicians & Livestock Breeding Centers',
-    dosage: 'Single-use shoulder-length protective barrier',
-    indications: 'Artificial Insemination (AI), rectal examination, pregnancy diagnosis, and obstetric maneuvers in dairy cattle.',
-    speciesTags: ['Dairy Cattle', 'Veterinary Doctors', 'AI Breeding'],
-    description: 'Extra-long 90cm shoulder-length smooth polyethylene gloves engineered with high seam-weld strength to prevent rupture during large animal rectal palpation and insemination.',
-    technicalSpecs: 'Super smooth external surface prevents rectal mucosal irritation. Oblique cut shoulder fit for full arm protection.'
+    id: 'prod-veto-2', brand: 'Vetoquinol', title: 'Toxi-Flush', composition: 'Sorbitol, Carnitine, Betaine, MgSO4', category: 'supplements', categoryName: 'Feed Supplements & Minerals', badge: 'Kidney Flush', packing: '1L / 5L', moq: '10 x 1L', storage: 'Room temp', target: 'Poultry', dosage: '10-20ml/100 birds', indications: 'Gout, nephrosis, post-antibiotic flush.', speciesTags: ['Broiler Flocks', 'Layer Birds'], description: 'Osmotic diuretic and metabolic stimulant that flushes kidney urates and revitalizes organ function.', technicalSpecs: 'Liquid water soluble.'
   },
   {
-    id: 'prod-10',
-    title: 'Tilmicosin 25% Oral Respiratory Solution',
-    composition: 'Tilmicosin Phosphate 250 mg/ml in Aqueous Vehicle',
-    category: 'poultry',
-    categoryName: 'Poultry Medicine & Tonics',
-    badge: 'CRD Specialist',
-    packing: '240ml Bottle / 1 Litre High-Density Bottle',
-    moq: '10 x 1L Bottles',
-    storage: 'Store below 25°C. Keep bottle tightly closed after opening.',
-    target: 'Commercial Broilers, Pullets & Breeder Poultry Flocks',
-    dosage: '15-20mg Tilmicosin per kg body weight in drinking water for 3 consecutive days',
-    indications: 'Severe Mycoplasma gallisepticum (MG) and Mycoplasma synoviae (MS) Chronic Respiratory Disease outbreaks.',
-    speciesTags: ['Broiler Flocks', 'Breeder Poultry', 'Turkey Flocks'],
-    description: 'Advanced macrolide antibiotic formulation specifically targeted at pulmonary and air sac tissues to rapidly clear tracheal rales and mycoplasmal infection.',
-    technicalSpecs: 'Concentrates 15x higher in lung macrophages compared to serum for prolonged respiratory tissue protection.'
+    id: 'prod-veto-3', brand: 'Vetoquinol', title: 'Cephacare 500mg Tablets', composition: 'Cephalexin 500mg', category: 'poultry', categoryName: 'Veterinary Medicine', badge: 'Essential', packing: 'Strip of 10 / Box of 100', moq: '10 Boxes', storage: 'Below 25°C', target: 'Dogs, Cats', dosage: '15mg/kg twice daily', indications: 'Pyoderma, urinary tract infections, respiratory infections.', speciesTags: ['Canine', 'Feline', 'Clinic'], description: 'First generation cephalosporin for veterinary clinical use against susceptible Staphylococcus.', technicalSpecs: 'Scored tablets for easy dosing.'
+  },
+  // VENKYS
+  {
+    id: 'prod-venkys-1', brand: 'Venkys', title: 'Groviplex Liquid', composition: 'B-Complex Vitamins with Amino Acids', category: 'supplements', categoryName: 'Feed Supplements & Minerals', badge: 'Growth Promoter', packing: '1L / 5L / 30L', moq: '1 x 30L Drum', storage: 'Store in dark place', target: 'Poultry', dosage: '10-20ml/100 birds daily', indications: 'B-complex deficiency, stunted growth, poor feathering.', speciesTags: ['Broiler Poultry', 'Layer Birds'], description: 'Comprehensive B-Complex formulation enriched with essential amino acids to boost metabolism and weight gain.', technicalSpecs: 'Highly palatable.'
   },
   {
-    id: 'prod-11',
-    title: 'GutPro Multi-Strain Probiotic & Prebiotic Blend',
-    composition: 'Lactobacillus acidophilus, Bacillus subtilis, Saccharomyces boulardii + MOS',
-    category: 'supplements',
-    categoryName: 'Feed Supplements & Minerals',
-    badge: 'Natural Growth',
-    packing: '500g Pouch / 1 kg Foil Jar / 10 kg Bucket',
-    moq: '10 x 1 kg Jars',
-    storage: 'Store in refrigerated or cool dry condition below 20°C.',
-    target: 'All Poultry Breeds & Growing Cattle Calves',
-    dosage: '100g per ton of finished poultry feed or 50g per 1000 birds water',
-    indications: 'Wet droppings, dysbacteriosis, post-antibiotic gut restoration, competitive exclusion of Salmonella.',
-    speciesTags: ['Poultry Flocks', 'Cattle Calves', 'Breeder Flocks'],
-    description: 'High-CFU direct-fed microbials designed to colonize intestinal villi, stimulate natural digestive immunity, and enhance nutrient absorption without leaving antibiotic residues.',
-    technicalSpecs: 'Total microbial count: > 10 x 10^9 CFU/g. Micro-encapsulated strains withstand feed pelleting heat up to 85°C.'
+    id: 'prod-venkys-2', brand: 'Venkys', title: 'Ventri-Nutri Powder', composition: 'Multivitamins, Trace Minerals, Probiotics', category: 'supplements', categoryName: 'Feed Supplements & Minerals', badge: 'Complete Premix', packing: '1kg Pouch / 25kg Bag', moq: '5 x 25kg', storage: 'Dry cool place', target: 'Poultry Feed', dosage: '2.5kg per ton of feed', indications: 'Nutritional deficiency, poor FCR, drop in egg production.', speciesTags: ['Feed Manufacturers', 'Layer Birds'], description: 'Complete vitamin and mineral feed premix for commercial poultry rations.', technicalSpecs: 'Micro-encapsulated vitamins for zero loss during pelleting.'
   },
   {
-    id: 'prod-12',
-    title: 'ToxBind Triple Action Mycotoxin Binder',
-    composition: 'Hydrated Sodium Calcium Aluminosilicate (HSCAS) + Organic Acids + MOS',
-    category: 'supplements',
-    categoryName: 'Feed Supplements & Minerals',
-    badge: 'Feed Protection',
-    packing: '25 kg Heavy-Duty Poly-Laminated Bag',
-    moq: '10 x 25 kg Bags (250 kg)',
-    storage: 'Store in dry warehouse on pallets away from floor moisture.',
-    target: 'Poultry Feed Manufacturers, Commercial Farms & Dairy Cattle',
-    dosage: '1 kg per ton of feed (maintenance) | 2 kg per ton during high mycotoxin contamination',
-    indications: 'Aflatoxicosis, T-2 toxin, Ochratoxin feed contamination, oral lesions, immunosuppression prevention.',
-    speciesTags: ['Feed Manufacturers', 'Commercial Poultry', 'Dairy Livestock'],
-    description: 'Premium broad-spectrum toxin binder that irreversibly adsorbs polar and non-polar fungal mycotoxins in the digestive tract without binding vital dietary vitamins and trace minerals.',
-    technicalSpecs: 'Cation Exchange Capacity (CEC): > 85 meq/100g. Particle size 100% through 150 mesh for maximum surface area adsorption.'
+    id: 'prod-venkys-3', brand: 'Venkys', title: 'Vencomycin 10%', composition: 'Lincomycin 100g/kg', category: 'poultry', categoryName: 'Poultry Medicine & Antibiotics', badge: 'Necrotic Enteritis', packing: '1kg Jar', moq: '10 x 1kg', storage: 'Dry place', target: 'Poultry', dosage: '2-4g / liter water', indications: 'Necrotic Enteritis caused by Clostridium perfringens.', speciesTags: ['Broiler Flocks'], description: 'Macrolide antibiotic highly effective against gut pathogens and anaerobic bacteria.', technicalSpecs: 'Zero residue after 48h withdrawal.'
+  },
+  // INDOVAX
+  {
+    id: 'prod-indovax-1', brand: 'Indovax', title: 'ND LaSota Live Vaccine', composition: 'Lentogenic LaSota strain of ND Virus', category: 'vaccines', categoryName: 'Vaccines & Biosecurity', badge: 'Cold Chain', packing: '1000 / 2000 Doses Vial', moq: '100 Vials', storage: 'Strictly 2°C to 8°C', target: 'Poultry', dosage: '1 drop per bird intraocular or via drinking water', indications: 'Prevention of Newcastle Disease.', speciesTags: ['Broiler Flocks', 'Layer Pullets'], description: 'Live attenuated freeze-dried vaccine for boosting immunity against Newcastle Disease in growing birds.', technicalSpecs: 'CEF origin, SPF tested.'
+  },
+  {
+    id: 'prod-indovax-2', brand: 'Indovax', title: 'IB H120 Live Vaccine', composition: 'Mass type H120 strain of IB Virus', category: 'vaccines', categoryName: 'Vaccines & Biosecurity', badge: 'Cold Chain', packing: '1000 / 2000 Doses Vial', moq: '100 Vials', storage: 'Strictly 2°C to 8°C', target: 'Poultry', dosage: 'Intraocular or drinking water', indications: 'Prevention of Infectious Bronchitis.', speciesTags: ['Day-Old Chicks', 'Broiler Flocks'], description: 'Live vaccine offering robust respiratory mucosal immunity against Massachusetts serotype of IB.', technicalSpecs: 'Given at 1-7 days of age.'
+  },
+  {
+    id: 'prod-indovax-3', brand: 'Indovax', title: 'Fowl Pox Live Vaccine', composition: 'Pigeon Pox Virus Strain', category: 'vaccines', categoryName: 'Vaccines & Biosecurity', badge: 'Cold Chain', packing: '1000 Doses Vial with Diluent', moq: '50 Vials', storage: '2°C to 8°C', target: 'Poultry', dosage: 'Wing web puncture', indications: 'Prevention of Fowl Pox.', speciesTags: ['Layer Pullets', 'Breeder Flocks'], description: 'Lyophilized live vaccine for enduring immunity against fowl pox outbreaks in long-living birds.', technicalSpecs: 'Supplied with double-needle applicator.'
+  },
+  // MICRO LABS
+  {
+    id: 'prod-micro-1', brand: 'Micro Labs', title: 'Melonex Injection', composition: 'Meloxicam 5mg/ml', category: 'poultry', categoryName: 'Veterinary Medicine', badge: 'NSAID', packing: '30ml / 100ml Vial', moq: '50 Vials', storage: 'Protect from light', target: 'Cattle, Sheep, Pig', dosage: '0.5mg/kg body weight IM/IV', indications: 'Pneumonia, Mastitis, Prolapse pain management.', speciesTags: ['Dairy Cattle', 'Swine'], description: 'Potent non-steroidal anti-inflammatory drug (NSAID) for rapid pain relief and fever reduction.', technicalSpecs: 'Preferential COX-2 inhibitor.'
+  },
+  {
+    id: 'prod-micro-2', brand: 'Micro Labs', title: 'Amoxyrum Forte Injection', composition: 'Amoxicillin 3g + Sulbactam 1.5g', category: 'poultry', categoryName: 'Veterinary Medicine', badge: 'Beta-Lactamase Resistant', packing: '4.5g Vial with sterile water', moq: '20 Vials', storage: 'Cool dry place', target: 'Cattle, Buffalo', dosage: '7-10mg/kg body weight IM', indications: 'Severe mastitis, metritis, respiratory infections.', speciesTags: ['Dairy Cattle'], description: 'Synergistic combination of broad-spectrum antibiotic and beta-lactamase inhibitor for resistant infections.', technicalSpecs: 'Requires reconstitution before use.'
+  },
+  // VARSHA
+  {
+    id: 'prod-varsha-1', brand: 'Varsha', title: 'Varsha M-Vit Powder', composition: 'Vitamins & Chelated Trace Minerals', category: 'supplements', categoryName: 'Feed Supplements & Minerals', badge: 'Trace Minerals', packing: '1kg / 5kg', moq: '10 x 1kg', storage: 'Room temp', target: 'Poultry, Cattle', dosage: 'Poultry: 1kg/ton | Cattle: 30g/day', indications: 'Mineral deficiency, poor immunity, infertility.', speciesTags: ['Broiler Flocks', 'Dairy Cattle'], description: 'High bioavailability chelated mineral mixture to support enzymatic functions and reproductive health.', technicalSpecs: 'Contains Zinc, Copper, Manganese, Iron, Selenium.'
+  },
+  {
+    id: 'prod-varsha-2', brand: 'Varsha', title: 'Varsha Electrolyte C', composition: 'Electrolytes with Vitamin C', category: 'supplements', categoryName: 'Feed Supplements & Minerals', badge: 'Rehydration', packing: '1kg Pouch', moq: '20 Pouches', storage: 'Airtight container', target: 'Poultry', dosage: '1g / Liter water', indications: 'Summer stress, loose droppings, dehydration.', speciesTags: ['Poultry Flocks'], description: 'Instant energy and rehydration formula for combating severe heat stress and restoring fluid balance.', technicalSpecs: 'High solubility.'
+  },
+  // MISC/GENERAL
+  {
+    id: 'prod-stc-1', brand: 'STC Supply', title: 'Examination Latex Gloves', composition: '100% Pure Latex', category: 'gloves', categoryName: 'Disposable Gloves & Safety', badge: 'Essential', packing: 'Box of 100', moq: '10 Boxes', storage: 'Below 30°C', target: 'Veterinary Clinics, Farms', dosage: 'Single use', indications: 'Biosecurity, clinical exams.', speciesTags: ['Veterinary Clinic', 'Farm Biosecurity'], description: 'High-quality powder-free latex gloves for reliable pathogen barrier protection.', technicalSpecs: 'AQL 1.5'
+  },
+  {
+    id: 'prod-stc-2', brand: 'STC Supply', title: 'Nitrile Heavy-Duty Gloves', composition: 'Synthetic Nitrile Rubber', category: 'gloves', categoryName: 'Disposable Gloves & Safety', badge: 'Chemical Safe', packing: 'Box of 100', moq: '10 Boxes', storage: 'Dry place', target: 'Hatchery, Disinfection Teams', dosage: 'Single use', indications: 'Handling chemical sanitizers, vaccines.', speciesTags: ['Poultry Hatchery'], description: 'Puncture-resistant nitrile gloves offering superior chemical protection.', technicalSpecs: '6 mil thickness.'
   }
 ];
 
 // Application State
 let quoteBasket = JSON.parse(localStorage.getItem('stc_quote_basket') || '[]');
 let currentCalcTab = 'poultry';
+let activeSpeciesFilter = 'all';
+let activeSort = 'default';
+
+const CATEGORY_IMAGES = {
+  poultry: 'assets/poultry_supplements.jpg',
+  gloves: 'assets/hero_banner.jpg',
+  supplements: 'assets/poultry_supplements.jpg',
+  vaccines: 'assets/vet_vaccines.jpg'
+};
+
+const SPECIES_FILTERS = [
+  { id: 'all', label: 'All Species' },
+  { id: 'poultry', label: 'Poultry' },
+  { id: 'cattle', label: 'Cattle & Dairy' },
+  { id: 'clinic', label: 'Clinic & Lab' },
+  { id: 'hatchery', label: 'Hatchery' }
+];
+
+function getPartnerInitials(name) {
+  return name.split(/\s+/).filter(w => w.length > 2 && !/^(pvt|ltd|llp|limited|private|india|inc|corp|biologicals|healthcare|lifesciences|lifescience|labs|lab)$/i.test(w))
+    .slice(0, 2).map(w => w[0].toUpperCase()).join('') || name.slice(0, 2).toUpperCase();
+}
+
+function getCategoryThumbClass(category) {
+  return `product-thumb--${category}`;
+}
+
+function productMatchesSpecies(prod, species) {
+  if (species === 'all') return true;
+  const tags = (prod.speciesTags || []).join(' ').toLowerCase();
+  const map = {
+    poultry: ['poultry', 'broiler', 'layer', 'chick', 'turkey', 'breeder'],
+    cattle: ['cattle', 'dairy', 'livestock', 'calves', 'swine', 'ai breeding'],
+    clinic: ['clinic', 'veterinary', 'laboratory', 'surgeon', 'diagnostic'],
+    hatchery: ['hatchery', 'day-old', 'incubator', 'biosecurity']
+  };
+  return (map[species] || []).some(kw => tags.includes(kw));
+}
+
+function sortProducts(list, sortBy) {
+  const sorted = [...list];
+  if (sortBy === 'alpha') sorted.sort((a, b) => a.title.localeCompare(b.title));
+  else if (sortBy === 'category') sorted.sort((a, b) => a.category.localeCompare(b.category) || a.title.localeCompare(b.title));
+  return sorted;
+}
+
+function updateCatalogMeta(shown, total) {
+  const countEl = document.getElementById('catalogResultsCount');
+  if (countEl) countEl.textContent = `Showing ${shown} of ${total} products`;
+}
+
+function getActiveFilterCount() {
+  let count = 0;
+  const cat = document.querySelector('.catalog-filter-btn.active')?.dataset.filter;
+  if (cat && cat !== 'all') count++;
+  if (activeSpeciesFilter !== 'all') count++;
+  const query = document.getElementById('searchInput')?.value.trim();
+  if (query) count++;
+  return count;
+}
+
+function updateFilterBadge() {
+  const badge = document.getElementById('activeFilterBadge');
+  const count = getActiveFilterCount();
+  if (badge) {
+    badge.textContent = count ? `${count} filter${count > 1 ? 's' : ''} active` : '';
+    badge.style.display = count ? 'inline' : 'none';
+  }
+}
 
 // DOM Loaded Initialization
 document.addEventListener('DOMContentLoaded', () => {
@@ -230,7 +175,15 @@ document.addEventListener('DOMContentLoaded', () => {
   setupStatsAnimation();
   updateQuoteUI();
   calculateFarmRequirement();
+  initScrollRevealObserver();
 });
+
+// Category Thumbnail Fallback Helper
+function getCategoryFallbackImage(category) {
+  if (category === 'vaccines') return 'assets/category-vaccines.jpg';
+  if (category === 'gloves') return 'assets/category-gloves.jpg';
+  return 'assets/category-supplements.jpg';
+}
 
 // Render Products Grid
 function renderProducts(productsList) {
@@ -252,35 +205,32 @@ function renderProducts(productsList) {
 
   container.innerHTML = productsList.map(prod => `
     <div class="product-card" data-category="${prod.category}">
-      <div class="product-header">
-        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem;">
-          <span class="product-category-tag">${prod.categoryName}</span>
-          ${prod.badge ? `<span class="badge badge-primary">${prod.badge}</span>` : ''}
+      <div class="product-body" style="display: flex; flex-direction: column; flex: 1;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem;">
+          <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+            ${prod.brand ? `<span class="brand-badge" style="background: var(--stc-red); color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">${prod.brand}</span>` : ''}
+            <span class="product-category-tag">${prod.categoryName}</span>
+          </div>
+          ${prod.badge ? `<span class="product-status-badge" style="color: #10B981; font-size: 0.8rem; font-weight: 600; background: rgba(16, 185, 129, 0.1); padding: 2px 8px; border-radius: 4px;">★ ${prod.badge}</span>` : ''}
         </div>
         <h3 class="product-title">${prod.title}</h3>
         <p class="product-composition">${prod.composition}</p>
-      </div>
-      <div class="product-body">
         <p class="product-desc-snippet">${prod.description}</p>
+        
+        <div class="product-meta-grid">
+          <div class="meta-item">
+            <span class="meta-label">MOQ</span>
+            <span class="meta-value">${prod.moq}</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Packing</span>
+            <span class="meta-value">${prod.packing}</span>
+          </div>
+        </div>
         
         <div class="product-species-tags">
           ${(prod.speciesTags || []).map(tag => `<span class="species-tag">${tag}</span>`).join('')}
         </div>
-
-        <ul class="product-spec-list">
-          <li class="product-spec-item">
-            <span class="spec-label">Wholesale Packing:</span>
-            <span class="spec-val">${prod.packing}</span>
-          </li>
-          <li class="product-spec-item">
-            <span class="spec-label">Min. Order (MOQ):</span>
-            <span class="spec-val" style="color: var(--stc-red); font-weight: 600;">${prod.moq}</span>
-          </li>
-          <li class="product-spec-item">
-            <span class="spec-label">Target Dosage:</span>
-            <span class="spec-val">${prod.dosage}</span>
-          </li>
-        </ul>
       </div>
       <div class="product-footer">
         <button class="btn btn-outline btn-sm" onclick="openQuickView('${prod.id}')" title="View Full Technical Datasheet & Indications">
@@ -419,6 +369,13 @@ function setupEventListeners() {
     });
   }
 
+  const sortFilter = document.getElementById('sortFilter');
+  if (sortFilter) {
+    sortFilter.addEventListener('change', () => {
+      filterProducts();
+    });
+  }
+
   catalogFilterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       catalogFilterBtns.forEach(b => b.classList.remove('active'));
@@ -456,11 +413,13 @@ function setupEventListeners() {
 
 function filterProducts() {
   const searchInput = document.getElementById('searchInput');
+  const sortFilter = document.getElementById('sortFilter');
   if (!document.getElementById('productsContainer')) return;
   const query = searchInput?.value.toLowerCase() || '';
   const activeCategory = document.querySelector('.catalog-filter-btn.active')?.dataset.filter || 'all';
+  const sortValue = sortFilter?.value || 'relevance';
 
-  const filtered = PRODUCTS.filter(prod => {
+  let filtered = PRODUCTS.filter(prod => {
     const matchesSearch = prod.title.toLowerCase().includes(query) || 
                           prod.composition.toLowerCase().includes(query) ||
                           prod.description.toLowerCase().includes(query) ||
@@ -468,6 +427,12 @@ function filterProducts() {
     const matchesCat = activeCategory === 'all' || prod.category === activeCategory;
     return matchesSearch && matchesCat;
   });
+
+  if (sortValue === 'a-z') {
+    filtered.sort((a, b) => a.title.localeCompare(b.title));
+  } else if (sortValue === 'z-a') {
+    filtered.sort((a, b) => b.title.localeCompare(a.title));
+  }
 
   renderProducts(filtered);
 }
@@ -967,7 +932,10 @@ function renderPartnerMarquee(partnersList) {
 
   const pillsHtml = partnersList.map(p => `
     <span class="marquee-pill">
-      <span class="marquee-pill-dot"></span>
+      ${p.logoUrl 
+        ? `<img src="${p.logoUrl}" alt="${p.name} logo" class="marquee-pill-img">` 
+        : `<span class="marquee-pill-logo">${p.name.charAt(0)}</span>`
+      }
       ${p.name}
     </span>
   `).join('');

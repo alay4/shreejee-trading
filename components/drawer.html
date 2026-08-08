@@ -1,0 +1,13 @@
+<div class="drawer-overlay" id="drawerOverlay" onclick="toggleQuoteDrawer(false)" aria-hidden="true"></div>
+<div class="drawer" id="quoteDrawer" role="dialog" aria-modal="true" aria-labelledby="quoteDrawerTitle" aria-hidden="true">
+  <div class="drawer-header">
+    <h3 id="quoteDrawerTitle">Inquiry Quote List</h3>
+    <button type="button" class="drawer-close-btn" onclick="toggleQuoteDrawer(false)" aria-label="Close quote list">&times;</button>
+  </div>
+  <div class="drawer-body" id="drawerQuoteList"></div>
+  <div class="drawer-footer">
+    <button type="button" class="btn btn-whatsapp btn-lg btn-block" onclick="sendWhatsAppRFQ()">
+      Send Quote List via WhatsApp
+    </button>
+  </div>
+</div>
