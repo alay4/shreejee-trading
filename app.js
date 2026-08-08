@@ -3,7 +3,7 @@
    Proprietor: Chetan Shah
    Office Phone: (079) 22146549 | Mobile/WhatsApp: +91 9376168779
    Email: crshah2@yahoo.com
-   Address: 15, 2nd Floor, Hiramoti Chambers, Glowad, Khadia, Ahmedabad-380001
+   Address: 15, 2nd Floor, Hiramoti Chambers, Golwad, Khadia, Ahmedabad-380001
    ========================================================================== */
 
 // Rich B2B Wholesale Product Dataset
