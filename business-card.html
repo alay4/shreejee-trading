@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Business Card | Shreejee Trading Corporation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --stc-red: #d90429;
+      --stc-red-dark: #a0001c;
+      --primary-900: #0f172a;
+      --primary-800: #1e293b;
+      --primary-700: #064e3b;
+      --gold: #D97706;
+      --gold-light: #FDE68A;
+      --slate-500: #64748b;
+      --slate-400: #94a3b8;
+      --slate-100: #f1f5f9;
+      --slate-50: #f8fafc;
+      
+      --card-width: 3.5in;
+      --card-height: 2in;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0f172a;
+      background-image: radial-gradient(circle at top right, rgba(6, 78, 59, 0.2), transparent 40%),
+                        radial-gradient(circle at bottom left, rgba(217, 4, 41, 0.15), transparent 40%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1rem;
+      min-height: 100vh;
+      margin: 0;
+      color: white;
+    }
+
+    .controls {
+      margin-bottom: 3rem;
+      text-align: center;
+      z-index: 10;
+    }
+    
+    .controls h1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: white;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    
+    .controls p {
+      color: var(--slate-400);
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+
+    .print-btn {
+      background: linear-gradient(135deg, var(--stc-red), var(--stc-red-dark));
+      color: white;
+      border: none;
+      padding: 0.75rem 2rem;
+      border-radius: 99px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(217, 4, 41, 0.3);
+    }
+
+    .print-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(217, 4, 41, 0.4);
+    }
+
+    /* Card Container */
+    .card-container {
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+      perspective: 1000px;
+    }
+
+    .card {
+      width: var(--card-width);
+      height: var(--card-height);
+      position: relative;
+      overflow: hidden;
+      box-sizing: border-box;
+      border-radius: 12px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255,255,255,0.1);
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .card:hover {
+      transform: translateY(-5px) rotateX(2deg) rotateY(-2deg);
+    }
+
+    /* FRONT OF CARD */
+    .card-front {
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0;
+      text-align: center;
+    }
+
+    /* Elegant border accent */
+    .card-front::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      border: 1px solid rgba(0,0,0,0.04);
+      border-radius: 12px;
+      pointer-events: none;
+    }
+
+    .front-accent-shape {
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(217,4,41,0.04), transparent);
+      z-index: 0;
+    }
+
+    .front-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      padding: 0 1.5rem;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .logo-img {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.06));
+    }
+
+    .company-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      text-align: left;
+    }
+
+    .company-title-main {
+      display: block;
+      font-size: 13pt;
+      font-weight: 800;
+      color: var(--primary-900);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    
+    .company-title-sub {
+      display: block;
+      font-size: 6.5pt;
+      font-weight: 700;
+      color: var(--stc-red);
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      margin-top: 2px;
+    }
+
+    .front-divider {
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--stc-red), var(--gold));
+      margin: 0.5rem 0;
+      border-radius: 2px;
+    }
+
+    .tagline {
+      font-size: 5.5pt;
+      color: var(--slate-500);
+      font-weight: 500;
+      line-height: 1.4;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* BACK OF CARD */
+    .card-back {
+      background: var(--primary-900);
+      background-image: 
+        radial-gradient(circle at 100% 100%, var(--primary-700) 0%, transparent 60%),
+        linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 1) 100%);
+      padding: 0;
+      display: flex;
+      color: white;
+    }
+    
+    .back-left {
+      width: 40%;
+      height: 100%;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 1.5rem;
+      position: relative;
+      background: rgba(255, 255, 255, 0.02);
+      border-right: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .back-left::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--stc-red), var(--gold));
+    }
+
+    .back-logo-wrap {
+      background: white;
+      padding: 4px;
+      border-radius: 6px;
+      display: inline-flex;
+    }
+
+    .back-logo {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+
+    .person-details {
+      margin-top: 0;
+    }
+
+    .person-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 11pt;
+      font-weight: 700;
+      margin: 0;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: white;
+    }
+
+    .person-title {
+      font-size: 6pt;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 3px;
+      font-weight: 600;
+    }
+    
+    .back-right {
+      width: 60%;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.5rem; /* Adjusted gap to fit website */
+      position: relative;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .contact-icon-wrap {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-icon {
+      color: var(--gold-light);
+    }
+
+    .contact-text {
+      font-size: 5.5pt;
+      color: var(--slate-100);
+      line-height: 1.3;
+      font-weight: 400;
+    }
+    
+    .contact-text strong {
+      display: block;
+      font-weight: 600;
+      color: white;
+      font-size: 6pt;
+      margin-bottom: 2px;
+    }
+
+    /* Print Specific Styles */
+    @media print {
+      @page {
+        size: letter;
+        margin: 0.5in;
+      }
+      
+      body {
+        background: none;
+        padding: 0;
+        display: block;
+      }
+
+      .controls {
+        display: none;
+      }
+
+      .card-container {
+        display: block;
+        perspective: none;
+      }
+      
+      .card {
+        box-shadow: none !important;
+        border: 0.5px solid #e2e8f0;
+        margin-bottom: 20px;
+        width: var(--card-width) !important;
+        height: var(--card-height) !important;
+        border-radius: 0 !important;
+        page-break-inside: avoid;
+        transform: none !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="controls">
+    <h1>Premium Business Card</h1>
+    <p>Modern aesthetic with elegant typography and dark-mode back.</p>
+    <button class="print-btn" onclick="window.print()">
+      <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/>
+      </svg>
+      Print / Save as PDF
+    </button>
+  </div>
+
+  <div class="card-container">
+    <!-- Front of Card -->
+    <div class="card card-front">
+      <div class="front-accent-shape"></div>
+      <div class="front-content">
+        <div class="logo-container">
+          <img src="assets/stc_left_pill_logo.jpg" alt="STC Logo" class="logo-img">
+          <div class="company-name">
+            <span class="company-title-main">SHREEJEE TRADING</span>
+            <span class="company-title-sub">Corporation</span>
+          </div>
+        </div>
+        <div class="front-divider"></div>
+        <div class="tagline">
+          Veterinary Pharmaceuticals &bull; Poultry Medicines &bull; Vaccines
+        </div>
+      </div>
+    </div>
+
+    <!-- Back of Card -->
+    <div class="card card-back">
+      
+      <div class="back-left">
+        <div class="back-logo-wrap">
+          <img src="assets/stc_left_pill_logo.jpg" alt="STC" class="back-logo">
+        </div>
+        <div class="person-details">
+          <h2 class="person-name">Chetan R. Shah</h2>
+          <div class="person-title">Proprietor / M.D.</div>
+        </div>
+      </div>
+      
+      <div class="back-right">
+        
+        <div class="contact-item">
+          <div class="contact-icon-wrap">
+            <svg class="contact-icon" width="10" height="10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 5a2 2 0 012-2h32a2 2 0 012 2v2H3V5zm0 6h32v8a2 2 0 01-2 2H5a2 2 0 01-2-2v-8z"/>
+            </svg>
+          </div>
+          <div class="contact-text">
+            <strong>Mobile / WhatsApp</strong>
+            +91 9376168779
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon-wrap">
+            <svg class="contact-icon" width="10" height="10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <div class="contact-text">
+            <strong>Email</strong>
+            crshah2@yahoo.com
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon-wrap">
+            <svg class="contact-icon" width="10" height="10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+          <div class="contact-text">
+            <strong>Registered Office</strong>
+            15, 2nd Floor, Hiramoti Chambers,<br>Golwad, Khadia, AHMEDABAD-380001
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon-wrap">
+            <svg class="contact-icon" width="10" height="10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/>
+            </svg>
+          </div>
+          <div class="contact-text">
+            <strong>Website</strong>
+            www.shreejeetradingcorp.com
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

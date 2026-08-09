@@ -81,13 +81,6 @@ const PRODUCTS = [
   {
     id: 'prod-varsha-2', brand: 'Varsha', title: 'Varsha Electrolyte C', composition: 'Electrolytes with Vitamin C', category: 'supplements', categoryName: 'Feed Supplements & Minerals', badge: 'Rehydration', packing: '1kg Pouch', moq: '20 Pouches', storage: 'Airtight container', target: 'Poultry', dosage: '1g / Liter water', indications: 'Summer stress, loose droppings, dehydration.', speciesTags: ['Poultry Flocks'], description: 'Instant energy and rehydration formula for combating severe heat stress and restoring fluid balance.', technicalSpecs: 'High solubility.'
   },
-  // MISC/GENERAL
-  {
-    id: 'prod-stc-1', brand: 'STC Supply', title: 'Examination Latex Gloves', composition: '100% Pure Latex', category: 'gloves', categoryName: 'Disposable Gloves & Safety', badge: 'Essential', packing: 'Box of 100', moq: '10 Boxes', storage: 'Below 30°C', target: 'Veterinary Clinics, Farms', dosage: 'Single use', indications: 'Biosecurity, clinical exams.', speciesTags: ['Veterinary Clinic', 'Farm Biosecurity'], description: 'High-quality powder-free latex gloves for reliable pathogen barrier protection.', technicalSpecs: 'AQL 1.5'
-  },
-  {
-    id: 'prod-stc-2', brand: 'STC Supply', title: 'Nitrile Heavy-Duty Gloves', composition: 'Synthetic Nitrile Rubber', category: 'gloves', categoryName: 'Disposable Gloves & Safety', badge: 'Chemical Safe', packing: 'Box of 100', moq: '10 Boxes', storage: 'Dry place', target: 'Hatchery, Disinfection Teams', dosage: 'Single use', indications: 'Handling chemical sanitizers, vaccines.', speciesTags: ['Poultry Hatchery'], description: 'Puncture-resistant nitrile gloves offering superior chemical protection.', technicalSpecs: '6 mil thickness.'
-  }
 ];
 
 // Application State
@@ -98,7 +91,6 @@ let activeSort = 'default';
 
 const CATEGORY_IMAGES = {
   poultry: 'assets/poultry_supplements.jpg',
-  gloves: 'assets/hero_banner.jpg',
   supplements: 'assets/poultry_supplements.jpg',
   vaccines: 'assets/vet_vaccines.jpg'
 };
@@ -181,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Category Thumbnail Fallback Helper
 function getCategoryFallbackImage(category) {
   if (category === 'vaccines') return 'assets/category-vaccines.jpg';
-  if (category === 'gloves') return 'assets/category-gloves.jpg';
+
   return 'assets/category-supplements.jpg';
 }
 
@@ -472,7 +464,7 @@ function updateQuoteUI() {
         <div style="text-align: center; padding: 3.5rem 1rem; color: var(--text-body);">
           <svg width="48" height="48" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-bottom: 0.75rem; color: var(--slate-400);"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
           <p style="font-weight: 600; color: var(--text-heading);">Your wholesale inquiry list is empty</p>
-          <p style="font-size: 0.88rem; margin-top: 0.35rem;">Browse products or gloves and click "Add to RFQ" to build a consolidated wholesale inquiry.</p>
+          <p style="font-size: 0.88rem; margin-top: 0.35rem;">Browse products and click "Add to RFQ" to build a consolidated wholesale inquiry.</p>
         </div>
       `;
     } else {
@@ -569,11 +561,9 @@ function switchCalcTab(tab) {
   // Toggle visible form controls
   const poultryGroup = document.getElementById('poultryCalcGroup');
   const livestockGroup = document.getElementById('livestockCalcGroup');
-  const glovesGroup = document.getElementById('glovesCalcGroup');
 
   if (poultryGroup) poultryGroup.style.display = tab === 'poultry' ? 'block' : 'none';
   if (livestockGroup) livestockGroup.style.display = tab === 'livestock' ? 'block' : 'none';
-  if (glovesGroup) glovesGroup.style.display = tab === 'gloves' ? 'block' : 'none';
 
   calculateFarmRequirement();
 }
@@ -628,19 +618,6 @@ function calculateFarmRequirement() {
       resPacks.textContent = `${bags} Bag(s) (25kg Laminated Bag)`;
       if (resNote) resNote.textContent = `*Essential trace minerals to boost cattle fertility and herd immunity.`;
     }
-  } else if (currentCalcTab === 'gloves') {
-    const dailyExams = parseInt(document.getElementById('calcGlovesExams')?.value) || 40;
-    const workDays = parseInt(document.getElementById('calcGlovesDays')?.value) || 25;
-    const type = document.getElementById('calcGlovesType')?.value || 'latex';
-
-    const totalPairs = dailyExams * workDays;
-    const totalGloves = totalPairs * 2;
-    const boxes = Math.ceil(totalGloves / 100);
-    const cartons = (boxes / 10).toFixed(1);
-
-    resVol.textContent = `${totalPairs.toLocaleString()} Pairs (${totalGloves.toLocaleString()} Gloves)`;
-    resPacks.textContent = `${boxes} Box(es) (approx. ${cartons} Master Cartons)`;
-    if (resNote) resNote.textContent = `*Hygienic single-use examination glove requirement for clinic/farm staff over ${workDays} working days.`;
   }
 }
 

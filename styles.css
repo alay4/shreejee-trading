@@ -3154,7 +3154,7 @@ body.nav-open .nav-toggle-bar:nth-child(3) { transform: translateY(-7px) rotate(
   overflow: hidden;
 }
 .product-thumb--poultry { background-image: linear-gradient(135deg, rgba(217,4,41,0.75), rgba(15,23,42,0.6)), url('assets/poultry_supplements.jpg'); }
-.product-thumb--gloves { background-image: linear-gradient(135deg, rgba(71,85,105,0.85), rgba(15,23,42,0.7)), url('assets/hero_banner.jpg'); }
+
 .product-thumb--supplements { background-image: linear-gradient(135deg, rgba(13,148,136,0.75), rgba(15,23,42,0.6)), url('assets/poultry_supplements.jpg'); }
 .product-thumb--vaccines { background-image: linear-gradient(135deg, rgba(6,78,59,0.8), rgba(15,23,42,0.65)), url('assets/vet_vaccines.jpg'); }
 .product-thumb-badges {
