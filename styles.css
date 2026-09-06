@@ -2612,7 +2612,6 @@ a {
 }
 
 .upi-badge-gpay { border-left: 4px solid #4285F4; }
-.upi-badge-paytm { border-left: 4px solid #00B9F1; }
 .upi-badge-phonepe { border-left: 4px solid #5F259F; }
 .upi-badge-bhim { border-left: 4px solid #FF6600; }
 
@@ -2645,6 +2644,99 @@ a {
   font-weight: 700;
   color: var(--text-heading);
   font-family: var(--font-heading);
+}
+
+/* UPI QR & Payment Layout */
+.upi-payment-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .upi-payment-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.upi-qr-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.payment-qr-img {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  border-radius: var(--radius-sm);
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: transform 0.25s ease;
+}
+
+.upi-qr-card a:hover .payment-qr-img {
+  transform: scale(1.02);
+}
+
+.upi-qr-caption {
+  margin-top: 0.75rem;
+}
+
+.upi-qr-merchant {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--text-heading);
+}
+
+.upi-qr-hint {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+}
+
+.upi-number-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.upi-number-val {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-heading);
+  font-family: var(--font-heading);
+  word-break: break-word;
+}
+
+.copy-btn {
+  background: var(--bg-section-alt);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.25rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--stc-red);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: var(--spring);
+}
+
+.copy-btn:hover {
+  background: var(--stc-red-bg);
+  border-color: var(--stc-red);
 }
 
 /* Back to Top Button */

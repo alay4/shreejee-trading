@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us & B2B Payments (PayTM, GPay, PhonePe) | Shreejee Trading Corporation</title>
-  <meta name="description" content="Contact Shreejee Trading Corporation in Ahmedabad. Online B2B wholesale payments via PayTM, Google Pay, PhonePe, UPI & Bank NEFT/RTGS transfer.">
+  <title>Contact Us & B2B Payments (Google Pay, PhonePe) | Shreejee Trading Corporation</title>
+  <meta name="description" content="Contact Shreejee Trading Corporation in Ahmedabad. Online B2B wholesale payments via Google Pay, PhonePe, UPI & Bank NEFT/RTGS transfer.">
   <link rel="icon" type="image/jpeg" href="assets/stc_logo.jpg?v=20260808">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260808">
+  <link rel="stylesheet" href="styles.css?v=20260906">
 </head>
 <body>
 
@@ -103,7 +103,7 @@
         <div class="payment-tabs">
           <button class="payment-tab-btn active" data-tab="upi" onclick="switchPaymentTab('upi')">
             <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
-            PayTM / GPay / PhonePe (UPI)
+            PhonePe / Google Pay (UPI)
           </button>
           <button class="payment-tab-btn" data-tab="bank" onclick="switchPaymentTab('bank')">
             <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m3 0h1m-1-4h.01M9 16h.01M9 12h.01M9 8h.01M15 16h.01M15 12h.01M15 8h.01"/></svg>
@@ -116,37 +116,78 @@
           <div style="margin-bottom: 1.5rem;">
             <p style="color: var(--text-body); font-weight: 600; margin-bottom: 1rem;">Supported Instant UPI Payment Apps:</p>
             <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-              <span class="upi-app-badge upi-badge-gpay">Google Pay (GPay)</span>
-              <span class="upi-app-badge upi-badge-paytm">PayTM</span>
               <span class="upi-app-badge upi-badge-phonepe">PhonePe</span>
+              <span class="upi-app-badge upi-badge-gpay">Google Pay (GPay)</span>
               <span class="upi-app-badge upi-badge-bhim">BHIM UPI</span>
             </div>
           </div>
 
-          <div class="bank-detail-grid">
-            <div class="bank-detail-item">
-              <label>Primary Mobile / UPI Number</label>
-              <span>+91 9376168779</span>
+          <div class="upi-payment-layout">
+            <!-- PhonePe QR Standee Card -->
+            <div class="upi-qr-card">
+              <span class="badge badge-primary" style="margin-bottom: 0.65rem; display: inline-block;">PhonePe QR Code</span>
+              <a href="assets/phonepe-qr.jpg" target="_blank" title="Click to view high-resolution PhonePe QR" style="display: block; text-decoration: none;">
+                <img src="assets/phonepe-qr.jpg" alt="PhonePe QR Code - Shreejee Trading Corporation" class="payment-qr-img" width="240" height="413" loading="lazy">
+              </a>
+              <div class="upi-qr-caption">
+                <span class="upi-qr-merchant">Shreejee Trading Corporation</span>
+                <span class="upi-qr-hint">Scan with PhonePe or any UPI app</span>
+              </div>
             </div>
-            <div class="bank-detail-item">
-              <label>PayTM / VPA Handle</label>
-              <span>9376168779@paytm</span>
-            </div>
-            <div class="bank-detail-item">
-              <label>Google Pay / BHIM VPA</label>
-              <span>9376168779@ybl</span>
-            </div>
-          </div>
 
-          <div style="margin-top: 2rem; padding: 1.25rem; background: var(--stc-red-bg); border: 1px solid var(--stc-red-light); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
-            <div>
-              <h4 style="color: var(--stc-red); font-size: 1rem; margin-bottom: 0.2rem;">Confirm Payment Receipt</h4>
-              <p style="font-size: 0.88rem; color: var(--text-body);">After making the UPI payment, click below to send your payment screenshot against your invoice.</p>
+            <!-- UPI Numbers & Settlement Info -->
+            <div class="upi-details-col">
+              <div class="bank-detail-grid" style="margin-top: 0;">
+                <div class="bank-detail-item">
+                  <label>PhonePe Number</label>
+                  <div class="upi-number-row">
+                    <span class="upi-number-val">+91 9376168779</span>
+                    <button type="button" class="copy-btn" onclick="copyUPI('9376168779', 'PhonePe Number')" title="Copy PhonePe Number">
+                      <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"/></svg>
+                      Copy
+                    </button>
+                  </div>
+                </div>
+
+                <div class="bank-detail-item">
+                  <label>Google Pay (GPay) Number</label>
+                  <div class="upi-number-row">
+                    <span class="upi-number-val">+91 9376168779</span>
+                    <button type="button" class="copy-btn" onclick="copyUPI('9376168779', 'Google Pay Number')" title="Copy Google Pay Number">
+                      <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"/></svg>
+                      Copy
+                    </button>
+                  </div>
+                </div>
+
+                <div class="bank-detail-item">
+                  <label>Primary Mobile / UPI Number</label>
+                  <div class="upi-number-row">
+                    <span class="upi-number-val">+91 9376168779</span>
+                    <button type="button" class="copy-btn" onclick="copyUPI('9376168779', 'UPI Number')" title="Copy UPI Number">
+                      <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"/></svg>
+                      Copy
+                    </button>
+                  </div>
+                </div>
+
+                <div class="bank-detail-item">
+                  <label>Registered Business Name</label>
+                  <span class="upi-number-val">Shreejee Trading Corporation</span>
+                </div>
+              </div>
+
+              <div style="margin-top: 1.5rem; padding: 1.25rem; background: var(--stc-red-bg); border: 1px solid var(--stc-red-light); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
+                <div>
+                  <h4 style="color: var(--stc-red); font-size: 1rem; margin-bottom: 0.2rem;">Confirm Payment Receipt</h4>
+                  <p style="font-size: 0.88rem; color: var(--text-body);">After making the UPI payment, click below to send your payment screenshot against your invoice.</p>
+                </div>
+                <a href="https://wa.me/919376168779?text=Hello,%20I%20have%20completed%20the%20UPI%20payment%20for%20my%20wholesale%20order.%20Attaching%20receipt." target="_blank" class="btn btn-whatsapp">
+                  <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                  Send Payment Screenshot
+                </a>
+              </div>
             </div>
-            <a href="https://wa.me/919376168779?text=Hello,%20I%20have%20completed%20the%20UPI%20payment%20for%20my%20wholesale%20order.%20Attaching%20receipt." target="_blank" class="btn btn-whatsapp">
-              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
-              Send Payment Screenshot
-            </a>
           </div>
         </div>
 
@@ -366,6 +407,6 @@
   </a>
 
   <div id="quickViewModalContainer"></div>
-  <script src="app.js"></script>
+  <script src="app.js?v=20260906"></script>
 </body>
 </html>

@@ -524,7 +524,7 @@ function sendWhatsAppRFQ() {
   window.open(url, '_blank');
 }
 
-// Indian B2B Payment Portal Tab Switcher (PayTM, GPay, PhonePe, Bank NEFT/RTGS)
+// Indian B2B Payment Portal Tab Switcher (Google Pay, PhonePe, Bank NEFT/RTGS)
 function switchPaymentTab(tabName) {
   const tabs = document.querySelectorAll('.payment-tab-btn');
   const panels = document.querySelectorAll('.payment-panel');
@@ -544,6 +544,35 @@ function switchPaymentTab(tabName) {
       panel.style.display = 'none';
     }
   });
+}
+
+// Copy UPI Number to Clipboard with Toast Notification
+function copyUPI(val, label) {
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(val).then(() => {
+      showToast(`${label} copied: ${val}`);
+    }).catch(() => {
+      fallbackCopy(val, label);
+    });
+  } else {
+    fallbackCopy(val, label);
+  }
+}
+
+function fallbackCopy(val, label) {
+  try {
+    const ta = document.createElement('textarea');
+    ta.value = val;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    ta.remove();
+    showToast(`${label} copied: ${val}`);
+  } catch (e) {
+    showToast(`Number: ${val}`);
+  }
 }
 
 // Multi-Tab Farm Requirement & Dosage Estimator
