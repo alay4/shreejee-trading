@@ -24,28 +24,133 @@ const PRODUCTS = [
   {
     id: 'prod-virbac-5', brand: 'Virbac', title: 'Toxiroak Gold', composition: 'HSCAS, MOS, Organic Acids, Copper Sulfate', category: 'supplements', categoryName: 'Feed Supplements & Minerals', badge: 'Toxin Binder', packing: '25kg Bag', moq: '10 x 25kg (250kg)', storage: 'Dry warehouse', target: 'Poultry Feed', dosage: '1-2kg per Ton of feed', indications: 'Mycotoxicosis, Aflatoxin contamination.', speciesTags: ['Feed Manufacturers', 'Commercial Poultry'], description: 'Broad-spectrum mycotoxin binder that adsorbs multiple toxins and prevents immunosuppression.', technicalSpecs: 'Irreversible binding capacity.'
   },
-  // AYURVET
+  // ZENEX ANIMAL HEALTH
   {
-    id: 'prod-ayurvet-1', brand: 'Ayurvet', title: 'Ruchamax Powder', composition: 'Herbal digestive stimulants', category: 'supplements', categoryName: 'Natural & Ayurvedic', badge: 'Appetite Pro', packing: '15g sachet / 1kg Pouch', moq: '20 x 1kg', storage: 'Keep in dry place', target: 'Cattle, Sheep, Goat', dosage: 'Cattle: 15g twice daily', indications: 'Anorexia, Indigestion, Dyspepsia.', speciesTags: ['Dairy Cattle', 'Small Ruminants'], description: 'Polyherbal stomachic and digestive tonic that restores rumen microflora and appetite naturally.', technicalSpecs: 'Zero withdrawal period.'
+    id: 'prod-zenex-1',
+    brand: 'Zenex',
+    title: 'Respzz Liquid',
+    composition: 'Herbal Bronchodilator & Expectorant (Adhatoda vasica, Glycyrrhiza glabra, Ocimum sanctum, Menthol, Thymol, Camphor)',
+    category: 'supplements',
+    categoryName: 'Natural & Ayurvedic',
+    badge: 'Respiratory Health',
+    packing: '5 Litre Can',
+    moq: '2 x 5L Cans',
+    storage: 'Store in cool, dry place away from direct sunlight',
+    target: 'Poultry & Livestock',
+    dosage: 'Chicks: 2.5ml/100 birds | Growers: 5ml/100 birds | Layers & Broilers: 10ml/100 birds in drinking water for 5-7 days',
+    indications: 'Respiratory distress, rales, coughing, mucus liquefaction, supportive therapy in CRD, Infectious Coryza, and IB.',
+    speciesTags: ['Broiler Flocks', 'Layer Birds', 'Breeders'],
+    description: 'Premier polyherbal respiratory tonic formulated to alleviate breathing distress, clear mucus blockages, dilate airways, and speed recovery when co-administered with antibiotics.',
+    technicalSpecs: 'Phytogenic volatile oils and expectorant herbs, 5L high-density can.'
   },
   {
-    id: 'prod-ayurvet-2', brand: 'Ayurvet', title: 'Payapro Tablets', composition: 'Leptadenia reticulata, Asparagus racemosus', category: 'supplements', categoryName: 'Natural & Ayurvedic', badge: 'Galactagogue', packing: 'Strip of 10 Tablets / Box of 100', moq: '10 Boxes', storage: 'Room temperature', target: 'Dairy Cattle', dosage: '3-4 tablets twice daily', indications: 'Hypogalactia, irregular lactation drops.', speciesTags: ['Dairy Cattle'], description: 'Herbal galactagogue that naturally stimulates milk let-down and increases overall milk yield.', technicalSpecs: '100% herbal active ingredients.'
-  },
-  {
-    id: 'prod-ayurvet-3', brand: 'Ayurvet', title: 'Exapar Liquid', composition: 'Plumbago zeylanica, Aloe barbadensis', category: 'supplements', categoryName: 'Natural & Ayurvedic', badge: 'Uterine Cleanser', packing: '500ml / 1L', moq: '10 x 1L', storage: 'Cool dry place', target: 'Cattle, Buffalo', dosage: '100ml twice on first day, then 50ml daily', indications: 'Retained placenta, delayed involution of uterus.', speciesTags: ['Dairy Cattle'], description: 'Potent uterine ecbolic and cleanser to prevent post-partum complications and infections.', technicalSpecs: 'Ensures timely involution.'
-  },
-  {
-    id: 'prod-ayurvet-4', brand: 'Ayurvet', title: 'Restobal Liquid', composition: 'Withania somnifera, Ocimum sanctum', category: 'supplements', categoryName: 'Natural & Ayurvedic', badge: 'Adaptogen', packing: '1L / 5L', moq: '5 x 5L', storage: 'Store below 25°C', target: 'Poultry', dosage: '10-20ml / 100 birds in water', indications: 'Heat stress, vaccination stress, handling stress.', speciesTags: ['Broiler Poultry', 'Layer Birds'], description: 'Herbal anti-stress, adaptogenic and immunomodulatory tonic for flock stability during environmental stress.', technicalSpecs: 'Reduces serum cortisol levels naturally.'
+    id: 'prod-zenex-2',
+    brand: 'Zenex',
+    title: 'Ayucee Liquid',
+    composition: 'Phytogenic Vitamin C & Bioflavonoid Complex (Natural Ascorbic Acid from Emblica officinalis)',
+    category: 'supplements',
+    categoryName: 'Natural & Ayurvedic',
+    badge: 'Anti-Stress & Immunity',
+    packing: '2 Litre Can',
+    moq: '4 x 2L Cans',
+    storage: 'Store in tightly closed container in cool, dark place',
+    target: 'Poultry Flocks',
+    dosage: 'Chicks: 1ml/100 birds | Growers: 2ml/100 birds | Layers & Broilers: 3ml/100 birds daily in drinking water',
+    indications: 'Extreme heat stress, vaccination stress, debility, poor immune response, eggshell quality drops.',
+    speciesTags: ['Broiler Flocks', 'Layer Pullets', 'Breeder Flocks'],
+    description: 'Natural biological anti-stress and immunomodulatory liquid offering potent plant-derived Vitamin C and bioflavonoids for superior antioxidant defense, cell integrity, and immune stimulation.',
+    technicalSpecs: 'High bioavailability natural Vitamin C, heat-stable, 2L pack.'
   },
   // VETOQUINOL
   {
-    id: 'prod-veto-1', brand: 'Vetoquinol', title: 'Meriquin 10% Oral Solution', composition: 'Enrofloxacin 100mg/ml', category: 'poultry', categoryName: 'Poultry Medicine & Antibiotics', badge: 'Fast Acting', packing: '1L / 5L Can', moq: '10 x 1L', storage: 'Protect from light', target: 'Poultry', dosage: '10mg/kg body weight for 3-5 days', indications: 'CRD, Colibacillosis, Fowl Cholera, Coryza.', speciesTags: ['Broiler Flocks', 'Layer Birds'], description: 'Broad-spectrum fluoroquinolone antibiotic for rapid control of severe systemic and respiratory infections.', technicalSpecs: 'High tissue concentration within 2 hours.'
+    id: 'prod-veto-1',
+    brand: 'Vetoquinol',
+    title: 'Meriflox Liquid (Levofloxacin 10%)',
+    composition: 'Levofloxacin Hemihydrate 10% w/v Oral Solution',
+    category: 'poultry',
+    categoryName: 'Poultry Medicine & Antibiotics',
+    badge: 'Broad Spectrum',
+    packing: '1 Litre / 5 Litre Can',
+    moq: '10 x 1L / 2 x 5L',
+    storage: 'Store in cool, dry place protected from light',
+    target: 'Poultry',
+    dosage: '10mg/kg body weight (approx. 1ml per 1-2 Litres drinking water) for 3-5 days',
+    indications: 'Chronic Respiratory Disease (CRD), Colibacillosis, Fowl Cholera, Salmonellosis, and Infectious Coryza.',
+    speciesTags: ['Broiler Flocks', 'Layer Birds', 'Commercial Poultry'],
+    description: 'High-efficacy third-generation fluoroquinolone oral liquid antimicrobial providing rapid bacterial eradication with superior tissue penetration and bioavailability.',
+    technicalSpecs: '100mg/ml active Levofloxacin, rapid gastrointestinal absorption.'
   },
   {
-    id: 'prod-veto-2', brand: 'Vetoquinol', title: 'Toxi-Flush', composition: 'Sorbitol, Carnitine, Betaine, MgSO4', category: 'supplements', categoryName: 'Feed Supplements & Minerals', badge: 'Kidney Flush', packing: '1L / 5L', moq: '10 x 1L', storage: 'Room temp', target: 'Poultry', dosage: '10-20ml/100 birds', indications: 'Gout, nephrosis, post-antibiotic flush.', speciesTags: ['Broiler Flocks', 'Layer Birds'], description: 'Osmotic diuretic and metabolic stimulant that flushes kidney urates and revitalizes organ function.', technicalSpecs: 'Liquid water soluble.'
+    id: 'prod-veto-2',
+    brand: 'Vetoquinol',
+    title: 'Meriflox BH Liquid',
+    composition: 'Levofloxacin Hemihydrate 10% w/v + Bromhexine Hydrochloride 0.75% w/v',
+    category: 'poultry',
+    categoryName: 'Poultry Medicine & Antibiotics',
+    badge: 'Antibacterial + Mucolytic',
+    packing: '1 Litre / 5 Litre Can',
+    moq: '10 x 1L / 2 x 5L',
+    storage: 'Store below 30°C in cool, dark place',
+    target: 'Poultry',
+    dosage: '1ml per 1-2 Litres of drinking water for 3-5 consecutive days',
+    indications: 'Complicated respiratory tract infections with heavy tracheobronchial exudates, CRD complex, severe Mycoplasmosis.',
+    speciesTags: ['Broiler Flocks', 'Layer Pullets', 'Breeder Farms'],
+    description: 'Synergistic combination of potent Levofloxacin antibiotic and Bromhexine mucolytic that breaks down thick tracheal mucus, ensuring deep lung delivery of antibiotic.',
+    technicalSpecs: 'Dual active formulation: Levofloxacin 10% + Bromhexine HCl 7.5mg/ml.'
   },
   {
-    id: 'prod-veto-3', brand: 'Vetoquinol', title: 'Cephacare 500mg Tablets', composition: 'Cephalexin 500mg', category: 'poultry', categoryName: 'Veterinary Medicine', badge: 'Essential', packing: 'Strip of 10 / Box of 100', moq: '10 Boxes', storage: 'Below 25°C', target: 'Dogs, Cats', dosage: '15mg/kg twice daily', indications: 'Pyoderma, urinary tract infections, respiratory infections.', speciesTags: ['Canine', 'Feline', 'Clinic'], description: 'First generation cephalosporin for veterinary clinical use against susceptible Staphylococcus.', technicalSpecs: 'Scored tablets for easy dosing.'
+    id: 'prod-veto-3',
+    brand: 'Vetoquinol',
+    title: 'aRBCe Liquid',
+    composition: 'Chelated Iron, Copper, Cobalt, Folic Acid, Vitamin B12 & Nicotinamide',
+    category: 'supplements',
+    categoryName: 'Feed Supplements & Minerals',
+    badge: 'Hematinic Booster',
+    packing: '2 Litre Bottle',
+    moq: '4 x 2L Bottles',
+    storage: 'Store in cool place away from direct sunlight',
+    target: 'Poultry & Livestock',
+    dosage: 'Poultry: 10-20ml per 100 birds daily in drinking water | Cattle: 30-50ml daily',
+    indications: 'Anemia, low hemoglobin levels, poor hatchability, post-infection recovery, growth promotion, and vitality restoration.',
+    speciesTags: ['Broiler Flocks', 'Commercial Layers', 'Breeder Flocks'],
+    description: 'Specialized red blood cell and hemoglobin building hematinic supplement enriched with organic trace minerals and essential hematopoietic vitamins for peak oxygen transport and vigor.',
+    technicalSpecs: 'High-absorption chelated iron complex, 2L HDPE packaging.'
+  },
+  {
+    id: 'prod-veto-4',
+    brand: 'Vetoquinol',
+    title: 'Azithrovet BH Powder',
+    composition: 'Azithromycin Dihydrate & Bromhexine Hydrochloride Water Soluble Powder',
+    category: 'poultry',
+    categoryName: 'Poultry Medicine & Antibiotics',
+    badge: 'Advanced CCRD Care',
+    packing: '1 kg Pack',
+    moq: '10 x 1kg Packs',
+    storage: 'Store below 25°C in cool, dry place',
+    target: 'Poultry',
+    dosage: '10-20mg/kg body weight administered through drinking water as directed by veterinarian',
+    indications: 'Complicated Chronic Respiratory Disease (CCRD), Mycoplasma gallisepticum, Mycoplasma synoviae, and secondary bacterial complications.',
+    speciesTags: ['Broiler Flocks', 'Layer Flocks', 'Breeder Farms'],
+    description: 'Next-generation azalide macrolide antibiotic paired with Bromhexine mucolytic. Concentrates heavily inside phagocytes and pulmonary tissues for prolonged antimicrobial action against resistant pathogens.',
+    technicalSpecs: 'High water solubility, prolonged tissue half-life, 1kg foil pack.'
+  },
+  {
+    id: 'prod-veto-5',
+    brand: 'Vetoquinol',
+    title: 'Caritol Liquid',
+    composition: 'Tricholine Citrate, Inositol, Silymarin / Hepato-stimulants & B-Complex Vitamins',
+    category: 'supplements',
+    categoryName: 'Feed Supplements & Minerals',
+    badge: 'Liver Tonic',
+    packing: '5 Litre Can',
+    moq: '2 x 5L Cans',
+    storage: 'Store in cool, dry place away from heat',
+    target: 'Poultry & Livestock',
+    dosage: 'Broilers: 10-15ml per 100 birds | Layers: 20ml per 100 birds daily in drinking water',
+    indications: 'Fatty liver syndrome, aflatoxicosis, hepatitis, poor feed conversion, post-medication hepatic recovery.',
+    speciesTags: ['Broiler Flocks', 'Layer Birds', 'Breeders'],
+    description: 'High-potency hepatoprotective liquid formulation engineered to protect liver parenchymal cells, facilitate fat metabolism, detoxify mycotoxins, and improve feed efficiency.',
+    technicalSpecs: 'Synergistic lipotropic and hepato-stimulant factors, 5L high-density can.'
   },
   // VENKYS
   {
@@ -1209,11 +1314,11 @@ const PARTNER_COMPANIES = [
   },
   {
     id: 20,
-    name: "Zydus Animal Health",
-    website: "https://www.zyduslife.com/",
+    name: "Zenex Animal Health",
+    website: "https://zenexah.com/",
     category: "pharma",
-    categoryLabel: "Pharma & Antibiotics",
-    description: "Zydus Animal Health division offering comprehensive cattle, poultry, and equine therapeutics."
+    categoryLabel: "Pharma & Herbal",
+    description: "Formerly Zydus Animal Health, Zenex is a premier animal health company specializing in poultry respiratory, anti-stress, and clinical therapeutics."
   },
   {
     id: 21,
