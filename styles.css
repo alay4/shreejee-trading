@@ -1528,8 +1528,19 @@ a {
 
 /* Multi-Tab Interactive Farm Requirement & Dosage Estimator */
 .calc-section {
-  background: var(--bg-gradient);
+  background: linear-gradient(135deg, #0b1528 0%, #1e3a8a 60%, #0f172a 100%);
   color: #ffffff;
+  padding: 5.5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.calc-section .section-title {
+  color: #ffffff;
+}
+
+.calc-section .section-desc {
+  color: #cbd5e1;
 }
 
 .calc-card {
@@ -3051,6 +3062,14 @@ a {
   .calc-card, .card-replica-banner, .guide-cta-banner {
     padding: 1.35rem;
     gap: 1.25rem;
+  }
+  .result-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+  .result-val {
+    font-size: 1.35rem;
   }
 }
 

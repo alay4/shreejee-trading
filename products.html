@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260906h">
+  <link rel="stylesheet" href="styles.css?v=20260906i">
 </head>
 <body>
   <!-- Skip to Main Content Link -->
@@ -131,48 +131,95 @@
   </section>
 
   <!-- Interactive Dosage Estimator Section -->
-  <section class="calc-section" id="calculator" style="padding: 5rem 0; background: var(--bg-section-alt); border-top: 1px solid var(--border-color);">
+  <section class="section calc-section" id="calculator">
     <div class="container">
       <div class="section-header">
         <span class="badge badge-primary">Wholesale Requirement Tool</span>
-        <h2 class="section-title">Farm Requirement & Dosage Estimator</h2>
-        <p class="section-desc">Estimate required medicine volume based on flock size or clinical volume.</p>
+        <h2 class="section-title">Farm Requirement &amp; Dosage Estimator</h2>
+        <p class="section-desc">Estimate required medicine volume, water consumption, and bulk wholesale packaging based on your flock or herd size.</p>
       </div>
 
       <div class="calc-card">
-        <div class="calc-tabs">
-          <button class="calc-tab-btn active" onclick="switchCalcTab('poultry')">Poultry (Broilers & Layers)</button>
-          <button class="calc-tab-btn" onclick="switchCalcTab('cattle')">Livestock (Cattle & Dairy)</button>
+        <div class="calc-form">
+          <div class="calc-tab-nav" role="tablist" aria-label="Farm Type Selection">
+            <button type="button" class="calc-tab-btn active" role="tab" aria-selected="true" data-tab="poultry" onclick="switchCalcTab('poultry')">Poultry (Broilers &amp; Layers)</button>
+            <button type="button" class="calc-tab-btn" role="tab" aria-selected="false" data-tab="livestock" onclick="switchCalcTab('livestock')">Livestock (Cattle &amp; Dairy)</button>
+          </div>
 
+          <form id="calcForm" onsubmit="event.preventDefault();">
+            <!-- Poultry Tab Controls -->
+            <div id="poultryCalcGroup">
+              <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem;">
+                <div class="form-group">
+                  <label class="form-label" for="calcPoultryBirds">Flock Size (Number of Birds)</label>
+                  <input type="number" id="calcPoultryBirds" class="form-input" value="5000" min="100" step="500">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="calcPoultryDays">Treatment Duration (Days)</label>
+                  <input type="number" id="calcPoultryDays" class="form-input" value="5" min="1" max="30">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="calcPoultryType">Poultry Product Formulation</label>
+                <select id="calcPoultryType" class="form-select">
+                  <option value="tonic">Liver &amp; Health Tonic (Hepatocare / Fit 5 / Brotone)</option>
+                  <option value="calcium">Liquid Calcium &amp; Minerals (CalciMax / Ostocalcium)</option>
+                  <option value="powder">Water-Soluble Antibacterial Powder (Levobact-Vet / Meriquin)</option>
+                  <option value="disinfectant">Biosecurity &amp; Shed Disinfectant (ViruClean 5th Gen)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Livestock Tab Controls -->
+            <div id="livestockCalcGroup" style="display: none;">
+              <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.25rem;">
+                <div class="form-group">
+                  <label class="form-label" for="calcCattleCount">Herd Size (Dairy Cattle / Buffaloes)</label>
+                  <input type="number" id="calcCattleCount" class="form-input" value="50" min="5" step="5">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="calcCattleDays">Supplement Duration (Days)</label>
+                  <input type="number" id="calcCattleDays" class="form-input" value="30" min="5" max="90">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="calcCattleType">Livestock Product Formulation</label>
+                <select id="calcCattleType" class="form-select">
+                  <option value="calcium">Liquid Calcium Supplement (CalciMax Forte 20L Drum)</option>
+                  <option value="mineral">Chelated Mineral Mixture Powder (Agrimin Forte 25kg Bag)</option>
+                  <option value="tonic">Metabolic &amp; Liver Booster (Hepatocare 5L Can)</option>
+                </select>
+              </div>
+            </div>
+          </form>
         </div>
 
-        <form id="calcForm" onsubmit="event.preventDefault();">
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" id="calcInputLabel" for="calcCount">Flock Size (Number of Birds)</label>
-              <input type="number" id="calcCount" class="form-input" value="5000" min="100" step="100">
-            </div>
+        <div class="calc-result-box" aria-live="polite">
+          <h3 style="color: white; font-size: 1.3rem; margin-bottom: 0.5rem;">Estimated Wholesale Requirement</h3>
+          
+          <div class="result-item">
+            <span class="result-label" id="resLabel1">Estimated Water Consumption:</span>
+            <span class="result-val" id="resVal1">1,000 Litres / Day</span>
+          </div>
 
-            <div class="form-group">
-              <label class="form-label" for="calcDays">Treatment Duration (Days)</label>
-              <input type="number" id="calcDays" class="form-input" value="7" min="1" max="30">
-            </div>
+          <div class="result-item">
+            <span class="result-label" id="resLabel2">Total Medicine Volume:</span>
+            <span class="result-val" id="resVal2">3.8 Litres</span>
           </div>
-        </form>
 
-        <div class="calc-results">
-          <div class="calc-result-box">
-            <div class="calc-result-title" id="resTitle1">Estimated Water Consumption</div>
-            <div class="calc-result-val" id="resVal1">1,000 Litres / Day</div>
+          <div class="result-item">
+            <span class="result-label" id="resLabel3">Suggested Wholesale Packing:</span>
+            <span class="result-val" id="resVal3">1 Can(s) (5L Bulk)</span>
           </div>
-          <div class="calc-result-box">
-            <div class="calc-result-title" id="resTitle2">Recommended Medicine Volume</div>
-            <div class="calc-result-val" id="resVal2">1.4 Litres (5-Day Course)</div>
-          </div>
-          <div class="calc-result-box">
-            <div class="calc-result-title" id="resTitle3">Suggested Wholesale Packing</div>
-            <div class="calc-result-val" id="resVal3">2 x 1L Bottles</div>
-          </div>
+
+          <p id="resNote" style="font-size: 0.88rem; color: rgba(255,255,255,0.8); line-height: 1.5; margin: 0.25rem 0 0.5rem;">
+            *Recommended for 5,000 poultry birds over 5 consecutive days of drinking water treatment.
+          </p>
+
+          <a id="calcWhatsAppBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-lg" style="width: 100%; justify-content: center;" aria-label="Send calculated farm dosage requirement to Chetan Shah on WhatsApp">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+            Inquire This Requirement on WhatsApp
+          </a>
         </div>
       </div>
     </div>
@@ -279,6 +326,6 @@
   </a>
 
   <div id="quickViewModalContainer"></div>
-  <script src="app.js?v=20260906h"></script>
+  <script src="app.js?v=20260906i"></script>
 </body>
 </html>

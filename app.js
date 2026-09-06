@@ -1069,6 +1069,7 @@ function setupEventListeners() {
   const calcForm = document.getElementById('calcForm');
   if (calcForm) {
     calcForm.addEventListener('input', calculateFarmRequirement);
+    calcForm.addEventListener('change', calculateFarmRequirement);
   }
 
   // Mobile Navigation Menu aria-expanded synchronization
@@ -1272,13 +1273,16 @@ function fallbackCopy(val, label) {
 
 // Multi-Tab Farm Requirement & Dosage Estimator
 function switchCalcTab(tab) {
-  currentCalcTab = tab;
+  currentCalcTab = (tab === 'cattle' || tab === 'livestock') ? 'livestock' : 'poultry';
   const tabBtns = document.querySelectorAll('.calc-tab-btn');
   tabBtns.forEach(b => {
-    if (b.dataset.tab === tab) {
+    const isTab = (b.dataset.tab === currentCalcTab) || (currentCalcTab === 'livestock' && (b.dataset.tab === 'cattle' || b.dataset.tab === 'livestock'));
+    if (isTab) {
       b.classList.add('active');
+      b.setAttribute('aria-selected', 'true');
     } else {
       b.classList.remove('active');
+      b.setAttribute('aria-selected', 'false');
     }
   });
 
@@ -1286,62 +1290,177 @@ function switchCalcTab(tab) {
   const poultryGroup = document.getElementById('poultryCalcGroup');
   const livestockGroup = document.getElementById('livestockCalcGroup');
 
-  if (poultryGroup) poultryGroup.style.display = tab === 'poultry' ? 'block' : 'none';
-  if (livestockGroup) livestockGroup.style.display = tab === 'livestock' ? 'block' : 'none';
+  if (poultryGroup) poultryGroup.style.display = currentCalcTab === 'poultry' ? 'block' : 'none';
+  if (livestockGroup) livestockGroup.style.display = currentCalcTab === 'livestock' ? 'block' : 'none';
 
   calculateFarmRequirement();
 }
 
 function calculateFarmRequirement() {
-  const resVol = document.getElementById('resVolume');
-  const resPacks = document.getElementById('resPacks');
+  const resLabel1 = document.getElementById('resLabel1');
+  const resVal1 = document.getElementById('resVal1');
+  const resLabel2 = document.getElementById('resLabel2');
+  const resVal2 = document.getElementById('resVal2') || document.getElementById('resVolume');
+  const resLabel3 = document.getElementById('resLabel3');
+  const resVal3 = document.getElementById('resVal3') || document.getElementById('resPacks');
   const resNote = document.getElementById('resNote');
-  if (!resVol || !resPacks) return;
+  const waBtn = document.getElementById('calcWhatsAppBtn');
+
+  if (!resVal2 || !resVal3) return;
+
+  let waSpecies = '';
+  let waCount = '';
+  let waDays = '';
+  let waProduct = '';
+  let waVolume = '';
+  let waPacks = '';
 
   if (currentCalcTab === 'poultry') {
-    const birds = parseInt(document.getElementById('calcPoultryBirds')?.value) || 5000;
-    const days = parseInt(document.getElementById('calcPoultryDays')?.value) || 5;
-    const type = document.getElementById('calcPoultryType')?.value || 'tonic';
+    const birdsInput = document.getElementById('calcPoultryBirds') || document.getElementById('calcCount');
+    const daysInput = document.getElementById('calcPoultryDays') || document.getElementById('calcDays');
+    const typeSelect = document.getElementById('calcPoultryType');
+
+    const birds = Math.max(100, parseInt(birdsInput?.value) || 5000);
+    const days = Math.max(1, parseInt(daysInput?.value) || 5);
+    const type = typeSelect?.value || 'tonic';
+
+    // Daily water estimate (~200ml per bird per day for broilers/layers)
+    const dailyWaterLiters = Math.round(birds * 0.2);
+    if (resLabel1) resLabel1.textContent = 'Estimated Water Consumption:';
+    if (resVal1) resVal1.textContent = `${dailyWaterLiters.toLocaleString()} Litres / Day`;
 
     let liters = 0;
-    let packs = 0;
+    let packs = '';
+    let productName = '';
+    let noteText = '';
+
     if (type === 'tonic') {
+      productName = 'Liver & Health Tonic (Hepatocare / Fit 5 / Brotone)';
       liters = ((birds / 100) * 15 * days) / 1000;
-      packs = Math.ceil(liters / 5);
-      resVol.textContent = `${liters.toFixed(1)} Litres (Water Tonic)`;
-      resPacks.textContent = `${packs} Can(s) (5L Bulk Wholesale Can)`;
-      if (resNote) resNote.textContent = `*Recommended for ${birds.toLocaleString()} poultry birds over ${days} consecutive days of drinking water treatment.`;
+      const numCans = Math.ceil(liters / 5);
+      packs = liters <= 4 ? `${Math.ceil(liters)} x 1L Bottle(s)` : `${numCans} Can(s) (5L Bulk Wholesale Can)`;
+      noteText = `*Administer approx. 15ml per 100 birds in drinking water daily for ${days} days to boost liver function, enhance flock vitality, and improve FCR.`;
     } else if (type === 'calcium') {
+      productName = 'Liquid Calcium & Vitamin D3 (CalciMax / Ostocalcium)';
       liters = ((birds / 100) * 20 * days) / 1000;
-      packs = Math.ceil(liters / 5);
-      resVol.textContent = `${liters.toFixed(1)} Litres (Liquid Calcium)`;
-      resPacks.textContent = `${packs} Can(s) (5L Bulk Wholesale Can)`;
-      if (resNote) resNote.textContent = `*Helps strengthen eggshells and prevent leg weakness in ${birds.toLocaleString()} layers.`;
+      const numCans = Math.ceil(liters / 5);
+      packs = liters <= 4 ? `${Math.ceil(liters)} x 1L Bottle(s)` : `${numCans} Can(s) (5L Bulk Wholesale Can)`;
+      noteText = `*Administer approx. 20ml per 100 birds in morning water for ${days} days to strengthen eggshell quality and prevent calcium deficiency rickets.`;
+    } else if (type === 'powder') {
+      productName = 'Water-Soluble Antibacterial Powder (Levobact-Vet / Meriquin)';
+      const totalGrams = (birds / 1000) * 100 * days;
+      const totalKg = totalGrams / 1000;
+      resVal2.textContent = totalKg >= 1 ? `${totalKg.toFixed(1)} kg (${days}-Day Course)` : `${Math.round(totalGrams)} grams (${days}-Day Course)`;
+      if (resLabel2) resLabel2.textContent = 'Total Powder Requirement:';
+      const numPacks = totalKg < 1 ? Math.ceil(totalGrams / 200) : Math.ceil(totalKg);
+      packs = totalKg < 1 ? `${numPacks} Pack(s) (200g Moisture-Proof Pouch)` : `${numPacks} Pack(s) (1kg Bulk Jar/Pouch)`;
+      noteText = `*Dissolve standard recommended dosage (~1g per 2L drinking water) for ${days} consecutive days. Ensure continuous fresh clean drinking water.`;
+      
+      if (resLabel3) resLabel3.textContent = 'Suggested Wholesale Packing:';
+      resVal3.textContent = packs;
+      if (resNote) resNote.textContent = noteText;
+
+      waSpecies = `Poultry (${birds.toLocaleString()} birds)`;
+      waCount = `${birds.toLocaleString()} Birds`;
+      waDays = `${days} Days`;
+      waProduct = productName;
+      waVolume = resVal2.textContent;
+      waPacks = packs;
     } else if (type === 'disinfectant') {
+      productName = 'Biosecurity & Shed Disinfectant (ViruClean 5th Gen)';
       liters = Math.max(1, Math.ceil((birds / 2000) * 2));
-      packs = Math.ceil(liters / 5);
-      resVol.textContent = `${liters.toFixed(1)} Litres (5th Gen Disinfectant)`;
-      resPacks.textContent = `${packs} Can(s) (5L Bulk Canister)`;
-      if (resNote) resNote.textContent = `*Standard aerial fogging and biosecurity surface spray volume for poultry shed.`;
+      const numCans = Math.ceil(liters / 5);
+      packs = liters <= 4 ? `${liters} x 1L Bottle(s)` : `${numCans} Can(s) (5L Bulk Canister)`;
+      noteText = `*Standard volume for terminal shed washdown (1:200 dilution) and aerial biocidal misting for ${birds.toLocaleString()} birds capacity shed.`;
+    }
+
+    if (type !== 'powder') {
+      if (resLabel2) resLabel2.textContent = 'Total Medicine Volume:';
+      resVal2.textContent = `${liters.toFixed(1)} Litres (${days}-Day Course)`;
+      if (resLabel3) resLabel3.textContent = 'Suggested Wholesale Packing:';
+      resVal3.textContent = packs;
+      if (resNote) resNote.textContent = noteText;
+
+      waSpecies = `Poultry (${birds.toLocaleString()} birds)`;
+      waCount = `${birds.toLocaleString()} Birds`;
+      waDays = `${days} Days`;
+      waProduct = productName;
+      waVolume = `${liters.toFixed(1)} Litres`;
+      waPacks = packs;
     }
   } else if (currentCalcTab === 'livestock') {
-    const cattle = parseInt(document.getElementById('calcCattleCount')?.value) || 50;
-    const days = parseInt(document.getElementById('calcCattleDays')?.value) || 30;
-    const type = document.getElementById('calcCattleType')?.value || 'calcium';
+    const cattleInput = document.getElementById('calcCattleCount');
+    const daysInput = document.getElementById('calcCattleDays');
+    const typeSelect = document.getElementById('calcCattleType');
+
+    const cattle = Math.max(1, parseInt(cattleInput?.value) || 50);
+    const days = Math.max(1, parseInt(daysInput?.value) || 30);
+    const type = typeSelect?.value || 'calcium';
+
+    let productName = '';
+    let dailyMetric = '';
+    let totalReq = '';
+    let packs = '';
+    let noteText = '';
 
     if (type === 'calcium') {
-      const liters = (cattle * 0.1 * days); // 100ml per dairy cow daily
-      const drums = Math.ceil(liters / 20);
-      resVol.textContent = `${liters.toFixed(0)} Litres (CalciMax Forte)`;
-      resPacks.textContent = `${drums} Drum(s) (20L Commercial Drum)`;
-      if (resNote) resNote.textContent = `*Based on daily 100ml liquid calcium intake per dairy animal for high milk yield.`;
-    } else {
-      const kg = (cattle * 0.05 * days); // 50g mineral supplement per cow daily
-      const bags = Math.ceil(kg / 25);
-      resVol.textContent = `${kg.toFixed(0)} kg (Mineral Powder)`;
-      resPacks.textContent = `${bags} Bag(s) (25kg Laminated Bag)`;
-      if (resNote) resNote.textContent = `*Essential trace minerals to boost cattle fertility and herd immunity.`;
+      productName = 'Liquid Calcium Supplement (CalciMax Forte 20L Drum)';
+      const dailyLiters = cattle * 0.1; // 100ml per dairy animal
+      const totalLiters = dailyLiters * days;
+      const drums = Math.ceil(totalLiters / 20);
+      dailyMetric = `${dailyLiters.toFixed(1)} Litres / Day`;
+      totalReq = `${totalLiters.toFixed(0)} Litres (${days}-Day Course)`;
+      packs = totalLiters >= 20 ? `${drums} Drum(s) (20L Commercial Drum)` : `${Math.ceil(totalLiters / 5)} Can(s) (5L Bulk Can)`;
+      noteText = `*Based on standard 100ml liquid calcium daily intake per lactating cow/buffalo to sustain peak milk production and avoid milk fever.`;
+    } else if (type === 'mineral') {
+      productName = 'Chelated Mineral Mixture Powder (Agrimin Forte 25kg Bag)';
+      const dailyKg = cattle * 0.05; // 50g per adult cow
+      const totalKg = dailyKg * days;
+      const bags = Math.ceil(totalKg / 25);
+      dailyMetric = `${dailyKg.toFixed(1)} kg / Day`;
+      totalReq = `${totalKg.toFixed(0)} kg (${days}-Day Course)`;
+      packs = totalKg >= 25 ? `${bags} Bag(s) (25kg Laminated Bulk Bag)` : `${Math.ceil(totalKg / 5)} Bucket(s) (5kg Pack)`;
+      noteText = `*Top-dress 50g daily on cattle feed to boost herd fertility, enhance conception rates, and maintain optimal micronutrient balance.`;
+    } else if (type === 'tonic') {
+      productName = 'Metabolic & Liver Booster (Hepatocare / Belamyl 5L Can)';
+      const dailyLiters = cattle * 0.04; // 40ml per cow
+      const totalLiters = dailyLiters * days;
+      const cans = Math.ceil(totalLiters / 5);
+      dailyMetric = `${dailyLiters.toFixed(1)} Litres / Day`;
+      totalReq = `${totalLiters.toFixed(1)} Litres (${days}-Day Course)`;
+      packs = `${cans} Can(s) (5L Bulk Wholesale Can)`;
+      noteText = `*Drench 40ml daily per animal for metabolic stamina, post-calving recovery, and liver protection during transition period.`;
     }
+
+    if (resLabel1) resLabel1.textContent = 'Daily Herd Requirement:';
+    if (resVal1) resVal1.textContent = dailyMetric;
+    if (resLabel2) resLabel2.textContent = 'Total Course Requirement:';
+    resVal2.textContent = totalReq;
+    if (resLabel3) resLabel3.textContent = 'Suggested Wholesale Packing:';
+    resVal3.textContent = packs;
+    if (resNote) resNote.textContent = noteText;
+
+    waSpecies = `Livestock / Dairy (${cattle} animals)`;
+    waCount = `${cattle} Cattle / Buffaloes`;
+    waDays = `${days} Days`;
+    waProduct = productName;
+    waVolume = totalReq;
+    waPacks = packs;
+  }
+
+  // Update WhatsApp RFQ link
+  if (waBtn) {
+    const waText = `*FARM REQUIREMENT & DOSAGE ESTIMATE*\n` +
+      `Attn: Mr. Chetan Shah - Shreejee Trading Corporation\n` +
+      `-------------------------------------------\n` +
+      `• Species: ${waSpecies}\n` +
+      `• Duration: ${waDays}\n` +
+      `• Product Category: ${waProduct}\n` +
+      `• Estimated Total: ${waVolume}\n` +
+      `• Recommended Packing: ${waPacks}\n` +
+      `-------------------------------------------\n` +
+      `Please share wholesale batch rates, GST invoice details, and transport dispatch schedule from Ahmedabad.`;
+    waBtn.href = `https://wa.me/919376168779?text=${encodeURIComponent(waText)}`;
   }
 }
 
