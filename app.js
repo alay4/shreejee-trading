@@ -1319,79 +1319,122 @@ function calculateFarmRequirement() {
     const birdsInput = document.getElementById('calcPoultryBirds') || document.getElementById('calcCount');
     const daysInput = document.getElementById('calcPoultryDays') || document.getElementById('calcDays');
     const typeSelect = document.getElementById('calcPoultryType');
+    const poultryDaysGroup = daysInput?.closest('.form-group');
+    const poultryDaysLabel = poultryDaysGroup?.querySelector('.form-label');
 
     const birds = Math.max(100, parseInt(birdsInput?.value) || 5000);
     const days = Math.max(1, parseInt(daysInput?.value) || 5);
     const type = typeSelect?.value || 'tonic';
-
-    // Daily water estimate (~200ml per bird per day for broilers/layers)
-    const dailyWaterLiters = Math.round(birds * 0.2);
-    if (resLabel1) resLabel1.textContent = 'Estimated Water Consumption:';
-    if (resVal1) resVal1.textContent = `${dailyWaterLiters.toLocaleString()} Litres / Day`;
 
     let liters = 0;
     let packs = '';
     let productName = '';
     let noteText = '';
 
-    if (type === 'tonic') {
-      productName = 'Liver & Health Tonic (Hepatocare / Fit 5 / Brotone)';
-      liters = ((birds / 100) * 15 * days) / 1000;
-      const numCans = Math.ceil(liters / 5);
-      packs = liters <= 4 ? `${Math.ceil(liters)} x 1L Bottle(s)` : `${numCans} Can(s) (5L Bulk Wholesale Can)`;
-      noteText = `*Administer approx. 15ml per 100 birds in drinking water daily for ${days} days to boost liver function, enhance flock vitality, and improve FCR.`;
-    } else if (type === 'calcium') {
-      productName = 'Liquid Calcium & Vitamin D3 (CalciMax / Ostocalcium)';
-      liters = ((birds / 100) * 20 * days) / 1000;
-      const numCans = Math.ceil(liters / 5);
-      packs = liters <= 4 ? `${Math.ceil(liters)} x 1L Bottle(s)` : `${numCans} Can(s) (5L Bulk Wholesale Can)`;
-      noteText = `*Administer approx. 20ml per 100 birds in morning water for ${days} days to strengthen eggshell quality and prevent calcium deficiency rickets.`;
-    } else if (type === 'powder') {
-      productName = 'Water-Soluble Antibacterial Powder (Levobact-Vet / Meriquin)';
-      const totalGrams = (birds / 1000) * 100 * days;
-      const totalKg = totalGrams / 1000;
-      resVal2.textContent = totalKg >= 1 ? `${totalKg.toFixed(1)} kg (${days}-Day Course)` : `${Math.round(totalGrams)} grams (${days}-Day Course)`;
-      if (resLabel2) resLabel2.textContent = 'Total Powder Requirement:';
-      const numPacks = totalKg < 1 ? Math.ceil(totalGrams / 200) : Math.ceil(totalKg);
-      packs = totalKg < 1 ? `${numPacks} Pack(s) (200g Moisture-Proof Pouch)` : `${numPacks} Pack(s) (1kg Bulk Jar/Pouch)`;
-      noteText = `*Dissolve standard recommended dosage (~1g per 2L drinking water) for ${days} consecutive days. Ensure continuous fresh clean drinking water.`;
-      
+    if (type === 'vaccine') {
+      if (daysInput) daysInput.disabled = true;
+      if (poultryDaysGroup) poultryDaysGroup.style.opacity = '0.6';
+      if (poultryDaysLabel) poultryDaysLabel.textContent = 'Schedule: Single Batch';
+
+      productName = 'Flock Vaccine Schedule (Ranikhet Lasota / IBD Gumboro / Marek\'s)';
+      const vacWaterMin = Math.round(birds * 0.04);
+      const vacWaterMax = Math.round(birds * 0.05);
+
+      let packsText = '';
+      if (birds >= 5000 && birds % 5000 === 0) {
+        packsText = `${birds / 5000} x 5,000-Dose Vial(s) (or ${birds / 1000} x 1,000-Dose Vials)`;
+      } else {
+        packsText = `${Math.ceil(birds / 1000)} x 1,000-Dose Vials (Live Freeze-Dried)`;
+      }
+
+      if (resLabel1) resLabel1.textContent = 'Vaccination Drinking Water:';
+      if (resVal1) resVal1.textContent = `${vacWaterMin} - ${vacWaterMax} Litres (2-Hr Intake)`;
+
+      if (resLabel2) resLabel2.textContent = 'Total Vaccine Doses Required:';
+      resVal2.textContent = `${birds.toLocaleString()} Doses (100% Flock Coverage)`;
+
       if (resLabel3) resLabel3.textContent = 'Suggested Wholesale Packing:';
-      resVal3.textContent = packs;
-      if (resNote) resNote.textContent = noteText;
+      resVal3.textContent = packsText;
+
+      if (resNote) resNote.textContent = `*Cold chain dispatch strictly at 2°C–8°C in validated thermocol ice-pack container. Withhold drinking water 1-2 hours prior to morning administration. Stabilize with skimmed milk powder (2g/L) in chlorine-free water, or administer via ocular dropper.*`;
 
       waSpecies = `Poultry (${birds.toLocaleString()} birds)`;
       waCount = `${birds.toLocaleString()} Birds`;
-      waDays = `${days} Days`;
+      waDays = `Single Scheduled Batch`;
       waProduct = productName;
-      waVolume = resVal2.textContent;
-      waPacks = packs;
-    } else if (type === 'disinfectant') {
-      productName = 'Biosecurity & Shed Disinfectant (ViruClean 5th Gen)';
-      liters = Math.max(1, Math.ceil((birds / 2000) * 2));
-      const numCans = Math.ceil(liters / 5);
-      packs = liters <= 4 ? `${liters} x 1L Bottle(s)` : `${numCans} Can(s) (5L Bulk Canister)`;
-      noteText = `*Standard volume for terminal shed washdown (1:200 dilution) and aerial biocidal misting for ${birds.toLocaleString()} birds capacity shed.`;
-    }
+      waVolume = `${birds.toLocaleString()} Live Doses`;
+      waPacks = `${packsText} (2°C–8°C Cold Chain Packaging)`;
+    } else {
+      if (daysInput) daysInput.disabled = false;
+      if (poultryDaysGroup) poultryDaysGroup.style.opacity = '1';
+      if (poultryDaysLabel) poultryDaysLabel.textContent = 'Treatment Duration (Days)';
 
-    if (type !== 'powder') {
-      if (resLabel2) resLabel2.textContent = 'Total Medicine Volume:';
-      resVal2.textContent = `${liters.toFixed(1)} Litres (${days}-Day Course)`;
-      if (resLabel3) resLabel3.textContent = 'Suggested Wholesale Packing:';
-      resVal3.textContent = packs;
-      if (resNote) resNote.textContent = noteText;
+      // Daily water estimate (~200ml per bird per day for broilers/layers)
+      const dailyWaterLiters = Math.round(birds * 0.2);
+      if (resLabel1) resLabel1.textContent = 'Estimated Water Consumption:';
+      if (resVal1) resVal1.textContent = `${dailyWaterLiters.toLocaleString()} Litres / Day`;
 
-      waSpecies = `Poultry (${birds.toLocaleString()} birds)`;
-      waCount = `${birds.toLocaleString()} Birds`;
-      waDays = `${days} Days`;
-      waProduct = productName;
-      waVolume = `${liters.toFixed(1)} Litres`;
-      waPacks = packs;
+      if (type === 'tonic') {
+        productName = 'Liver & Health Tonic (Hepatocare / Fit 5 / Brotone)';
+        liters = ((birds / 100) * 15 * days) / 1000;
+        const numCans = Math.ceil(liters / 5);
+        packs = liters <= 4 ? `${Math.ceil(liters)} x 1L Bottle(s)` : `${numCans} Can(s) (5L Bulk Wholesale Can)`;
+        noteText = `*Administer approx. 15ml per 100 birds in drinking water daily for ${days} days to boost liver function, enhance flock vitality, and improve FCR.*`;
+      } else if (type === 'calcium') {
+        productName = 'Liquid Calcium & Vitamin D3 (CalciMax / Ostocalcium)';
+        liters = ((birds / 100) * 20 * days) / 1000;
+        const numCans = Math.ceil(liters / 5);
+        packs = liters <= 4 ? `${Math.ceil(liters)} x 1L Bottle(s)` : `${numCans} Can(s) (5L Bulk Wholesale Can)`;
+        noteText = `*Administer approx. 20ml per 100 birds in morning water for ${days} days to strengthen eggshell quality and prevent calcium deficiency rickets.*`;
+      } else if (type === 'powder') {
+        productName = 'Water-Soluble Antibacterial Powder (Levobact-Vet / Meriquin)';
+        const totalGrams = (birds / 1000) * 100 * days;
+        const totalKg = totalGrams / 1000;
+        resVal2.textContent = totalKg >= 1 ? `${totalKg.toFixed(1)} kg (${days}-Day Course)` : `${Math.round(totalGrams)} grams (${days}-Day Course)`;
+        if (resLabel2) resLabel2.textContent = 'Total Powder Requirement:';
+        const numPacks = totalKg < 1 ? Math.ceil(totalGrams / 200) : Math.ceil(totalKg);
+        packs = totalKg < 1 ? `${numPacks} Pack(s) (200g Moisture-Proof Pouch)` : `${numPacks} Pack(s) (1kg Bulk Jar/Pouch)`;
+        noteText = `*Dissolve standard recommended dosage (~1g per 2L drinking water) for ${days} consecutive days. Ensure continuous fresh clean drinking water.*`;
+        
+        if (resLabel3) resLabel3.textContent = 'Suggested Wholesale Packing:';
+        resVal3.textContent = packs;
+        if (resNote) resNote.textContent = noteText;
+
+        waSpecies = `Poultry (${birds.toLocaleString()} birds)`;
+        waCount = `${birds.toLocaleString()} Birds`;
+        waDays = `${days} Days`;
+        waProduct = productName;
+        waVolume = resVal2.textContent;
+        waPacks = packs;
+      } else if (type === 'disinfectant') {
+        productName = 'Biosecurity & Shed Disinfectant (ViruClean 5th Gen)';
+        liters = Math.max(1, Math.ceil((birds / 2000) * 2));
+        const numCans = Math.ceil(liters / 5);
+        packs = liters <= 4 ? `${liters} x 1L Bottle(s)` : `${numCans} Can(s) (5L Bulk Canister)`;
+        noteText = `*Standard volume for terminal shed washdown (1:200 dilution) and aerial biocidal misting for ${birds.toLocaleString()} birds capacity shed.*`;
+      }
+
+      if (type !== 'powder') {
+        if (resLabel2) resLabel2.textContent = 'Total Medicine Volume:';
+        resVal2.textContent = `${liters.toFixed(1)} Litres (${days}-Day Course)`;
+        if (resLabel3) resLabel3.textContent = 'Suggested Wholesale Packing:';
+        resVal3.textContent = packs;
+        if (resNote) resNote.textContent = noteText;
+
+        waSpecies = `Poultry (${birds.toLocaleString()} birds)`;
+        waCount = `${birds.toLocaleString()} Birds`;
+        waDays = `${days} Days`;
+        waProduct = productName;
+        waVolume = `${liters.toFixed(1)} Litres`;
+        waPacks = packs;
+      }
     }
   } else if (currentCalcTab === 'livestock') {
     const cattleInput = document.getElementById('calcCattleCount');
     const daysInput = document.getElementById('calcCattleDays');
     const typeSelect = document.getElementById('calcCattleType');
+    const cattleDaysGroup = daysInput?.closest('.form-group');
+    const cattleDaysLabel = cattleDaysGroup?.querySelector('.form-label');
 
     const cattle = Math.max(1, parseInt(cattleInput?.value) || 50);
     const days = Math.max(1, parseInt(daysInput?.value) || 30);
@@ -1403,49 +1446,86 @@ function calculateFarmRequirement() {
     let packs = '';
     let noteText = '';
 
-    if (type === 'calcium') {
-      productName = 'Liquid Calcium Supplement (CalciMax Forte 20L Drum)';
-      const dailyLiters = cattle * 0.1; // 100ml per dairy animal
-      const totalLiters = dailyLiters * days;
-      const drums = Math.ceil(totalLiters / 20);
-      dailyMetric = `${dailyLiters.toFixed(1)} Litres / Day`;
-      totalReq = `${totalLiters.toFixed(0)} Litres (${days}-Day Course)`;
-      packs = totalLiters >= 20 ? `${drums} Drum(s) (20L Commercial Drum)` : `${Math.ceil(totalLiters / 5)} Can(s) (5L Bulk Can)`;
-      noteText = `*Based on standard 100ml liquid calcium daily intake per lactating cow/buffalo to sustain peak milk production and avoid milk fever.`;
-    } else if (type === 'mineral') {
-      productName = 'Chelated Mineral Mixture Powder (Agrimin Forte 25kg Bag)';
-      const dailyKg = cattle * 0.05; // 50g per adult cow
-      const totalKg = dailyKg * days;
-      const bags = Math.ceil(totalKg / 25);
-      dailyMetric = `${dailyKg.toFixed(1)} kg / Day`;
-      totalReq = `${totalKg.toFixed(0)} kg (${days}-Day Course)`;
-      packs = totalKg >= 25 ? `${bags} Bag(s) (25kg Laminated Bulk Bag)` : `${Math.ceil(totalKg / 5)} Bucket(s) (5kg Pack)`;
-      noteText = `*Top-dress 50g daily on cattle feed to boost herd fertility, enhance conception rates, and maintain optimal micronutrient balance.`;
-    } else if (type === 'tonic') {
-      productName = 'Metabolic & Liver Booster (Hepatocare / Belamyl 5L Can)';
-      const dailyLiters = cattle * 0.04; // 40ml per cow
-      const totalLiters = dailyLiters * days;
-      const cans = Math.ceil(totalLiters / 5);
-      dailyMetric = `${dailyLiters.toFixed(1)} Litres / Day`;
-      totalReq = `${totalLiters.toFixed(1)} Litres (${days}-Day Course)`;
-      packs = `${cans} Can(s) (5L Bulk Wholesale Can)`;
-      noteText = `*Drench 40ml daily per animal for metabolic stamina, post-calving recovery, and liver protection during transition period.`;
+    if (type === 'vaccine') {
+      if (daysInput) daysInput.disabled = true;
+      if (cattleDaysGroup) cattleDaysGroup.style.opacity = '0.6';
+      if (cattleDaysLabel) cattleDaysLabel.textContent = 'Schedule: Single Herd Batch';
+
+      productName = 'Herd Vaccine Schedule (FMD / HS / BQ / Anthrax)';
+      let packsText = '';
+      if (cattle <= 10) {
+        packsText = '1 x 10-Dose Multi-Dose Vial';
+      } else if (cattle <= 20) {
+        packsText = '1 x 20-Dose Multi-Dose Vial';
+      } else if (cattle <= 50) {
+        packsText = `${Math.ceil(cattle / 50)} x 50-Dose Multi-Dose Vial (or ${Math.ceil(cattle / 10)} x 10-Dose Vials)`;
+      } else {
+        packsText = `${Math.ceil(cattle / 50)} x 50-Dose Multi-Dose Vials`;
+      }
+
+      if (resLabel1) resLabel1.textContent = 'Clinical Route & Dose:';
+      dailyMetric = '2ml–3ml SubQ / Deep IM per Animal';
+      if (resLabel2) resLabel2.textContent = 'Total Herd Doses Required:';
+      totalReq = `${cattle} Doses (Single Herd Schedule)`;
+      packs = packsText;
+      noteText = `*Maintain unbroken cold chain at 2°C–8°C during transport. Do not freeze. Administer by qualified veterinary personnel prior to seasonal monsoon outbreak.*`;
+
+      waSpecies = `Livestock / Dairy (${cattle} animals)`;
+      waCount = `${cattle} Cattle / Buffaloes`;
+      waDays = `Single Herd Vaccination Event`;
+      waProduct = productName;
+      waVolume = `${cattle} Doses`;
+      waPacks = `${packsText} (2°C–8°C Cold Chain Shipper)`;
+    } else {
+      if (daysInput) daysInput.disabled = false;
+      if (cattleDaysGroup) cattleDaysGroup.style.opacity = '1';
+      if (cattleDaysLabel) cattleDaysLabel.textContent = 'Supplement Duration (Days)';
+
+      if (resLabel1) resLabel1.textContent = 'Daily Herd Requirement:';
+      if (resLabel2) resLabel2.textContent = 'Total Course Requirement:';
+
+      if (type === 'calcium') {
+        productName = 'Liquid Calcium Supplement (CalciMax Forte 20L Drum)';
+        const dailyLiters = cattle * 0.1; // 100ml per dairy animal
+        const totalLiters = dailyLiters * days;
+        const drums = Math.ceil(totalLiters / 20);
+        dailyMetric = `${dailyLiters.toFixed(1)} Litres / Day`;
+        totalReq = `${totalLiters.toFixed(0)} Litres (${days}-Day Course)`;
+        packs = totalLiters >= 20 ? `${drums} Drum(s) (20L Commercial Drum)` : `${Math.ceil(totalLiters / 5)} Can(s) (5L Bulk Can)`;
+        noteText = `*Based on standard 100ml liquid calcium daily intake per lactating cow/buffalo to sustain peak milk production and avoid milk fever.*`;
+      } else if (type === 'mineral') {
+        productName = 'Chelated Mineral Mixture Powder (Agrimin Forte 25kg Bag)';
+        const dailyKg = cattle * 0.05; // 50g per adult cow
+        const totalKg = dailyKg * days;
+        const bags = Math.ceil(totalKg / 25);
+        dailyMetric = `${dailyKg.toFixed(1)} kg / Day`;
+        totalReq = `${totalKg.toFixed(0)} kg (${days}-Day Course)`;
+        packs = totalKg >= 25 ? `${bags} Bag(s) (25kg Laminated Bulk Bag)` : `${Math.ceil(totalKg / 5)} Bucket(s) (5kg Pack)`;
+        noteText = `*Top-dress 50g daily on cattle feed to boost herd fertility, enhance conception rates, and maintain optimal micronutrient balance.*`;
+      } else if (type === 'tonic') {
+        productName = 'Metabolic & Liver Booster (Hepatocare / Belamyl 5L Can)';
+        const dailyLiters = cattle * 0.04; // 40ml per cow
+        const totalLiters = dailyLiters * days;
+        const cans = Math.ceil(totalLiters / 5);
+        dailyMetric = `${dailyLiters.toFixed(1)} Litres / Day`;
+        totalReq = `${totalLiters.toFixed(1)} Litres (${days}-Day Course)`;
+        packs = `${cans} Can(s) (5L Bulk Wholesale Can)`;
+        noteText = `*Drench 40ml daily per animal for metabolic stamina, post-calving recovery, and liver protection during transition period.*`;
+      }
+
+      waSpecies = `Livestock / Dairy (${cattle} animals)`;
+      waCount = `${cattle} Cattle / Buffaloes`;
+      waDays = `${days} Days`;
+      waProduct = productName;
+      waVolume = totalReq;
+      waPacks = packs;
     }
 
-    if (resLabel1) resLabel1.textContent = 'Daily Herd Requirement:';
     if (resVal1) resVal1.textContent = dailyMetric;
-    if (resLabel2) resLabel2.textContent = 'Total Course Requirement:';
     resVal2.textContent = totalReq;
     if (resLabel3) resLabel3.textContent = 'Suggested Wholesale Packing:';
     resVal3.textContent = packs;
     if (resNote) resNote.textContent = noteText;
-
-    waSpecies = `Livestock / Dairy (${cattle} animals)`;
-    waCount = `${cattle} Cattle / Buffaloes`;
-    waDays = `${days} Days`;
-    waProduct = productName;
-    waVolume = totalReq;
-    waPacks = packs;
   }
 
   // Update WhatsApp RFQ link
