@@ -204,17 +204,77 @@ const PRODUCTS = [
   },
   // MICRO LABS
   {
-    id: 'prod-micro-1', brand: 'Micro Labs', title: 'Melonex Injection', composition: 'Meloxicam 5mg/ml', category: 'poultry', categoryName: 'Veterinary Medicine', badge: 'NSAID', packing: '30ml / 100ml Vial', moq: '50 Vials', storage: 'Protect from light', target: 'Cattle, Sheep, Pig', dosage: '0.5mg/kg body weight IM/IV', indications: 'Pneumonia, Mastitis, Prolapse pain management.', speciesTags: ['Dairy Cattle', 'Swine'], description: 'Potent non-steroidal anti-inflammatory drug (NSAID) for rapid pain relief and fever reduction.', technicalSpecs: 'Preferential COX-2 inhibitor.'
+    id: 'prod-micro-1',
+    brand: 'Micro Labs',
+    title: 'Levobact-Vet 200g Powder (Levofloxacin)',
+    composition: 'Levofloxacin Hemihydrate 10% w/w (100mg/g)',
+    category: 'poultry',
+    categoryName: 'Poultry Medicine & Antibiotics',
+    badge: 'Water Soluble Powder',
+    packing: '200 gm Pack',
+    moq: '20 x 200g',
+    storage: 'Store in cool, dry place protect from direct sunlight',
+    target: 'Poultry',
+    dosage: '1g in 1 to 2 Litres of drinking water for 3-5 days',
+    indications: 'Chronic Respiratory Disease (CRD), Infectious Coryza, Fowl Cholera, Colibacillosis, and Salmonellosis.',
+    speciesTags: ['Broiler Flocks', 'Layer Birds', 'Breeders'],
+    description: 'Third-generation broad-spectrum fluoroquinolone (Levofloxacin 10% w/w) water-soluble powder for severe systemic and respiratory bacterial infections in poultry.',
+    technicalSpecs: 'Rapid oral absorption, 100mg/g active Levofloxacin.'
+  },
+  // VARSHA MULTI TECH
+  {
+    id: 'prod-varsha-1',
+    brand: 'Varsha Multi Tech',
+    title: 'Hepatocare Liquid',
+    composition: 'Liver Extract, Choline Chloride, B-Complex Vitamins, Herbal Hepato-stimulants',
+    category: 'supplements',
+    categoryName: 'Feed Supplements & Minerals',
+    badge: 'Liver Tonic',
+    packing: '5 Litre Can',
+    moq: '4 x 5L',
+    storage: 'Store in cool, dry place away from direct sunlight',
+    target: 'Poultry & Cattle',
+    dosage: 'Broilers: 10-15ml/100 birds | Layers: 20ml/100 birds | Cattle: 50ml daily',
+    indications: 'Aflatoxicosis, fatty liver syndrome, sluggish liver, growth promotion, and metabolic restoration.',
+    speciesTags: ['Broiler Flocks', 'Layer Birds', 'Dairy Cattle'],
+    description: 'Potent hepatoprotective and liver stimulant formula enriched with liver extracts, choline, and essential amino acids to restore liver metabolism and optimize feed conversion ratio (FCR).',
+    technicalSpecs: 'Liquid oral suspension, 5L high-density pack.'
   },
   {
-    id: 'prod-micro-2', brand: 'Micro Labs', title: 'Amoxyrum Forte Injection', composition: 'Amoxicillin 3g + Sulbactam 1.5g', category: 'poultry', categoryName: 'Veterinary Medicine', badge: 'Beta-Lactamase Resistant', packing: '4.5g Vial with sterile water', moq: '20 Vials', storage: 'Cool dry place', target: 'Cattle, Buffalo', dosage: '7-10mg/kg body weight IM', indications: 'Severe mastitis, metritis, respiratory infections.', speciesTags: ['Dairy Cattle'], description: 'Synergistic combination of broad-spectrum antibiotic and beta-lactamase inhibitor for resistant infections.', technicalSpecs: 'Requires reconstitution before use.'
+    id: 'prod-varsha-2',
+    brand: 'Varsha Multi Tech',
+    title: 'Fit 5 Liquid',
+    composition: 'Essential Amino Acids, Vitamins, Minerals, and Organic Vitalizers',
+    category: 'supplements',
+    categoryName: 'Feed Supplements & Minerals',
+    badge: 'Performance Booster',
+    packing: '5 Litre Can',
+    moq: '4 x 5L',
+    storage: 'Store in cool dry place',
+    target: 'Poultry',
+    dosage: '5-10ml per 100 birds daily in drinking water',
+    indications: 'Physical & environmental stress (heat, vaccination, debeaking), poor weight gain, drop in egg production.',
+    speciesTags: ['Broiler Flocks', 'Layer Birds', 'Chicks'],
+    description: 'Multi-action performance and vitality liquid tonic designed to overcome stress, boost gut health, and promote rapid flock weight gain.',
+    technicalSpecs: 'Water-soluble vitality formulation, 5L pack.'
   },
-  // VARSHA
   {
-    id: 'prod-varsha-1', brand: 'Varsha', title: 'Varsha M-Vit Powder', composition: 'Vitamins & Chelated Trace Minerals', category: 'supplements', categoryName: 'Feed Supplements & Minerals', badge: 'Trace Minerals', packing: '1kg / 5kg', moq: '10 x 1kg', storage: 'Room temp', target: 'Poultry, Cattle', dosage: 'Poultry: 1kg/ton | Cattle: 30g/day', indications: 'Mineral deficiency, poor immunity, infertility.', speciesTags: ['Broiler Flocks', 'Dairy Cattle'], description: 'High bioavailability chelated mineral mixture to support enzymatic functions and reproductive health.', technicalSpecs: 'Contains Zinc, Copper, Manganese, Iron, Selenium.'
-  },
-  {
-    id: 'prod-varsha-2', brand: 'Varsha', title: 'Varsha Electrolyte C', composition: 'Electrolytes with Vitamin C', category: 'supplements', categoryName: 'Feed Supplements & Minerals', badge: 'Rehydration', packing: '1kg Pouch', moq: '20 Pouches', storage: 'Airtight container', target: 'Poultry', dosage: '1g / Liter water', indications: 'Summer stress, loose droppings, dehydration.', speciesTags: ['Poultry Flocks'], description: 'Instant energy and rehydration formula for combating severe heat stress and restoring fluid balance.', technicalSpecs: 'High solubility.'
+    id: 'prod-varsha-3',
+    brand: 'Varsha Multi Tech',
+    title: 'Immunocare Advance Liquid',
+    composition: 'Immunomodulatory Phytochemicals, Vitamin E, Selenium, Biotin, and Zinc',
+    category: 'supplements',
+    categoryName: 'Feed Supplements & Minerals',
+    badge: 'Immunity Booster',
+    packing: '5 Litre Can',
+    moq: '4 x 5L',
+    storage: 'Store below 30°C, protected from light',
+    target: 'Poultry',
+    dosage: 'Chicks: 5ml/100 birds | Broilers/Layers: 10-20ml/100 birds in drinking water',
+    indications: 'Immunosuppression, post-vaccination titer boosting, high mortality prevention, disease challenge periods.',
+    speciesTags: ['Broiler Flocks', 'Layer Birds', 'Breeder Flocks'],
+    description: 'Advanced immunomodulator and biological defense fortifier engineered to enhance antibody titers, stimulate macrophage activity, and provide superior flock disease resistance.',
+    technicalSpecs: 'Enriched with bio-available Vitamin E + Selenium + active herbal immunogens, 5L pack.'
   },
 ];
 
@@ -550,6 +610,7 @@ function filterProducts() {
     const matchesSearch = prod.title.toLowerCase().includes(query) || 
                           prod.composition.toLowerCase().includes(query) ||
                           prod.description.toLowerCase().includes(query) ||
+                          (prod.brand && prod.brand.toLowerCase().includes(query)) ||
                           (prod.speciesTags && prod.speciesTags.some(t => t.toLowerCase().includes(query)));
     const matchesCat = activeCategory === 'all' || prod.category === activeCategory;
     return matchesSearch && matchesCat;
