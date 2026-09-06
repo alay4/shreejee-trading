@@ -798,6 +798,10 @@ function getCategoryFallbackImage(category) {
 // Render Products Grid
 function renderProducts(productsList) {
   const container = document.getElementById('productsContainer');
+  const countEl = document.getElementById('catalogResultsCount');
+  if (countEl) {
+    countEl.textContent = `Showing ${productsList.length} wholesale veterinary ${productsList.length === 1 ? 'product' : 'products'}`;
+  }
   if (!container) return;
 
   if (productsList.length === 0) {
@@ -843,11 +847,11 @@ function renderProducts(productsList) {
         </div>
       </div>
       <div class="product-footer">
-        <button class="btn btn-outline btn-sm" onclick="openQuickView('${prod.id}')" title="View Full Technical Datasheet & Indications">
+        <button class="btn btn-outline btn-sm" onclick="openQuickView('${prod.id}')" aria-label="Quick View datasheet for ${prod.title}" title="View Full Technical Datasheet & Indications">
           <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
           Quick View & Datasheet
         </button>
-        <button class="btn btn-primary btn-sm" onclick="addToQuote('${prod.id}')" title="Add to Wholesale Inquiry List">
+        <button class="btn btn-primary btn-sm" onclick="addToQuote('${prod.id}')" aria-label="Add ${prod.title} to Wholesale RFQ" title="Add to Wholesale Inquiry List">
           <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
           Add to RFQ
         </button>
@@ -856,10 +860,35 @@ function renderProducts(productsList) {
   `).join('');
 }
 
+// Modal and Drawer Focus Trap Helper
+function trapFocus(containerElement, event) {
+  if (event.key !== 'Tab') return;
+  const focusables = containerElement.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+  if (!focusables.length) return;
+  const first = focusables[0];
+  const last = focusables[focusables.length - 1];
+
+  if (event.shiftKey) {
+    if (document.activeElement === first) {
+      last.focus();
+      event.preventDefault();
+    }
+  } else {
+    if (document.activeElement === last) {
+      first.focus();
+      event.preventDefault();
+    }
+  }
+}
+
+let lastFocusedModalTrigger = null;
+
 // Technical Quick View & Dosage Protocol Modal
 function openQuickView(productId) {
   const prod = PRODUCTS.find(p => p.id === productId);
   if (!prod) return;
+
+  lastFocusedModalTrigger = document.activeElement;
 
   let modalContainer = document.getElementById('quickViewModalContainer');
   if (!modalContainer) {
@@ -870,14 +899,14 @@ function openQuickView(productId) {
 
   modalContainer.innerHTML = `
     <div class="quick-view-overlay active" onclick="closeQuickView(event)"></div>
-    <div class="quick-view-modal active">
+    <div class="quick-view-modal active" role="dialog" aria-modal="true" aria-labelledby="quickViewTitle" tabindex="-1">
       <div class="quick-view-header">
         <div>
           <span class="product-category-tag">${prod.categoryName}</span>
-          <h3 style="font-size: 1.45rem; margin-top: 0.35rem;">${prod.title}</h3>
+          <h3 id="quickViewTitle" style="font-size: 1.45rem; margin-top: 0.35rem;">${prod.title}</h3>
           <p style="color: var(--stc-red); font-weight: 600; font-size: 0.95rem;">${prod.composition}</p>
         </div>
-        <button class="quick-view-close" onclick="closeQuickView()" title="Close Datasheet">&times;</button>
+        <button class="quick-view-close" onclick="closeQuickView()" aria-label="Close product datasheet" title="Close Datasheet">&times;</button>
       </div>
 
       <div class="quick-view-body">
@@ -942,7 +971,7 @@ function openQuickView(productId) {
             <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
             Add to Wholesale RFQ
           </button>
-          <a href="https://wa.me/919376168779?text=${encodeURIComponent(`Hello Mr. Chetan Shah, I am viewing the technical datasheet for *${prod.title}* (${prod.packing}). I would like to inquire about bulk wholesale pricing.`)}" target="_blank" class="btn btn-whatsapp">
+          <a href="https://wa.me/919376168779?text=${encodeURIComponent(`Hello Mr. Chetan Shah, I am viewing the technical datasheet for *${prod.title}* (${prod.packing}). I would like to inquire about bulk wholesale pricing.`)}" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
             <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
             WhatsApp Chetan Shah
           </a>
@@ -950,19 +979,41 @@ function openQuickView(productId) {
       </div>
     </div>
   `;
+
+  document.body.style.overflow = 'hidden';
+  const closeBtn = modalContainer.querySelector('.quick-view-close');
+  if (closeBtn) {
+    closeBtn.focus();
+  }
 }
 
 function closeQuickView(event) {
   if (event && event.target && !event.target.classList.contains('quick-view-overlay')) return;
   const modalContainer = document.getElementById('quickViewModalContainer');
   if (modalContainer) modalContainer.innerHTML = '';
+  document.body.style.overflow = '';
+  if (lastFocusedModalTrigger && typeof lastFocusedModalTrigger.focus === 'function') {
+    lastFocusedModalTrigger.focus();
+    lastFocusedModalTrigger = null;
+  }
 }
 
-// Escape key listener to close modal
+// Global Keyboard Listener for Modal and Drawer
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     closeQuickView();
     toggleQuoteDrawer(false);
+  } else if (e.key === 'Tab') {
+    const modal = document.querySelector('.quick-view-modal.active');
+    if (modal) {
+      trapFocus(modal, e);
+      return;
+    }
+    const drawer = document.querySelector('.drawer.active');
+    if (drawer) {
+      trapFocus(drawer, e);
+      return;
+    }
   }
 });
 
@@ -1018,6 +1069,18 @@ function setupEventListeners() {
   const calcForm = document.getElementById('calcForm');
   if (calcForm) {
     calcForm.addEventListener('input', calculateFarmRequirement);
+  }
+
+  // Mobile Navigation Menu aria-expanded synchronization
+  const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+  const navMenu = document.querySelector('.nav-menu');
+  if (mobileMenuBtn && navMenu) {
+    mobileMenuBtn.addEventListener('click', () => {
+      setTimeout(() => {
+        const isExpanded = navMenu.classList.contains('active');
+        mobileMenuBtn.setAttribute('aria-expanded', isExpanded ? 'true' : 'false');
+      }, 10);
+    });
   }
 }
 
@@ -1103,6 +1166,8 @@ function updateQuoteUI() {
   }
 }
 
+let lastFocusedDrawerTrigger = null;
+
 // Drawer Toggle
 function toggleQuoteDrawer(open) {
   const overlay = document.getElementById('drawerOverlay');
@@ -1110,11 +1175,22 @@ function toggleQuoteDrawer(open) {
   if (!overlay || !drawer) return;
 
   if (open) {
+    lastFocusedDrawerTrigger = document.activeElement;
     overlay.classList.add('active');
     drawer.classList.add('active');
+    drawer.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    const closeBtn = drawer.querySelector('.drawer-close-btn') || drawer.querySelector('button');
+    if (closeBtn) closeBtn.focus();
   } else {
     overlay.classList.remove('active');
     drawer.classList.remove('active');
+    drawer.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (lastFocusedDrawerTrigger && typeof lastFocusedDrawerTrigger.focus === 'function') {
+      lastFocusedDrawerTrigger.focus();
+      lastFocusedDrawerTrigger = null;
+    }
   }
 }
 
@@ -1299,6 +1375,8 @@ function showToast(msg) {
     container = document.createElement('div');
     container.id = 'toastContainer';
     container.className = 'toast-container';
+    container.setAttribute('role', 'status');
+    container.setAttribute('aria-live', 'polite');
     document.body.appendChild(container);
   }
 
@@ -1602,11 +1680,11 @@ function renderPartners(partnersList) {
         </div>
       </div>
       <div class="partner-card-footer">
-        <a href="${p.website !== '#' ? p.website : 'https://www.google.com/search?q=' + encodeURIComponent(p.name)}" target="_blank" rel="noopener noreferrer" class="partner-web-link">
+        <a href="${p.website !== '#' ? p.website : 'https://www.google.com/search?q=' + encodeURIComponent(p.name)}" target="_blank" rel="noopener noreferrer" class="partner-web-link" aria-label="Official website for ${p.name} (opens in new tab)">
           Official Site
           <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
         </a>
-        <button class="partner-btn-inquire" onclick="inquireBrandWhatsApp('${p.name}')">
+        <button class="partner-btn-inquire" onclick="inquireBrandWhatsApp('${p.name}')" aria-label="Inquire wholesale stock for ${p.name} on WhatsApp">
           <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
           Inquire Stock
         </button>

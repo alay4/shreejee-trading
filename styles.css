@@ -36,7 +36,7 @@
   --border-color: #e2e8f0;
   --text-heading: #0f172a;
   --text-body: #334155;
-  --text-muted: #64748b;
+  --text-muted: #475569;
   --input-bg: #ffffff;
   --input-border: #cbd5e1;
 
@@ -92,6 +92,22 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Universal Accessible Focus System */
+:focus-visible {
+  outline: 2px solid var(--stc-red);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--stc-red);
+  outline-offset: 2px;
 }
 
 /* Container */
@@ -1182,6 +1198,17 @@ a {
   box-shadow: 0 4px 12px rgba(217, 4, 41, 0.25);
 }
 
+/* Catalog Results Live Count */
+.catalog-results-count {
+  font-size: 0.95rem;
+  color: var(--slate-600);
+  margin-bottom: 1.25rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 /* Products Grid */
 .products-grid {
   display: grid;
@@ -1317,7 +1344,7 @@ a {
 
 .meta-label {
   font-size: 0.72rem;
-  color: var(--slate-400);
+  color: var(--slate-600);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   font-weight: 600;
@@ -2808,8 +2835,12 @@ a {
   border: none;
   color: var(--text-heading);
   cursor: pointer;
+  min-width: 44px;
+  min-height: 44px;
   padding: 0.5rem;
   border-radius: var(--radius-md);
+  align-items: center;
+  justify-content: center;
   transition: background-color 0.2s ease;
 }
 
@@ -2866,7 +2897,7 @@ a {
     order: 1;
   }
   .mobile-menu-btn {
-    display: block;
+    display: inline-flex;
     order: 2;
     margin: 0;
   }
@@ -3091,9 +3122,25 @@ a {
 .footer-location { font-size: 0.8rem; color: var(--slate-500); }
 .link-accent { color: var(--stc-red); font-weight: 700; font-size: 0.88rem; display: inline-block; margin-top: 0.5rem; }
 .nav-wa-btn { white-space: nowrap; flex-shrink: 0; }
-.nav-wa-short { display: none; }
-.drawer-close-btn { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-muted); }
-.form-label-light { color: var(--text-body); }
+.drawer-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--text-muted);
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+.drawer-close-btn:hover {
+  color: var(--stc-red);
+  background: var(--bg-section-alt);
+}
 
 /* Language Switcher */
 .top-bar .container {

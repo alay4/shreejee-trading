@@ -11,9 +11,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260906">
+  <link rel="stylesheet" href="styles.css?v=20260906h">
 </head>
 <body>
+  <!-- Skip to Main Content Link -->
+  <a href="#main" class="skip-link">Skip to main content</a>
 
   <!-- Top Announcement Bar -->
   <div class="top-bar">
@@ -46,7 +48,7 @@
         </div>
       </a>
 
-            <button class="mobile-menu-btn" aria-label="Toggle navigation menu" onclick="document.querySelector('.nav-menu').classList.toggle('active')">
+      <button class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false" onclick="document.querySelector('.nav-menu').classList.toggle('active')">
         <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
@@ -77,6 +79,9 @@
       </div>
     </div>
   </nav>
+
+  <!-- Main Content Landmark -->
+  <main id="main">
 
   <!-- Hero Section -->
   <section class="hero" id="home">
@@ -112,13 +117,13 @@
         </div>
 
         <div class="hero-image-card">
-          <img src="assets/hero_banner.jpg" alt="Shreejee Trading Corporation STC Veterinary Supplies">
+          <img src="assets/hero_banner.jpg" alt="Shreejee Trading Corporation STC Veterinary Supplies" fetchpriority="high" width="600" height="400">
           <div class="hero-glass-overlay">
             <div class="overlay-icon">
               <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
             </div>
             <div class="overlay-text">
-              <h4>Cold Chain & Biosecurity Certified</h4>
+              <span class="overlay-title" style="display: block; font-weight: 700; font-size: 1.05rem; margin-bottom: 0.25rem;">Cold Chain & Biosecurity Certified</span>
               <p>Temperature-controlled vaccines for farm biosecurity.</p>
             </div>
           </div>
@@ -136,7 +141,7 @@
             <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m3 0h1m-1-4h.01M9 16h.01M9 12h.01M9 8h.01M15 16h.01M15 12h.01M15 8h.01"/></svg>
           </div>
           <div class="stat-info">
-            <h3 class="stat-number" data-target="500" data-suffix="+">500+</h3>
+            <span class="stat-number" data-target="500" data-suffix="+">500+</span>
             <p>Farms & Clinics Served</p>
           </div>
         </div>
@@ -146,7 +151,7 @@
             <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
           </div>
           <div class="stat-info">
-            <h3 class="stat-number" data-target="1000" data-suffix="+">1,000+</h3>
+            <span class="stat-number" data-target="1000" data-suffix="+">1,000+</span>
             <p>Medicines & Feed Supplements</p>
           </div>
         </div>
@@ -156,7 +161,7 @@
             <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
           </div>
           <div class="stat-info">
-            <h3 class="stat-number" data-target="24" data-suffix=" Hr">24 Hr</h3>
+            <span class="stat-number" data-target="24" data-suffix=" Hr">24 Hr</span>
             <p>Fast Gujarat Dispatch</p>
           </div>
         </div>
@@ -166,7 +171,7 @@
             <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           </div>
           <div class="stat-info">
-            <h3 class="stat-number" data-target="100" data-suffix="%">100%</h3>
+            <span class="stat-number" data-target="100" data-suffix="%">100%</span>
             <p>Genuine Guaranteed</p>
           </div>
         </div>
@@ -308,6 +313,8 @@
     </div>
   </div>
 
+  </main>
+
   <!-- Footer -->
   <footer class="footer" style="padding-top: 7rem;">
     <div class="container">
@@ -374,10 +381,10 @@
 
   <!-- Quote Side Drawer -->
   <div class="drawer-overlay" id="drawerOverlay" onclick="toggleQuoteDrawer(false)"></div>
-  <div class="drawer" id="quoteDrawer">
+  <div class="drawer" id="quoteDrawer" role="dialog" aria-modal="true" aria-labelledby="quoteDrawerTitle" aria-hidden="true">
     <div class="drawer-header">
-      <h3>Inquiry Quote List</h3>
-      <button style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-muted);" onclick="toggleQuoteDrawer(false)">&times;</button>
+      <h3 id="quoteDrawerTitle">Inquiry Quote List</h3>
+      <button class="drawer-close-btn" onclick="toggleQuoteDrawer(false)" aria-label="Close quote drawer">&times;</button>
     </div>
     <div class="drawer-body" id="drawerQuoteList">
       <!-- Added quote items rendered here -->
@@ -391,7 +398,7 @@
   </div>
 
   <!-- Floating WhatsApp Widget -->
-  <a href="https://wa.me/919376168779?text=Hello,%20I%20want%20to%20inquire%20about%20veterinary/poultry%20medicines." target="_blank" class="floating-whatsapp floating-whatsapp-pulse" title="Direct WhatsApp Inquiry">
+  <a href="https://wa.me/919376168779?text=Hello,%20I%20want%20to%20inquire%20about%20veterinary/poultry%20medicines." target="_blank" rel="noopener noreferrer" class="floating-whatsapp floating-whatsapp-pulse" aria-label="Direct WhatsApp Inquiry with Chetan Shah" title="Direct WhatsApp Inquiry">
     <svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
   </a>
 
@@ -399,6 +406,6 @@
   <div id="quickViewModalContainer"></div>
 
   <!-- JavaScript File -->
-  <script src="app.js?v=20260906g"></script>
+  <script src="app.js?v=20260906h"></script>
 </body>
 </html>
