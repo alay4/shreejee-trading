@@ -12,7 +12,7 @@ This document contains the complete context, architectural decisions, and curren
 - **Core**: Vanilla HTML5, CSS3, and JavaScript (ES6+). No frontend frameworks (React/Next.js/Vue) are used.
 - **Styling**: Vanilla CSS (`styles.css`). **No TailwindCSS**. Relies heavily on CSS Variables (Custom Properties) for theming.
 - **Deployment**: Hosted on GitHub Pages (`main` branch, root folder). 
-- **Domain**: `shreejeetradingcorp.com` (CNAME file is present in the repository root).
+- **Domain**: `www.shreejeetradingcorp.com` (CNAME file is present in the repository root).
 - **Repository**: [https://github.com/alay4/shreejee-trading](https://github.com/alay4/shreejee-trading)
 
 ## 3. Design System & Aesthetics
